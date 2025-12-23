@@ -1,0 +1,45 @@
+{
+    "name": "redirect",
+    "title": "Redirect",
+    "description": "Redirect the browser to a custom url",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Redirect/icon.svg}",
+    "fields": {
+        "redirect": {
+            "label": "Redirect To",
+            "description": "Where should we redirect the user to.",
+            "type": "link",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "blank": {
+            "text": "Redirect to a New Window",
+            "type": "checkbox"
+        },
+        "timeout": {
+            "label": "Timeout",
+            "description": "Time to wait (secs) before triggering the redirect.",
+            "attrs": {
+                "type": "number",
+                "default": "0"
+            }
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": ["redirect", "blank", "timeout"]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    }
+}

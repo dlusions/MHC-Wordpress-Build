@@ -1,0 +1,12 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/icon-collections/octicons/octicons.json
+
+return [
+  'name' => 'octicons', 
+  'title' => 'Octicons', 
+  'description' => 'Set of SVG icons built by GitHub for GitHub.', 
+  'version' => '19.12.0', 
+  'release' => 'October, 2024', 
+  'license' => 'MIT', 
+  'url' => 'https://github.com/primer/octicons', 
+  'icons' => 307
+];

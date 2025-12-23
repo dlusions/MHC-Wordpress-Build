@@ -1,0 +1,893 @@
+{
+    "@import": "./element.php",
+    "name": "accordion_pro",
+    "title": "JP CE Accordion Pro",
+    "group":"JPro Studio",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {
+        "show_image": true,
+        "show_link": true,
+        "collapsible": true,
+        "content_column_breakpoint": "m",
+        "image_svg_color": "emphasis",
+        "image_align": "top",
+        "image_grid_width": "1-2",
+        "image_grid_breakpoint": "m",
+        "link_text": "Read more",
+        "link_style": "default"
+    },
+    "placeholder": {
+        "children": [
+            { "type": "accordion_pro_item", "props": {} },
+            { "type": "accordion_pro_item", "props": {} },
+            { "type": "accordion_pro_item", "props": {} }
+        ]
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Items",
+            "type": "content-items",
+            "item": "accordion_pro_item",
+            "media": {
+                "type": "image",
+                "item": { "title": "title", "image": "src" }
+            }
+        },
+        "show_image": {
+            "type": "checkbox",
+            "text": "Show the image"
+        },
+        "show_link": {
+            "description": "Show or hide content fields without the need to delete the content itself.",
+            "type": "checkbox",
+            "text": "Show the link"
+        },
+        "multiple": {
+            "label": "Behavior",
+            "type": "checkbox",
+            "text": "Allow multiple open items"
+        },
+        "collapsible": {
+            "type": "checkbox",
+            "text": "Start with all items closed"
+        },
+        "custom_style": {
+            "label": "Tabs Style",
+            "description": "Tabs Style",
+            "type": "select",
+            "default" : "uikit",
+            "options": {
+                "Uikit": "uikit",
+                "Custom": "custom"
+            }
+        },
+        "heading_border_width": { 
+            "label": "Heading Border Width(Px)",
+            "type": "text",
+            "default" : "1",
+            "show" : "custom_style == 'custom'"
+        },
+        
+        "content_border_width": { 
+            "label": "Content Border Width(Px)",
+            "type": "text",
+            "default" : "1",
+            "show" : "custom_style == 'custom'"
+        },
+
+        "heading_border": { 
+            "label": "Heading Border Color",
+            "type": "color",
+            "default" : "#009fe3",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_bg": { 
+            "label": "Heading Background Color",
+            "type": "color",
+            "default" : "#ffffff",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_color": { 
+            "label": "Heading Text Color",
+            "type": "color",
+            "default" : "#000000",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_icon_bg": { 
+            "label": "Heading Icon Background Color",
+            "type": "color",
+            "default" : "#ffffff",
+            "show" : "custom_style == 'custom'"
+        },
+        
+        "heading_icon":{
+            "label": "Heading Icon",
+            "type": "image",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_active_icon":{
+            "label": "Active Heading Icon",
+            "type": "image",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_icon_align": {
+            "label": "Heading Icon Align",
+            "type": "select",
+            "default" : "right",
+            "options": {
+                "Right": "right",
+                "Left": "left"
+            },
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_icon_width": { 
+            "label": "Icon Width",
+            "type": "text",
+            "default" : "50",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_icon_padding": { 
+            "label": "Left Right Padding for Icon ",
+            "type": "text",
+            "default" : "10",
+            "show" : "custom_style == 'custom'"
+        },
+        "heading_padding": { 
+            "label": "Heading Padding(px)",
+            "type": "text",
+            "default" : "15",
+            "show" : "custom_style == 'custom'"
+        },
+          "heading_icon_transition":
+          {
+            "label": "Heading Icon Transition",
+            "type": "select",
+            "default" : "none",
+            "options": 
+            {
+                "None":"none",
+                "Fade":"fade",
+                "Scale Up": "scaleup",
+                "Scale Down": "scaledown",
+                "Slide Left":"slide",
+                "Spin": "spin"
+
+            },
+            "enable" : "custom_style == 'custom' && heading_icon"
+            
+            },
+        
+        "content_border": { 
+            "label": "Content Border Color",
+            "type": "color",
+            "default" : "",
+            "show" : "custom_style == 'custom'"
+        },
+        "content_bg": { 
+            "label": "Content Background Color",
+            "type": "color",
+            "default" : "",
+            "show" : "custom_style == 'custom'"
+        },
+        "content_color": { 
+            "label": "Content Text Color",
+            "type": "color",
+            "default" : "",
+            "show" : "custom_style == 'custom'"
+        },
+        "content_margin_top": { 
+            "label": "Content Margin Top(px)",
+            "type": "text",
+            "default" : "15",
+            "show" : "custom_style == 'custom'"
+        },
+        "content_padding": { 
+            "label": "Content Padding (px)",
+            "type": "text",
+            "default" : "15",
+            "show" : "custom_style == 'custom'"
+        },
+        "content_style": {
+            "label": "Style",
+            "description": "Select a predefined text style, including color, size and font-family.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Text Meta": "text-meta",
+                "Text Lead": "text-lead",
+                "Text Small": "text-small",
+                "Text Large": "text-large",
+                "Heading 3X-Large": "heading-3xlarge",
+                "Heading 2X-Large": "heading-2xlarge",
+                "Heading X-Large": "heading-xlarge",
+                "Heading Large": "heading-large",
+                "Heading Medium": "heading-medium",
+                "Heading Small": "heading-small",
+                "Heading H1": "h1",
+                "Heading H2": "h2",
+                "Heading H3": "h3",
+                "Heading H4": "h4",
+                "Heading H5": "h5",
+                "Heading H6": "h6"
+            }
+        },
+        
+        "content_dropcap": {
+            "label": "Drop Cap",
+            "description": "Display the first letter of the paragraph as a large initial.",
+            "type": "checkbox",
+            "text": "Enable drop cap"
+        },
+        "content_column": {
+            "label": "Columns",
+            "description": "Set the number of text columns.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Halves": "1-2",
+                "Thirds": "1-3",
+                "Quarters": "1-4",
+                "Fifths": "1-5",
+                "Sixths": "1-6"
+            }
+        },
+        "content_column_divider": {
+            "description": "Show a divider between text columns.",
+            "type": "checkbox",
+            "text": "Show dividers",
+            "enable": "content_column"
+        },
+        "content_column_breakpoint": {
+            "label": "Columns Breakpoint",
+            "description": "Set the device width from which the text columns should apply.",
+            "type": "select",
+            "options": {
+                "Always": "",
+                "Small (Phone Landscape)": "s",
+                "Medium (Tablet Landscape)": "m",
+                "Large (Desktop)": "l",
+                "X-Large (Large Screens)": "xl"
+            },
+            "enable": "content_column"
+        },
+        "content_margin": {
+            "label": "Margin Top",
+            "description": "Set the top margin. Note that the margin will only apply if the content field immediately follows another content field.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "None": "remove"
+            }
+        },
+		
+        "title_element": {
+            "label": "Title Element",
+            "description": "Choose one of the HTML elements to fit your title.",
+            "type": "select",
+            "default" : "h3",
+            "options": {
+                "h1": "h1",
+                "h2": "h2",
+                "h3": "h3",
+                "h4": "h4",
+                "h5": "h5",
+                "h6": "h6"
+            }
+        },
+		"title_style": {
+            "label": "Title Style",
+            "description": "Choose one of the HTML elements to fit your title.",
+            "type": "select",
+            "default" : "h4",
+            "options": {
+                "None": "",
+                "Text Meta": "text-meta",
+                "Text Lead": "text-lead",
+                "Text Small": "text-small",
+                "Text Large": "text-large",
+                "Heading 3X-Large": "heading-3xlarge",
+                "Heading 2X-Large": "heading-2xlarge",
+                "Heading X-Large": "heading-xlarge",
+                "Heading Large": "heading-large",
+                "Heading Medium": "heading-medium",
+                "Heading Small": "heading-small",
+                "Heading H1": "h1",
+                "Heading H2": "h2",
+                "Heading H3": "h3",
+                "Heading H4": "h4",
+                "Heading H5": "h5",
+                "Heading H6": "h6"
+            }
+        },
+		 "title_font_family": {
+            "label": "Font Family",
+            "description": "Select an alternative font family. Mind that not all styles have different font families.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Tertiary": "tertiary"
+            }
+        },
+        "title_color": {
+            "label": "Color",
+            "description": "Select the text color. If the Background option is selected, styles that don't apply a background image use the primary color instead.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Muted": "muted",
+                "Emphasis": "emphasis",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger",
+                "Background": "background"
+            }
+        },
+        "image_width": {
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "show_image"
+        },
+        "image_height": {
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "show_image"
+        },
+         "image_loading": {
+            "label": "Loading",
+            "description": "By default, images are loaded lazy. Enable eager loading for images in the initial viewport.",
+            "type": "checkbox",
+            "text": "Load image eagerly"
+        },
+        "image_box_shadow": {
+            "label": "Box Shadow",
+            "description": "Select the image box shadow size.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Small": "small",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge"
+            },
+            "enable": "show_image"
+        },
+        "image_box_decoration": {
+            "label": "Box Decoration",
+            "description": "Select the image box decoration style.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Floating Shadow": "shadow",
+                "Mask": "mask"
+            },
+            "enable": "show_image"
+        },
+        "image_box_decoration_inverse": {
+            "type": "checkbox",
+            "text": "Inverse style",
+            "enable": "show_image"
+        },
+        "image_link": {
+            "label": "Link",
+            "description": "Link the image if a link exists.",
+            "type": "checkbox",
+            "text": "Link image",
+            "enable": "show_image && show_link"
+        },
+        "image_transition": {
+            "label": "Hover Transition",
+            "description": "Set the hover transition for a linked image.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Scale Up": "scale-up",
+                "Scale Down": "scale-down"
+            },
+            "enable": "show_image"
+        },
+        "image_transition_border": {
+            "type": "checkbox",
+            "text": "Border",
+            "enable": "show_image"
+        },
+        "image_hover_box_shadow": {
+            "label": "Hover Box Shadow",
+            "description": "Select the image box shadow size on hover.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Small": "small",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge"
+            },
+            "enable": "show_image"
+        },
+
+        "image_border": {
+            "label": "Border",
+            "description": "Select the image border style.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Rounded": "rounded",
+                "Circle": "circle",
+                "Pill": "pill"
+            },
+            "enable": "show_image"
+        },
+        "image_align": {
+            "label": "Alignment",
+            "description": "Align the image to the top, left, right or place it between the title and the content.",
+            "type": "select",
+            "options": {
+                "Top": "top",
+                "Bottom": "bottom",
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "show_image"
+        },
+
+        "image_grid_width": {
+            "label": "Grid Width",
+            "description": "Define the width of the image within the grid. Choose between percent and fixed widths or expand columns to the width of their content.",
+            "type": "select",
+            "options": {
+                "Auto": "auto",
+                "80%": "4-5",
+                "75%": "3-4",
+                "66%": "2-3",
+                "60%": "3-5",
+                "50%": "1-2",
+                "40%": "2-5",
+                "33%": "1-3",
+                "25%": "1-4",
+                "20%": "1-5",
+                "Small": "small",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "2X-Large": "2xlarge"
+            },
+            "enable": "show_image && (image_align == 'left' || image_align == 'right')"
+        },
+        "image_grid_column_gap": {
+            "label": "Grid Column Gap",
+            "description": "Set the size of the gap between the image and the content.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": "",
+                "Large": "large",
+                "None": "collapse"
+            },
+            "enable": "show_image && (image_align == 'left' || image_align == 'right')"
+        },
+        "image_grid_row_gap": {
+            "label": "Grid Row Gap",
+            "description": "Set the size of the gap if the grid items stack.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": "",
+                "Large": "large",
+                "None": "collapse"
+            },
+            "enable": "show_image && (image_align == 'left' || image_align == 'right')"
+        },
+        "image_grid_breakpoint": {
+            "label": "Grid Breakpoint",
+            "description": "Set the breakpoint from which grid items will stack.",
+            "type": "select",
+            "options": {
+                "Small (Phone Landscape)": "s",
+                "Medium (Tablet Landscape)": "m",
+                "Large (Desktop)": "l",
+                "X-Large (Large Screens)": "xl"
+            },
+            "enable": "show_image && (image_align == 'left' || image_align == 'right')"
+        },
+        "image_vertical_align": {
+            "label": "Vertical Alignment",
+            "description": "Vertically center grid items.",
+            "type": "checkbox",
+            "text": "Center",
+            "enable": "show_image && (image_align == 'left' || image_align == 'right')"
+        },
+        "image_margin": {
+            "label": "Margin Top",
+            "description": "Set the top margin. Note that the margin will only apply if the content field immediately follows another content field.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "None": "remove"
+            },
+            "enable": "show_image && image_align == 'bottom'"
+        },
+        "image_svg_inline": {
+            "label": "Inline SVG",
+            "description": "Inject SVG images into the page markup so that they can easily be styled with CSS.",
+            "type": "checkbox",
+            "text": "Make SVG stylable with CSS",
+            "enable": "show_image"
+        },
+        "image_svg_color": {
+            "label": "SVG Color",
+            "description": "Select the SVG color. It will only apply to supported elements defined in the SVG.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Muted": "muted",
+                "Emphasis": "emphasis",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            },
+            "enable": "show_image && image_svg_inline"
+        },
+        "link_text": {
+            "label": "Text",
+            "description": "Enter the text for the link.",
+            "enable": "show_link"
+        },
+        "link_aria_label": {
+            "label": "ARIA Label",
+            "description": "Enter a descriptive text label to make it accessible if the link has no visible text.",
+            "enable": "show_link"
+        },
+        "link_target": {
+            "type": "checkbox",
+            "text": "Open in a new window",
+            "enable": "show_link"
+        },
+        "link_style": {
+            "label": "Style",
+            "description": "Set the link style.",
+            "type": "select",
+            "options": {
+                "Button Default": "default",
+                "Button Primary": "primary",
+                "Button Secondary": "secondary",
+                "Button Danger": "danger",
+                "Button Text": "text",
+                "Link": "",
+                "Link Muted": "link-muted",
+                "Link Text": "link-text"
+            },
+            "enable": "show_link"
+        },
+        "link_size": {
+            "label": "Button Size",
+            "description": "Set the button size.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            },
+            "enable": "show_link && link_style && link_style != 'link-muted' && link_style != 'link-text'"
+        },
+        "link_fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button",
+            "enable": "show_link && link_style && link_style != 'link-muted' && link_style != 'link-text'"
+        },
+        "link_margin": {
+            "label": "Margin Top",
+            "description": "Set the top margin. Note that the margin will only apply if the content field immediately follows another content field.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "None": "remove"
+            },
+            "enable": "show_link"
+        },
+		"scrollto": {
+			"type": "checkbox",
+            "label": "Scroll to Accordion on Page load",
+			"text": "Yes"
+        },
+		"scroll_event": {
+            "label": "Scroll Event",
+			"default" : "always",
+			"type": "select",
+            "options": {
+                "Always": "always",
+				"Hashtag or Active Session" : "session"
+            },
+            "enable": "scrollto"
+        },
+		
+		"scroll_duration": {
+            "label": "Scroll Behavior",
+			"default" : "smooth",
+			"type": "select",
+            "options": {
+                "Auto": "auto",
+				"Smooth" : "smooth",
+				"Instant" : "instant"
+                
+            },
+            "enable": "scrollto"
+        },
+		"scroll_offset": {
+            "label": "Offset Value (+100, -100 etc)",
+			"default" : "-100",
+            "enable": "scrollto"
+        },
+		
+		"enable_url": {
+			"type": "checkbox",
+            "label": "Enable Switch URL",
+			"text": "Yes"
+        },
+		"show_reme2": {
+            "description": " Unique ID for items needed for url. kindly update unque ids in items.",
+            "type": "label"
+        },
+		"show_reme": {
+            "description": "We used joomla session for remember tab. Please give Unique ID in above field for example: customtab_1. And please make sure do not use same id in same page.<hr class=\"uk-margin-small-top uk-margin-remove-bottom \" >",
+            "type": "label"
+        },
+		
+		"remember_tab": {
+            "type": "checkbox",
+			"label": "Remember Last Used Tab",
+			"descrition": "We used Wordpress session for store active tab",
+            "text": "Yes"
+        },
+		
+        "uniqueid": {
+            "label": "Unique ID",
+            "enable": "remember_tab"
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-accordion-title</code>, <code>.el-item</code>, <code>.el-title</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+                
+            }
+        },
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": ["content", "show_image", "show_link"]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Accordion",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+								"multiple", 
+								"collapsible", 
+								"scrollto",
+								"scroll_event",
+								"scroll_duration",
+								"scroll_offset",
+								"enable_url"
+							]
+						},
+						"show_reme2",
+						{ 
+						  "label": "Session Settings",
+                            "type": "group",
+                            "divider": false,
+                            "fields": [
+								"remember_tab",
+								"uniqueid"
+                            ]
+                        },
+						"show_reme", 
+					    {
+                            "label": "Title",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                               "title_element",
+						  	   "title_style",
+							   "title_font_family",
+							   "title_color"
+                            ]
+                        },
+                        {
+                            "label": "Style",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "custom_style"
+                            ]
+                        },
+                        {
+                            "label": "Heading Custom Style",
+                            "type": "group",
+                            "divider": true,
+                            "show" : "custom_style == 'custom'",
+                            "fields": [
+                               
+                                "heading_icon",
+                                "heading_active_icon",
+                                "heading_icon_align",
+                                "heading_icon_width",
+                                "heading_icon_padding",
+                                "heading_padding",
+                                "heading_border_width",
+                                "heading_border",
+                                "heading_bg",
+                                "heading_color",
+                                "heading_icon_bg",
+                                "heading_icon_transition"
+                            ]
+                        },
+                        {
+                            "label": "Content Custom Style",
+                            "type": "group",
+                            "divider": true,
+                            "show" : "custom_style == 'custom'",
+                            "fields": [
+                                "content_margin_top",
+                                "content_padding",
+                                "content_border_width",
+                                "content_border",
+                                "content_bg",
+                                "content_color"
+                                
+                            ]
+                        },
+                        {
+                            "label": "Content",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "content_style",
+                                "content_dropcap",
+                                "content_column",
+                                "content_column_divider",
+                                "content_column_breakpoint",
+                                "content_margin"
+                            ]
+                        },
+                        {
+                            "label": "Image",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                {
+                                    "label": "Width/Height",
+                                    "description": "Setting just one value preserves the original proportions. The image will be resized and cropped automatically, and where possible, high resolution images will be auto-generated.",
+                                    "type": "grid",
+                                    "width": "1-2",
+                                    "fields": ["image_width", "image_height"]
+                                },
+                                "image_loading",
+                                "image_border",
+                                "image_box_shadow",
+                                "image_align",
+                                "image_grid_width",
+                                "image_grid_column_gap",
+                                "image_grid_row_gap",
+                                "image_grid_breakpoint",
+                                "image_vertical_align",
+                                "image_margin",
+                                "image_svg_inline",
+                                "image_svg_color"
+                            ]
+                        },
+                        {
+                            "label": "Link",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "link_text",
+                                "link_aria_label",
+                                "link_target",
+                                "link_style",
+                                "link_size",
+                                "link_fullwidth",
+                                "link_margin"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

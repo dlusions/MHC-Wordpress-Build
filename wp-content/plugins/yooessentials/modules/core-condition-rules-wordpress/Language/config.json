@@ -1,0 +1,7 @@
+{
+    "name": "yooessentials_access_language",
+    "title": "Language",
+    "group": "site",
+    "description": "Validates against the site language.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules-wordpress/Language/icon.svg}"
+}

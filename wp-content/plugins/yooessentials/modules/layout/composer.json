@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {
+            "ZOOlanders\\YOOessentials\\Layout\\": "src",
+            "ZOOlanders\\YOOessentials\\Migration\\": "migrations"
+        }
+    }
+}

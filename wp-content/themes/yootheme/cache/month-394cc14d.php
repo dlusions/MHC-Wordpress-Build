@@ -1,0 +1,36 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/core-condition-rules/Calendar/config/month.json
+
+return [
+  'name' => 'yooessentials_access_month', 
+  'title' => 'Month', 
+  'group' => 'datetime', 
+  'collection' => 'Calendar', 
+  'description' => 'Validates against the current month.', 
+  'icon' => $filter->apply('url', '~yooessentials_url/modules/core-condition-rules/Calendar/assets/month.svg', $file), 
+  'fields' => [
+    'months' => [
+      'label' => 'Selection', 
+      'type' => 'select', 
+      'source' => true, 
+      'description' => 'The months that the current date must match. Timezone from Site configuration is automatically applied. Use the shift or ctrl/cmd key to select multiple entries.', 
+      'attrs' => [
+        'multiple' => true, 
+        'class' => 'uk-height-small uk-resize-vertical'
+      ], 
+      'options' => [
+        'January' => '1', 
+        'February' => '2', 
+        'March' => '3', 
+        'April' => '4', 
+        'May' => '5', 
+        'June' => '6', 
+        'July' => '7', 
+        'August' => '8', 
+        'September' => '9', 
+        'October' => '10', 
+        'November' => '11', 
+        'December' => '12'
+      ]
+    ]
+  ]
+];

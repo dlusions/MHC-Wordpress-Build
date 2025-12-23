@@ -1,0 +1,25 @@
+{
+    "name": "basic-auth",
+    "title": "Basic Auth",
+    "description": "Username and password for Http Basic Authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/BasicAuth/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/basic-auth"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "username": {
+            "label": "Username",
+            "description": "The username within a service."
+        },
+        "password": {
+            "label": "Password",
+            "type": "yooessentials-secret",
+            "description": "The password within a service.",
+            "encrypt": true
+        }
+    }
+}

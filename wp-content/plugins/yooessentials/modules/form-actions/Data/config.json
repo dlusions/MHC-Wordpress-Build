@@ -1,0 +1,48 @@
+{
+    "name": "data",
+    "title": "Alter",
+    "description": "Add or alter submission data",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Data/icon.svg}",
+    "group": "data",
+    "fields": {
+        "data": {
+            "label": "Data",
+            "type": "yooessentials-dataset",
+            "description": "Data to add to the submission.",
+            "txtEmpty": "No Data yet.",
+            "panel": {
+                "title": "Data",
+                "fields": {
+                    "name": {
+                        "label": "Name",
+                        "description": "The key name for the new value, if already exists it will be overwritten. Notice that you can reference this data entry in consequent actions using placeholders, e.g. <code>{dataname}</code>."
+                    },
+                    "value": {
+                        "label": "Value",
+                        "source": true,
+                        "formPlaceholder": true,
+                        "description": "The data value."
+                    }
+                }
+            }
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": ["data"]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    }
+}

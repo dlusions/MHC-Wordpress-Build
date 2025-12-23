@@ -1,0 +1,73 @@
+{
+    "name": "airtable-record-delete",
+    "title": "Delete Record",
+    "description": "Delete an Airtable record",
+    "group": "Misc",
+    "collection": "Airtable",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Airtable/icon.svg}",
+    "fields": {
+        "auth": {
+            "label": "Authentication",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "airtable-access-token": []
+            },
+            "description": "The Airtable authentication which to use for this action. Requires <code>data.records:write</code> and <code>schema.bases:read</code> permissions."
+        },
+        "base": {
+            "label": "Base",
+            "type": "yooessentials-select-dropdown-async",
+            "watch": "auth",
+            "enable": "auth",
+            "endpoint": "yooessentials/form/action/airtable/bases"
+        },
+        "table": {
+            "label": "Table",
+            "type": "yooessentials-select-dropdown-async",
+            "watch": "auth,base",
+            "enable": "base",
+            "endpoint": "yooessentials/form/action/airtable/tables"
+        },
+        "record": {
+            "label": "Record",
+            "enable": "table",
+            "source": true,
+            "description": "The ID of the record to delete."
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "auth",
+                        {
+                            "name": "_base_table",
+                            "type": "grid",
+                            "width": "1-2",
+                            "description": "The Airtable base and table where to connect to.",
+                            "fields": [
+                                "base",
+                                "table"
+                            ]
+                        },
+                        "record"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

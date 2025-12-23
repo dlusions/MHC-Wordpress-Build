@@ -1,0 +1,38 @@
+{
+    "name": "airtable",
+    "title": "Airtable",
+    "description": "Source based on Airtable apps",
+    "group": "Structured Data",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Airtable/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/airtable"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "auth": {
+            "label": "Authentication",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "airtable-access-token": []
+            },
+            "description": "The Airtable authentication which to use for this source. Requires <code>data.records:read</code> and <code>schema.bases:read</code> permissions."
+        },
+        "base": {
+            "label": "Base",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The Airtable base which to retrieve the data from.",
+            "watch": "auth",
+            "endpoint": "yooessentials/source/airtable/bases"
+        },
+        "table": {
+            "label": "Table",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The Airtable base which to retrieve the data from.",
+            "watch": "base",
+            "endpoint": "yooessentials/source/airtable/tables"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {
+            "ZOOlanders\\YOOessentials\\Element\\Markdown\\": "markdown/src",
+            "ZOOlanders\\YOOessentials\\Migration\\": "migrations"
+        }
+    }
+}

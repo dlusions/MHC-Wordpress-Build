@@ -1,0 +1,20 @@
+{
+    "name": "google-api-key",
+    "title": "Google API Key",
+    "description": "Google API Key",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Google/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/google-api/presave"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this key."
+        },
+        "key": {
+            "label": "API Key",
+            "description": "The Google API Key, create a new one if necessary within the <a href=\"https://console.cloud.google.com/apis/credentials\" target=\"_blank\">Google Cloud Platform</a>.",
+            "encrypt": true
+        }
+    }
+}

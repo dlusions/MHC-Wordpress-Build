@@ -1,0 +1,16 @@
+/* Essentials YOOtheme Pro 2.4.12 build 1202.1125; ZOOlanders https://www.zoolanders.com; Copyright (C) Joolanders, SL; http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+import Vue from 'vue';
+import hooks from '@yootheme/hooks';
+import BaseFields from '@yootheme/fields';
+import essentials from 'yooessentials';
+import { AuthModel } from './models';
+import { AuthSection } from './components';
+import * as fields from './fields';
+
+Vue.component('yooessentials-auths', AuthSection);
+Object.assign(BaseFields.components, fields);
+
+hooks.before('app.init', () => {
+    essentials.helpers.Auth = new Vue(AuthModel);
+});

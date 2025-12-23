@@ -1,0 +1,60 @@
+{
+    "type": "oauth",
+    "name": "instagram",
+    "title": "Instagram",
+    "description": "Instagram OAuth authentication",
+    "services": ["Instagram Business or Creator Account"],
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Instagram/icon.svg}",
+    "accessTokenThreshold": "1 month",
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/instagram",
+        "poll": "https://oauth.zoolanders.com/instagram/poll",
+        "presave": "yooessentials/auth/instagram"
+    },
+    "poll": true,
+    "scopes": {
+        "instagram_business_basic": "Profile Information and Media",
+        "instagram_business_manage_messages": "Manage Messages"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "_oauth_title": {
+            "label": "Authentication",
+            "type": "yooessentials-info"
+        },
+        "_oauth": {
+            "type": "yooessentials-oauth-grant",
+            "show": "!custom",
+            "description": "Connect to an Instagram Account and grant the required scope access to our Auth App, you can revoke those anytime."
+        },
+        "custom": {
+            "text": "Use Custom App",
+            "type": "checkbox"
+        },
+        "custom_info": {
+            "type": "yooessentials-info",
+            "description": "Use a Custom App to make the authentication with.",
+            "show": "custom"
+        },
+        "_custom": {
+            "type": "fields",
+            "show": "custom",
+            "fields": {
+                "accessToken": {
+                    "label": "Access Token",
+                    "type": "yooessentials-secret",
+                    "description": "The User Access Token.",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

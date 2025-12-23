@@ -1,0 +1,64 @@
+{
+    "sources": {
+        "filters": {
+            "limit": {
+                "attrs": {
+                    "min": 4
+                }
+            },
+            "time": {
+                "label": "Time Format",
+                "description": "Select a predefined time format or enter a custom one.",
+                "type": "data-list",
+                "default": "",
+                "options": {
+                    "15:00 (G:i)": "G:i",
+                    "3:00 pm (g:i A)": "g:i a"
+                },
+                "attrs": {
+                    "placeholder": "Default"
+                }
+            },
+            "datemodify": {
+                "label": "Date Modify",
+                "description": "Modify the date using human-readable expressions as `-1 year` or `+2 hours`.",
+                "reference": "https://www.php.net/manual/en/datetime.formats.php",
+                "attrs": {
+                    "placeholder": "None"
+                }
+            }
+        },
+        "yooessentials": {
+            "implode": {
+                "description": "Join multiple values with a custom separator, after or before filters have been applied. If no join is applied the raw value is returned which must be properly handled by the underlying element.",
+                "type": "grid",
+                "width": "1-2",
+                "fields": {
+                    "join": {
+                        "label": "Implode",
+                        "type": "select",
+                        "default": "after",
+                        "options": {
+                            "Do not join": "no",
+                            "After Filters": "after",
+                            "Before Filters": "before"
+                        }
+                    },
+                    "glue": {
+                        "label": "Separator",
+                        "type": "data-list",
+                        "default": ", ",
+                        "description": "",
+                        "options": {
+                            "Space": " ",
+                            "Comma": ", ",
+                            "Pipe": " | ",
+                            "Hyphen": " - "
+                        },
+                        "enable": "implode.join !== 'no'"
+                    }
+                }
+            }
+        }
+    }
+}

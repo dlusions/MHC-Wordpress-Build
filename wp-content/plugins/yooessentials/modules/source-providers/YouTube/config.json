@@ -1,0 +1,26 @@
+{
+    "name": "youtube",
+    "title": "YouTube",
+    "description": "Advanced query for public YouTube videos",
+    "group": "Social Media",
+    "collection": "YouTube",
+    "collectionDescription": "Sources based on YouTube media.",
+    "icon": "${url:~yooessentials_url/modules/source-providers/YouTube/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/youtube"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "api_key": {
+            "label": "API Key",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google-api-key": []
+            },
+            "description": "The Google API Key which to authenticate with."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default}"
+    }
+}

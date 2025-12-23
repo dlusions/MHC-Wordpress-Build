@@ -1,0 +1,80 @@
+{
+    "name": "google-sheets-record-delete",
+    "title": "Delete Record",
+    "description": "Deletes a Google Sheets spreadsheet record",
+    "group": "data",
+    "collection": "Google Sheets",
+    "collectionDescription": "Deletes Google Sheets spreadsheet records",
+    "icon": "${url:~yooessentials_url/modules/form-actions/GoogleSheets/icon.svg}",
+    "fields": {
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": [
+                    "https://www.googleapis.com/auth/drive.readonly",
+                    "https://www.googleapis.com/auth/spreadsheets"
+                ]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "sheet_id": {
+            "label": "Spreadsheet",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The spreadsheet which to connect to.",
+            "endpoint": "yooessentials/forms/action/google-sheets/spreadsheets",
+            "watch": "account"
+        },
+        "sheet_name": {
+            "label": "Sheet",
+            "description": "The spreadsheet sheet which to append the data to.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/forms/action/google-sheets/sheets",
+            "watch": "sheet_id",
+            "placeholder": "Default"
+        },
+        "column": {
+            "label": "Column",
+            "attrs": {
+                "placeholder": "A"
+            }
+        },
+        "value": {
+            "label": "Value",
+            "source": true
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "account",
+                        "sheet_id",
+                        "sheet_name",
+                        {
+                            "name": "_update",
+                            "type": "grid",
+                            "width": "1-2",
+                            "description": "The column and value that will identify the record to be deleted.",
+                            "fields": ["column", "value"]
+                        }
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "yooessentials_access_user",
+    "title": "User",
+    "group": "site",
+    "collection": "User",
+    "collectionDescription": "Validates against the current user.",
+    "description": "Validates against the current user.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules-wordpress/User/assets/user.svg}",
+    "fields": {
+        "users": {
+            "label": "Selection",
+            "source": true,
+            "type": "textarea",
+            "attrs": {
+                "rows": 4,
+                "placeholder": "346\nusername"
+            },
+            "description": "The list of User id or usernames that the current user must match. Separate the entries with a comma and/or new line."
+        }
+    }
+}

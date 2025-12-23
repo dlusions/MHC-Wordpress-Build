@@ -1,0 +1,13 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/icon-collections/phosphor/phosphor.json
+
+return [
+  'name' => 'phosphor', 
+  'title' => 'Phosphor', 
+  'description' => 'A flexible icon family for interfaces, diagrams, presentations...', 
+  'groups' => ['bold', 'fill', 'light', 'regular', 'thin'], 
+  'version' => '2.1.1', 
+  'release' => 'March, 2024', 
+  'license' => 'MIT', 
+  'url' => 'https://phosphoricons.com', 
+  'icons' => 5235
+];

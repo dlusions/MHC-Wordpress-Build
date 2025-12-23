@@ -1,0 +1,54 @@
+.dj-popup {
+    background: none;
+}
+
+.djpopup-popup.djpopup--top-left .djpopup__panel, .djpopup-popup.djpopup--top-right.djpopup--direction .djpopup__panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.djpopup-popup.djpopup--top-center .djpopup__panel {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.djpopup-popup.djpopup--top-right .djpopup__panel, .djpopup-popup.djpopup--top-left.djpopup--direction .djpopup__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.djpopup-popup.djpopup--center-left .djpopup__panel {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+.djpopup-popup.djpopup--center-center .djpopup__panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.djpopup-popup.djpopup--center-right .djpopup__panel {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+}
+.djpopup-popup.djpopup--bottom-left .djpopup__panel, .djpopup-popup.djpopup--bottom-right.djpopup--direction .djpopup__panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.djpopup-popup.djpopup--bottom-center .djpopup__panel {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.djpopup-popup.djpopup--bottom-right .djpopup__panel, .djpopup-popup.djpopup--bottom-left.djpopup--direction .djpopup__panel {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

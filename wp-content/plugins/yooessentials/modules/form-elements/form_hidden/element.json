@@ -1,0 +1,61 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form_hidden",
+    "title": "Hidden",
+    "group": "Form Essentials",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form_hidden/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form_hidden/icon.svg}",
+    "width": 500,
+    "element": true,
+    "submittable": true,
+    "defaults": {
+        "control_id_inherit": true,
+        "control_encrypt": false
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "control_value": {
+            "label": "Value",
+            "description": "The field value that will be hidden from the user interface although included in the form submission. For security reasons you might opt to encrypt the value while being exposed in the form.",
+            "source": true
+        },
+        "control_encrypt": {
+            "text": "Encrypt while exposed",
+            "type": "checkbox"
+        },
+        "control_attrs": "${yooessentials.form.fields.control_attrs}",
+        "control_name": "${yooessentials.form.fields.control_name}",
+        "control_id": "${yooessentials.form.fields.control_id}",
+        "control_id_inherit": "${yooessentials.form.fields.control_id_inherit}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}",
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "control_name",
+                        "control_value",
+                        "control_encrypt"
+                    ]
+                },
+                {
+                    "title": "Field",
+                    "fields": [
+                        "control_id",
+                        "control_id_inherit",
+                        "control_attrs"
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

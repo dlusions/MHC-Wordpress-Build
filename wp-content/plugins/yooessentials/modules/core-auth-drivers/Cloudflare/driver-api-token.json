@@ -1,0 +1,41 @@
+{
+    "type": "apikey",
+    "name": "cloudflare-api-token",
+    "title": "Cloudflare API Token",
+    "description": "A Cloudflare API Token.",
+    "services": ["Stream"],
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Cloudflare/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/cloudflare/api-token"
+    },
+    "scopes": {
+        "c1fde68c7bcc44588cbb6ddbc16d6480": "Account Settings Read",
+        "de21485a24744b76a004aa153898f7fe": "Stream Read",
+        "714f9c13a5684c2885a793f5edb36f59": "Stream Write"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this token."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this token should have access to."
+        },
+        "accessToken": {
+            "label": "Token",
+            "type": "yooessentials-secret",
+            "description": "The API token string generated at the <a href=\"https://dash.cloudflare.com/profile/api-tokens\" target=\"_blank\">Cloudflare Profile Dashboard</a>.",
+            "encrypt": true
+        },
+        "id": {
+            "label": "Token ID",
+            "description": "The Token ID auto assigned by Cloudflare.",
+            "show": "id",
+            "attrs": {
+                "readonly": true
+            }
+        }
+    }
+}

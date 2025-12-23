@@ -1,0 +1,32 @@
+{
+    "name": "youtube-playlist",
+    "title": "YouTube My Playlist",
+    "description": "All videos (Private & Unlisted) from your YouTube playlist",
+    "group": "Social Media",
+    "collection": "YouTube",
+    "icon": "${url:~yooessentials_url/modules/source-providers/YouTube/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/youtube"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": ["https://www.googleapis.com/auth/youtube.readonly"]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "playlist_id": {
+            "label": "Playlist",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The YouTube Playlist from which to create the source.",
+            "endpoint": "yooessentials/source/youtube/playlists",
+            "watch": "account"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

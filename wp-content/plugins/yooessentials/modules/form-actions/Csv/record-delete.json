@@ -1,0 +1,82 @@
+{
+    "name": "csv-record-delete",
+    "title": "Delete Record",
+    "description": "Delete a CSV file record",
+    "group": "data",
+    "collection": "CSV",
+    "collectionDescription": "Delete CSV file records",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Csv/icon.svg}",
+    "fields": {
+        "file": {
+            "label": "File",
+            "description": "The CSV file where the submission data will be appended to.",
+            "type": "yooessentials-file"
+        },
+        "separator": {
+            "label": "Delimiter",
+            "attrs": {
+                "placeholder": ","
+            }
+        },
+        "enclosure": {
+            "label": "Enclosure",
+            "attrs": {
+                "placeholder": "\""
+            }
+        },
+        "column": {
+            "label": "Column",
+            "attrs": {
+                "placeholder": ""
+            }
+        },
+        "value": {
+            "label": "Value",
+            "source": true
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "file",
+                        {
+                            "description": "The delimiter and enclosure characters the CSV file is formated with.",
+                            "name": "_csv_format",
+                            "type": "grid",
+                            "width": "1-2",
+                            "fields": [
+                                "separator",
+                                "enclosure"
+                            ]
+                        },
+                        {
+                            "name": "_update",
+                            "type": "grid",
+                            "width": "1-2",
+                            "description": "The column and value that will identify the record to be deleted.",
+                            "fields": [
+                                "column",
+                                "value"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

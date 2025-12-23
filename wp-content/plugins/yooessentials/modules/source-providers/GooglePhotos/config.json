@@ -1,0 +1,26 @@
+{
+    "name": "google-photos",
+    "title": "Google Photos (discontinued)",
+    "description": "Source based on Google Photos media",
+    "group": "misc",
+    "icon": "${url:~yooessentials_url/modules/source-providers/GooglePhotos/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/google/photos"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": [
+                    "https://www.googleapis.com/auth/photoslibrary.readonly"
+                ]
+            },
+            "description": "The Google account with which to access the resources."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "name": "mailchimp-member-remove",
+    "title": "Remove Member",
+    "description": "Archive or Delete a Mailchimp audience member",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Mailchimp/icon.svg}",
+    "group": "Misc",
+    "collection": "Mailchimp",
+    "fields": {
+        "auth": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "mailchimp": [],
+                "mailchimp-apikey": []
+            },
+            "description": "Connect to your Mailchimp Account or set an API Key for authentication."
+        },
+        "list": {
+            "label": "Audience",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The audience from which to remove the member.",
+            "endpoint": "yooessentials/form/action/mailchimp/lists",
+            "placeholder": "Select a list",
+            "autoSelect": true,
+            "enable": "auth"
+        },
+        "member_email_address": {
+            "label": "Email Address",
+            "description": "Member's email address.",
+            "source": true,
+            "enable": "list"
+        },
+        "delete": {
+            "text": "Delete instead of Archive",
+            "type": "checkbox",
+            "enable": "list"
+        },
+        "_info_delete": {
+            "text": "Delete instead of Archive",
+            "content": "The member will be removed from the list and all it personally identifiable information will be deleted. This will make it impossible to re-import the list member.",
+            "type": "yooessentials-info",
+            "show": "delete"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "auth",
+                        "list",
+                        "member_email_address",
+                        "delete",
+                        "_info_delete"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "linkedin",
+    "title": "LinkedIn",
+    "description": "Source based on LinkedIn content",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/LinkedIn/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/linkedin"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "linkedin": ["r_basicprofile", "r_organization_social", "r_organization_admin"]
+            },
+            "description": "The LinkedIn account which to connect with."
+        },
+        "organization": {
+            "enable": "account",
+            "label": "Organization",
+            "description": "The LinkedIn Organization from which to create the source. Only organizations that the authenticated user is an administrator of will be shown.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/linkedin/organizations",
+            "account": "account"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

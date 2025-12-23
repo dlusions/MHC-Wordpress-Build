@@ -1,0 +1,27 @@
+{
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "_addons": {
+                    "fields": {
+                        "source.state": {
+                            "enable": true
+                        }
+                    }
+                }
+            }
+        },
+        "yooessentials-sources": {
+            "priority": -10,
+            "title": "Sources",
+            "width": 350
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-sources": "Sources"
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "title": "",
+    "group": "",
+    "icon": "",
+    "description": "",
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "A name to identify this rule."
+        },
+        "status": {
+            "type": "checkbox",
+            "label": "Status",
+            "text": "Disable rule",
+            "description": "Disable the rule and publish it later.",
+            "source": true,
+            "attrs": {
+                "true-value": "disabled",
+                "false-value": ""
+            }
+        },
+        "_rule": {
+            "type": "fields",
+            "fields": []
+        },
+        "reversed": {
+            "type": "checkbox",
+            "label": "Reversed",
+            "source": true,
+            "text": "Reverse evaluation",
+            "description": "Evaluate as excluding, a.k.a. <code>IS NOT</code>."
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Settings",
+                    "fields": ["_rule", "reversed"]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status"]
+                }
+            ]
+        }
+    }
+}

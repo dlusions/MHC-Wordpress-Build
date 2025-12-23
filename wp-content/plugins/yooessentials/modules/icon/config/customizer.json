@@ -1,0 +1,27 @@
+{
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "_addons": {
+                    "fields": {
+                        "icon.state": {
+                            "enable": true
+                        }
+                    }
+                }
+            }
+        },
+        "yooessentials-icon-collections": {
+            "title": "Icon Collections",
+            "width": 350,
+            "priority": 30
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-icon-collections": "Icon Collections"
+            }
+        }
+    }
+}

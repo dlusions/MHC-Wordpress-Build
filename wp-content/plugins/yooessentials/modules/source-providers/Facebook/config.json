@@ -1,0 +1,32 @@
+{
+    "name": "facebook",
+    "title": "Facebook",
+    "description": "Source based on Facebook Pages",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Facebook/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/facebook"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "facebook": ["pages_show_list", "pages_read_engagement", "pages_read_user_content"]
+            },
+            "description": "The Facebook account which to authenticate with."
+        },
+        "page_id": {
+            "enable": "account",
+            "label": "Page",
+            "description": "The Facebook Page from which to create the source.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/facebook/pages",
+            "account": "account"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

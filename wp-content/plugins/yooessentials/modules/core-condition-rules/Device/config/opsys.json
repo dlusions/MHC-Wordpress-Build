@@ -1,0 +1,7 @@
+{
+    "name": "yooessentials_access_os",
+    "title": "Operating System",
+    "group": "device",
+    "description": "Validates against the Operating System.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules/Device/assets/opsys.svg}"
+}

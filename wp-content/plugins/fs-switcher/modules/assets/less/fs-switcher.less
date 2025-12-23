@@ -1,0 +1,109 @@
+/*
+ * @package     [FS] Switcher Pro for YOOtheme Pro
+ * @subpackage  fs-switcher
+ *
+ * @author      Flart Studio https://flart.studio
+ * @copyright   Copyright (C) 2026 Flart Studio. All rights reserved.
+ * @license     Flart Studio Proprietary License — see https://flart.studio/license
+ * @link        https://flart.studio/yootheme-pro/switcher
+ * @build       (FLART_BUILD_NUMBER)
+ *
+ * Use of this file is subject to license terms. Redistribution is strictly prohibited.
+ */
+
+.fs-switcher {
+  // Fixing Uikit breakpoint issue
+  &__nav-container:has([uk-overflow-fade]) &__nav {
+    min-width: max-content;
+  }
+
+  &__nav {
+    &-item {
+      // Accordion control
+      .uk-accordion-title:has(img),
+      .uk-accordion-title:has(svg) {
+        &::before {
+          float: unset;
+          position: absolute;
+          height: 100%;
+          right: 0;
+          margin-left: 0;
+        }
+      }
+
+      // Active state behavior
+      &.uk-active, &.uk-open {
+        // Image swap: when two images exist
+        :has(img + img), :has(picture + picture) {
+          --image-opacity: 0;
+          --hover-opacity: 1;
+        }
+      }
+
+      // Image wrapper with images get overlay
+      &-image-wrapper:has(img) {
+        --transition-opacity: 0.5s ease-in-out;
+      }
+
+      // Base image styles with CSS variable control
+      &-image {
+        opacity: var(--image-opacity, 1);
+        transition: opacity var(--transition-opacity);
+
+        &--hover {
+          opacity: var(--hover-opacity, 0);
+          transition: opacity var(--transition-opacity);
+        }
+      }
+    }
+  }
+
+  // Overflow fade compatibility for YOOtheme Pro 4
+  .uk-overflow-fade-horizontal {
+    overflow-x: auto;
+    --uk-overflow-fade-direction: right;
+  }
+
+  .uk-overflow-fade-vertical {
+    overflow-y: auto;
+    --uk-overflow-fade-direction: bottom;
+  }
+
+  .uk-overflow-fade-horizontal,
+  .uk-overflow-fade-vertical {
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    mask-image: linear-gradient(to var(--uk-overflow-fade-direction),
+    rgba(0, 0, 0, var(--uk-overflow-fade-start-opacity)),
+    #000 100px,
+    #000 calc(100% - 100px),
+    rgba(0, 0, 0, var(--uk-overflow-fade-end-opacity)));
+  }
+
+  .uk-overflow-fade-horizontal > *,
+  .uk-overflow-fade-vertical > * {
+    min-width: max-content;
+  }
+
+  .uk-overflow-fade-horizontal::-webkit-scrollbar,
+  .uk-overflow-fade-vertical::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Progress bar
+  &__progress {
+    background-color: var(--progress-track, #eee);
+
+    &-bar {
+      width: 0;
+      max-width: 100%;
+      height: var(--progress-height, 1px);
+      background-color: var(--progress-fill, #333);
+    }
+  }
+
+  // Modal scrollspy fix
+  &__modal [uk-scrollspy-class] {
+    opacity: 1 !important;
+  }
+}

@@ -1,0 +1,151 @@
+{
+    "name": "airtable-record-upsert",
+    "title": "Upsert record",
+    "description": "Create or Update an Airtable record",
+    "group": "Misc",
+    "collection": "Airtable",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Airtable/icon.svg}",
+    "fields": {
+        "auth": {
+            "label": "Authentication",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "airtable-access-token": []
+            },
+            "description": "The Airtable authentication which to use for this action. Requires <code>data.records:write</code> and <code>schema.bases:read</code> permissions."
+        },
+        "base": {
+            "label": "Base",
+            "type": "yooessentials-select-dropdown-async",
+            "watch": "auth",
+            "enable": "auth",
+            "endpoint": "yooessentials/form/action/airtable/bases"
+        },
+        "table": {
+            "label": "Table",
+            "type": "yooessentials-select-dropdown-async",
+            "watch": "base",
+            "enable": "base",
+            "endpoint": "yooessentials/form/action/airtable/tables"
+        },
+        "record": {
+            "label": "Record",
+            "enable": "table",
+            "source": true,
+            "description": "The ID of the record to update. If left empty, a new record will be created."
+        },
+        "typecast": {
+            "label": "Fields",
+            "text": "Automatic type cast",
+            "type": "checkbox",
+            "enable": "table"
+        },
+        "replace": {
+            "text": "Replace instead of update",
+            "type": "checkbox",
+            "enable": "record"
+        },
+        "content": {
+            "type": "yooessentials-dataset-mapping",
+            "endpoint": "yooessentials/form/action/airtable/fields",
+            "description": "Map static or dynamic data to the record fields. Disabled fields will not be processed.",
+            "watch": "base,table",
+            "enable": "table",
+            "panel": "airtable-field-{type}",
+            "panelFallback": "airtable-field-text"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "auth",
+                        {
+                            "name": "_base_table",
+                            "type": "grid",
+                            "width": "1-2",
+                            "description": "The Airtable base and table where to connect to.",
+                            "fields": [
+                                "base",
+                                "table"
+                            ]
+                        },
+                        "record",
+                        "typecast",
+                        "replace",
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    },
+    "panels": {
+        "airtable-field-text": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true
+                }
+            }
+        },
+        "airtable-field-date": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "The value must be a valid date string, e.g <code>Y-m-d</code>."
+                }
+            }
+        },
+        "airtable-field-checkbox": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "The value must be boolean or a literal <code>true</code> string."
+                }
+            }
+        },
+        "airtable-field-number": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "The value must be a number."
+                }
+            }
+        },
+        "airtable-field-user": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "The value must be a valid user ID or email."
+                }
+            }
+        },
+        "airtable-field-multi": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "Separate multiple values with a coma."
+                }
+            }
+        }
+    }
+}

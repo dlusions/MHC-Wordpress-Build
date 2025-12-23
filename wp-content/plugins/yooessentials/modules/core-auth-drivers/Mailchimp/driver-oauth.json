@@ -1,0 +1,40 @@
+{
+    "type": "oauth",
+    "name": "mailchimp",
+    "title": "Mailchimp OAuth",
+    "description": "Token based authentication",
+    "documentation": "https://developer.mailchimp.com/api/authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Mailchimp/icon.svg}",
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/mailchimp",
+        "presave": "yooessentials/auth/mailchimp/oauth"
+    },
+    "scopes": {
+        "read": "Read access to account data",
+        "write": "Write access to account data"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_oauth_title": {
+            "label": "Authentication",
+            "type": "yooessentials-info"
+        },
+        "_oauth": {
+            "type": "yooessentials-oauth-grant",
+            "description": "Authenticate to a Mailchimp Account and grant access permissions to our Auth App, you can revoke those anytime."
+        },
+        "accessToken": {
+            "label": "Access Token",
+            "type": "yooessentials-secret",
+            "encrypt": true,
+            "show": false
+        },
+        "dc": {
+            "label": "DC",
+            "show": false
+        }
+    }
+}

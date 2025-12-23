@@ -1,0 +1,90 @@
+{
+    "yooessentials": {
+        "version": "${yooessentials.version}"
+    },
+    "panels": {
+        "yooessentials-about": {
+            "priority": 100,
+            "title": "About"
+        },
+        "yooessentials-advanced": {
+            "priority": 90,
+            "title": "Advanced",
+            "width": 400,
+            "fields": {
+                "_addons": {
+                    "type": "fields",
+                    "description": "Toggle the loading of Essential Addons (requires reloading the page).",
+                    "fields": {
+                        "dynamic.state": {
+                            "label": "Addons",
+                            "type": "yooessentials-checkbox",
+                            "text": "Dynamic",
+                            "default": true,
+                            "enable": "${yooessentials.addons.dynamic}",
+                            "description": "Extended Dynamic Workflow - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/dynamic\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "source.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Sources",
+                            "default": true,
+                            "enable": "${yooessentials.addons.source}",
+                            "description": "Next Level Sources - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/sources\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "form.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Forms",
+                            "default": true,
+                            "enable": "${yooessentials.addons.form}",
+                            "description": "Advanced Form Builder - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/forms\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "access.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Access",
+                            "default": true,
+                            "enable": "${yooessentials.addons.access}",
+                            "description": "Conditional Rendering - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/access\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "icon.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Icons",
+                            "default": true,
+                            "enable": "${yooessentials.addons.icon}",
+                            "description": "Collection of 12k+ Icons - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/icons\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "layout.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Layouts",
+                            "default": true,
+                            "enable": "${yooessentials.addons.layout}",
+                            "description": "Shared Layouts - Premium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/layouts\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        },
+                        "element.state": {
+                            "type": "yooessentials-checkbox",
+                            "text": "Elements",
+                            "default": true,
+                            "enable": true,
+                            "description": "Collection of elements - Freemium <a href=\"https://www.zoolanders.com/essentials-for-yootheme-pro/elements\" target=\"_blank\" class=\"uk-icon-link\" uk-icon=\"link\"></a>"
+                        }
+                    }
+                },
+                "core.geoipdb": {
+                    "label": "GeoIp Database Source",
+                    "attrs": {
+                        "placeholder": "~theme/GeoLite2-City.mmdb"
+                    }
+                }
+            }
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "title": "Essentials",
+            "priority": 90,
+            "items": {
+                "yooessentials-advanced": "Advanced",
+                "yooessentials-about": "About"
+            }
+        }
+    }
+}

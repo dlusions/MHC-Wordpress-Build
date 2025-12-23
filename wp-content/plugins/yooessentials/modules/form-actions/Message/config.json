@@ -1,0 +1,58 @@
+{
+    "name": "message",
+    "title": "Display Message",
+    "description": "Display a message in a modal",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Message/icon.svg}",
+    "fields": {
+        "content": {
+            "type": "editor",
+            "mode": "text/html",
+            "label": "Content",
+            "description": "The content to display in the modal.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Vertically center the modal"
+        },
+        "modal_stack": {
+            "type": "checkbox",
+            "text": "Do not close other modals"
+        },
+        "modal_onshown": {
+            "label": "After Show Script",
+            "description": "Add custom JavaScript which runs after the modal was shown. The &lt;script&gt; tag is not needed. Available variables are <code>event</code>, <code>form</code>, <code>data</code> and <code>response</code> while <code>this</code> references the modal instance.",
+            "source": true,
+            "type": "editor",
+            "editor": "code",
+            "mode": "javascript"
+        },
+        "modal_onhidden": {
+            "label": "After Hide Script",
+            "description": "Add custom JavaScript which runs after the modal was closed. The &lt;script&gt; tag is not needed. Available variables are <code>event</code>, <code>form</code>, <code>data</code> and <code>response</code> while <code>this</code> references the modal instance.",
+            "source": true,
+            "type": "editor",
+            "editor": "code",
+            "mode": "javascript"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": ["content", "modal_center", "modal_stack"]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions", "modal_onshown", "modal_onhidden"]
+                }
+            ]
+        }
+    }
+}

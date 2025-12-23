@@ -1,0 +1,7 @@
+{
+    "name": "yooessentials_access_browser",
+    "title": "Browser",
+    "group": "device",
+    "description": "Validates against the browser.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules/Device/assets/browser.svg}"
+}

@@ -1,0 +1,40 @@
+{
+    "name": "csv",
+    "title": "CSV",
+    "description": "Source based on a locally-stored CSV file",
+    "group": "Structured Data",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Csv/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/csv"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "file": {
+            "label": "File",
+            "type": "yooessentials-file",
+            "description": "A path to a local CSV formated file which will be used as source. Must be UTF-8 encoded."
+        },
+        "_delimeters": {
+            "description": "The delimiter and enclosure characters the CSV file is formated with.",
+            "type": "grid",
+            "width": "1-2",
+            "fields": {
+                "delimiter": {
+                    "label": "Delimiter",
+                    "attrs": {
+                        "placeholder": ","
+                    }
+                },
+                "enclosure": {
+                    "label": "Enclosure",
+                    "attrs": {
+                        "placeholder": "\""
+                    }
+                }
+            }
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default}"
+    }
+}

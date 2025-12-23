@@ -1,0 +1,31 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/core-storage-adapters/Local/config.json
+
+return [
+  'name' => 'local', 
+  'title' => 'Local', 
+  'description' => 'Create a storage from a local folder.', 
+  'icon' => $filter->apply('url', '~yooessentials_url/modules/core-storage-adapters/Local/icon.svg', $file), 
+  'endpoints' => [
+    'presave' => 'yooessentials/storage/adapter/presave'
+  ], 
+  'fields' => [
+    'name' => [
+      'label' => 'Name', 
+      'description' => 'A name to identify this storage.', 
+      'attrs' => [
+        'autofocus' => true
+      ]
+    ], 
+    'root' => [
+      'label' => 'Root', 
+      'type' => 'text', 
+      'description' => 'The local path that will be used as the storage root. E.g. <code>layouts</code> as a site relative path or <code>/layouts</code> as a server absolute.'
+    ], 
+    'writable' => [
+      'label' => 'Write Permission', 
+      'text' => 'Grant write permissions for this storage.', 
+      'type' => 'checkbox', 
+      'default' => true
+    ]
+  ]
+];

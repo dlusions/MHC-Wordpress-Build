@@ -1,0 +1,31 @@
+{
+    "name": "on_scroll",
+    "title": "DJ-Popup",
+    "container": false,
+    "width": 500,
+    "defaults" : {
+        "distance" : 50
+    },
+    "fields": {
+        "distance" : {
+            "label" : "Distance",
+            "text" : "Specify the % distance the user must scroll to see the popup",
+            "type" : "range",
+            "required" : true,
+            "default" : 50
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Settings",
+                    "fields": [
+                        "distance"
+                    ]
+                }
+            ]
+        }
+    }
+}

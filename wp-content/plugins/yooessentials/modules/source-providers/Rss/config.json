@@ -1,0 +1,20 @@
+{
+    "name": "rss",
+    "title": "RSS",
+    "description": "Source based on a RSS feed",
+    "group": "Structured Data",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Rss/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/rss"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "url": {
+            "label": "URL",
+            "description": "The URL to the RSS feed."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default}"
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "type": "oauth",
+    "name": "google",
+    "title": "Google OAuth",
+    "description": "Google OAuth 2.0 authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Google/icon.svg}",
+    "documentation": "https://developers.google.com/identity/protocols/oauth2",
+    "services": [
+        "Google Drive"
+    ],
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/google",
+        "presave": "yooessentials/auth/presave"
+    },
+    "scopes": {
+        "https://www.googleapis.com/auth/drive.readonly": "Drive Readonly",
+        "https://www.googleapis.com/auth/spreadsheets": "Spreadsheets Manage",
+        "https://www.googleapis.com/auth/spreadsheets.readonly": "Spreadsheets Readonly",
+        "https://www.googleapis.com/auth/business.manage": "My Business Manage",
+        "https://www.googleapis.com/auth/youtube.readonly": "YouTube Readonly",
+        "https://www.googleapis.com/auth/calendar.readonly": "Calendar Readonly",
+        "https://www.googleapis.com/auth/calendar.events.readonly": "Calendar Events Readonly",
+        "https://www.googleapis.com/auth/photoslibrary.readonly": "Google Photos Readonly"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "_oauth_title": {
+            "label": "Authentication",
+            "type": "yooessentials-info"
+        },
+        "_oauth": {
+            "type": "yooessentials-oauth-grant",
+            "show": "!custom",
+            "description": "Connect to a Google Account and grant the required scope access to our Auth App, you can <a href=\"https://myaccount.google.com/permissions\" target=\"_blank\">revoke</a> those anytime."
+        },
+        "custom": {
+            "text": "Use Custom App",
+            "type": "checkbox"
+        },
+        "custom_info": {
+            "type": "yooessentials-info",
+            "description": "Use a Custom App to make the authentication with.",
+            "show": "custom"
+        },
+        "_custom": {
+            "type": "fields",
+            "show": "custom",
+            "fields": {
+                "clientId": {
+                    "label": "Client ID",
+                    "description": "The client identifier issued during the Application registration process."
+                },
+                "clientSecret": {
+                    "label": "Client secret",
+                    "description": "The client secret issued during the Application registration process.",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                },
+                "refreshToken": {
+                    "label": "Refresh Token",
+                    "type": "yooessentials-secret",
+                    "description": "The token used to obtain and refresh the Access Token automatically.",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

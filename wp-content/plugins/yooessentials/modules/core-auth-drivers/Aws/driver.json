@@ -1,0 +1,32 @@
+{
+    "type": "auth",
+    "name": "aws",
+    "title": "AWS",
+    "description": "Amazon Web Services account connection.",
+    "documentation": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Aws/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/aws"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_access_key": {
+            "description": "The AWS Access Key and it Secret.",
+            "type": "grid",
+            "width": "1-2",
+            "fields": {
+                "access_key_id": {
+                    "label": "Access Key ID"
+                },
+                "access_key_secret": {
+                    "label": "Access Key Secret",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

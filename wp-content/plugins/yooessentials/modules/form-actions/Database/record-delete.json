@@ -1,0 +1,97 @@
+{
+    "name": "database-record-delete",
+    "title": "Delete Record",
+    "description": "Delete a database table record",
+    "group": "data",
+    "collection": "Database",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Database/icon.svg}",
+    "fields": {
+        "db_name": "${yooessentials.core.fields.db.name}",
+        "db_connection": {
+            "label": "Connection",
+            "show": "external",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "database": []
+            },
+            "description": "Select or configure the database connection to use for this operation. Ensure the connection has appropriate permissions for deleting records."
+        },
+        "external": {
+            "text": "With Custom Connection",
+            "type": "checkbox",
+            "default": false
+        },
+        "table": {
+            "label": "Table",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/form/action/savedb/tables",
+            "description": "Select the table from which to delete a record."
+        },
+        "match_multiple": {
+            "text": "Match multiple records",
+            "type": "checkbox"
+        },
+        "table_record": {
+            "label": "Record",
+            "type": "yooessentials-dataset",
+            "txtEmpty": "Add association",
+            "titleMap": "table_key",
+            "titleFallback": "Association",
+            "description": "Define the key-value pairs to determine which existing records will be matched and deleted.",
+            "enable": "table",
+            "panel": "record-association"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "db_name",
+                        "external",
+                        "db_connection",
+                        "table",
+                        "table_record",
+                        "match_multiple"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    },
+    "panels": {
+        "record-association": {
+            "title": "Record Association",
+            "fields": [
+                {
+                    "name": "_update",
+                    "type": "grid",
+                    "width": "1-2",
+                    "fields": {
+                        "table_key": {
+                            "label": "Key",
+                            "type": "yooessentials-select-dropdown-async",
+                            "endpoint": "yooessentials/form/action/savedb/fields"
+                        },
+                        "table_key_value": {
+                            "label": "Value",
+                            "source": true
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,294 @@
+{
+    "name": "mailchimp-member-upsert",
+    "title": "Add Member",
+    "description": "Create or Update a Mailchimp audience member",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Mailchimp/icon.svg}",
+    "group": "Misc",
+    "collection": "Mailchimp",
+    "fields": {
+        "auth": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "mailchimp": [],
+                "mailchimp-apikey": []
+            },
+            "description": "Connect to your Mailchimp Account or set an API Key for authentication."
+        },
+        "list": {
+            "label": "Audience",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The audience to which to add the new member.",
+            "endpoint": "yooessentials/form/action/mailchimp/lists",
+            "placeholder": "Select a list",
+            "autoSelect": true,
+            "enable": "auth"
+        },
+        "update_if_exists": {
+            "text": "Update profile if member already exists",
+            "type": "checkbox",
+            "enable": "list"
+        },
+        "skip_merge_validation": {
+            "text": "Skip Merge Fields validation",
+            "type": "checkbox",
+            "enable": "list"
+        },
+        "member_email_address": {
+            "label": "Email Address",
+            "description": "Member's email address.",
+            "source": true,
+            "enable": "list"
+        },
+        "member_email_type": {
+            "label": "Email Type",
+            "description": "The email type the member has requested to get (html or text).",
+            "source": true,
+            "type": "select",
+            "default": "html",
+            "enable": "list",
+            "options": {
+                "HTML": "html",
+                "Text": "text"
+            }
+        },
+        "member_status": {
+            "label": "Status",
+            "description": "Member's subscription status, for double opt-in set as pending.",
+            "source": true,
+            "type": "select",
+            "default": "subscribed",
+            "enable": "list",
+            "options": {
+                "Subscribed": "subscribed",
+                "Unsubscribed": "unsubscribed",
+                "Cleaned": "cleaned",
+                "Pending": "pending",
+                "Transactional": "transactional"
+            }
+        },
+        "member_language": {
+            "label": "Language",
+            "description": "Member's language, used for segmentation purpose. If omitted Mailchimp will attempt to detect it with member's further interaction.",
+            "source": true,
+            "type": "data-list",
+            "enable": "list",
+            "options": {
+                "English": "en",
+                "Arabic": "ar",
+                "Afrikaans": "af",
+                "Belarusian": "be",
+                "Bulgarian": "bg",
+                "Catalan": "ca",
+                "Chinese": "zh",
+                "Croatian": "hr",
+                "Czech": "cs",
+                "Danish": "da",
+                "Dutch": "nl",
+                "Estonian": "et",
+                "Farsi": "fa",
+                "Finnish": "fi",
+                "French (France)": "fr",
+                "French (Canada)": "fr_CA",
+                "German": "de",
+                "Greek": "el",
+                "Hebrew": "he",
+                "Hindi": "hi",
+                "Hungarian": "hu",
+                "Icelandic": "is",
+                "Indonesian": "id",
+                "Irish": "ga",
+                "Italian": "it",
+                "Japanese": "ja",
+                "Khmer": "km",
+                "Korean": "ko",
+                "Latvian": "lv",
+                "Lithuanian": "lt",
+                "Maltese": "mt",
+                "Malay": "ms",
+                "Macedonian": "mk",
+                "Norwegian": "no",
+                "Polish": "pl",
+                "Portuguese (Brazil)": "pt",
+                "Portuguese (Portugal)": "pt_PT",
+                "Romanian": "ro",
+                "Russian": "ru",
+                "Serbian": "sr",
+                "Slovak": "sk",
+                "Slovenian": "sl",
+                "Spanish (Mexico)": "es",
+                "Spanish (Spain)": "es_ES",
+                "Swahili": "sw",
+                "Swedish": "sv",
+                "Tamil": "ta",
+                "Thai": "th",
+                "Turkish": "tr",
+                "Ukrainian": "uk",
+                "Vietnamese": "vi"
+            }
+        },
+        "member_vip": {
+            "label": "VIP",
+            "description": "Mark the member as <a href=\"https://mailchimp.com/help/designate-and-send-to-vip-contacts\" target=\"_blank\">VIP</a> for targeted campaigns.",
+            "source": true,
+            "type": "select",
+            "default": false,
+            "enable": "list",
+            "options": {
+                "Is not VIP": false,
+                "Is VIP": true
+            }
+        },
+        "member_location": {
+            "label": "Location",
+            "description": "Member's location information, latitute and longitude separated by a comma. Used for segmentation purpose.",
+            "source": true,
+            "enable": "list"
+        },
+        "member_tags": {
+            "label": "Tags",
+            "description": "A list of tags, separated by a comma or newline, associated with the member. Used for segmentation purpose.",
+            "source": true,
+            "enable": "list"
+        },
+        "_member_merge_fields": {
+            "label": "Merge Fields",
+            "description": "Specific to the selected audience, <a href=\"https://mailchimp.com/developer/marketing/docs/merge-fields\" target=\"_blank\">Merge Fields</a> are custom fields storing additional information about members.",
+            "type": "yooessentials-button-panel",
+            "panel": "member-merge_fields",
+            "text": "Edit",
+            "enable": "list",
+            "watch": "list"
+        },
+        "_member_interests": {
+            "label": "Groups",
+            "description": "Specific to the selected audience, Member Groups are custom defined interests used in targeted campaigns.",
+            "type": "yooessentials-button-panel",
+            "panel": "member-interests",
+            "text": "Edit",
+            "enable": "list",
+            "watch": "list"
+        },
+        "_member_marketing_permissions": {
+            "label": "Marketing Permissions",
+            "description": "Specific to the selected audience, Member Marketing Permissions determines the memebers marketing consents.",
+            "type": "yooessentials-button-panel",
+            "panel": "member-marketing_permission",
+            "text": "Edit",
+            "enable": "list",
+            "watch": "list"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "auth",
+                        "list",
+                        "update_if_exists",
+                        "skip_merge_validation",
+                        "member_status",
+                        "member_email_address",
+                        "member_email_type",
+                        "member_vip",
+                        "member_language",
+                        "member_location",
+                        "member_tags",
+                        "_member_merge_fields",
+                        "_member_interests",
+                        "_member_marketing_permissions"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    },
+    "panels": {
+        "member-marketing_permission": {
+            "title": "Marketing Permissions",
+            "fields": {
+                "_field": {
+                    "type": "yooessentials-async-fields",
+                    "endpoint": "yooessentials/form/action/mailchimp/marketing-permissions"
+                }
+            }
+        },
+        "member-interests": {
+            "title": "Groups",
+            "fields": {
+                "_field": {
+                    "type": "yooessentials-async-fields",
+                    "endpoint": "yooessentials/form/action/mailchimp/interests"
+                }
+            }
+        },
+        "member-merge_fields": {
+            "title": "Merge Fields",
+            "fields": {
+                "member_merge_fields": {
+                    "type": "yooessentials-dataset-mapping",
+                    "endpoint": "yooessentials/form/action/mailchimp/merge-fields",
+                    "panel": "mailchimp-merge-field-{type}",
+                    "panelFallback": "mailchimp-merge-field",
+                    "description": "Enable and set a static or dynamic value for each field. Disabled fields will not be processed."
+                }
+            },
+            "panels": {
+                "mailchimp-merge-field": {
+                    "fields": {
+                        "value": {
+                            "label": "Value",
+                            "source": true
+                        }
+                    }
+                },
+                "mailchimp-merge-field-birthday": {
+                    "fields": {
+                        "value": {
+                            "label": "Value",
+                            "description": "A date in the format of <code>m/d</code>.",
+                            "source": true
+                        }
+                    }
+                },
+                "mailchimp-merge-field-address": {
+                    "fields": {
+                        "addr1": {
+                            "label": "Address Line 1",
+                            "source": true
+                        },
+                        "addr2": {
+                            "label": "Address Line 2",
+                            "source": true
+                        },
+                        "city": {
+                            "label": "City",
+                            "source": true
+                        },
+                        "zip": {
+                            "label": "ZIP Code",
+                            "source": true
+                        },
+                        "state": {
+                            "label": "State",
+                            "source": true
+                        },
+                        "country": {
+                            "label": "Country",
+                            "source": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

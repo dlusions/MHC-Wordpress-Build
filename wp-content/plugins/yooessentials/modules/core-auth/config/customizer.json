@@ -1,0 +1,16 @@
+{
+    "panels": {
+        "yooessentials-auths": {
+            "title": "Auths",
+            "width": 350,
+            "priority": -5
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-auths": "Auths"
+            }
+        }
+    }
+}

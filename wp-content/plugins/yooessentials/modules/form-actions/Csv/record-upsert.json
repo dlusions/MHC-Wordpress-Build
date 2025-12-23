@@ -1,0 +1,74 @@
+{
+    "name": "csv-record-upsert",
+    "title": "Upsert record",
+    "description": "Create or update a CSV file record",
+    "group": "data",
+    "collection": "CSV",
+    "collectionDescription": "Manipulate CSV file records",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Csv/icon.svg}",
+    "fields": {
+        "file": {
+            "label": "File",
+            "description": "The CSV file where the submission data will be appended to.",
+            "type": "yooessentials-file"
+        },
+        "content": {
+            "label": "Columns",
+            "type": "yooessentials-dataset-mapping",
+            "description": "Enable each column that should contain content, set a static or dynamic value inside it configuration panel. Leaving all columns empty will result in a blank row appended.",
+            "endpoint": "yooessentials/forms/action/csv/columns",
+            "watch": "file,separator,enclosure",
+            "enable": "file",
+            "panel": {
+                "title": "Content",
+                "fields": {
+                    "value": {
+                        "label": "Value",
+                        "source": true,
+                        "description": "The value for this data entry."
+                    }
+                }
+            }
+        },
+        "separator": {
+            "label": "Delimiter",
+            "attrs": {
+                "placeholder": ","
+            }
+        },
+        "enclosure": {
+            "label": "Enclosure",
+            "attrs": {
+                "placeholder": "\""
+            }
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "file",
+                        {
+                            "description": "The delimiter and enclosure characters the CSV file is formated with.",
+                            "name": "_csv_format",
+                            "type": "grid",
+                            "width": "1-2",
+                            "fields": ["separator", "enclosure"]
+                        },
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    }
+}

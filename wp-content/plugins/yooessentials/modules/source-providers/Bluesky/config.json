@@ -1,0 +1,22 @@
+{
+    "name": "bluesky",
+    "title": "Bluesky",
+    "description": "Source based on Bluesky social content",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Bluesky/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/bluesky"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "actor": {
+            "label": "Actor",
+            "description": "The Bluesky actor AT Identifier from which to create the source.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/bluesky/actors"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

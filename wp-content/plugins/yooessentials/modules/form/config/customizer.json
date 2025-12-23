@@ -1,0 +1,181 @@
+{
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "_addons": {
+                    "fields": {
+                        "form.state": {
+                            "enable": true
+                        }
+                    }
+                }
+            }
+        },
+        "yooessentials-form-settings": {
+            "title": "Form Area",
+            "reference": "yooessentials-form-settings",
+            "heading": false,
+            "fields": {
+                "yooessentials_form.after_submit_actions": {
+                    "label": "After Submit Actions",
+                    "description": "Set actions to be executed after a form has been successfully submitted. The established order is respected when possible.",
+                    "type": "yooessentials-form-actions",
+                    "txtAdd": "Add Action",
+                    "txtEmpty": "No actions yet."
+                },
+                "yooessentials_form.html5validation": {
+                    "text": "HTML 5 Validation",
+                    "description": "Enable client side HTML5 validation. Server side validation is always executed.",
+                    "type": "checkbox",
+                    "default": true
+                },
+                "yooessentials_form.reset_after_submit": {
+                    "text": "Reset After Submit",
+                    "description": "Reset form to initial state after successfull submission.",
+                    "type": "checkbox",
+                    "default": true
+                },
+                "yooessentials_form.errors_display_modal": {
+                    "label": "Errors",
+                    "text": "Display Errors in a Modal",
+                    "description": "Display server side errors in a Modal instead of the bottom block.",
+                    "type": "checkbox"
+                },
+                "yooessentials_form.errors_display_modal_content": {
+                    "type": "editor",
+                    "mode": "text/html",
+                    "description": "Set a custom modal content or leave empty for default. Use <code>{errors}</code> placeholder to reference the errors list.",
+                    "show": "yooessentials_form.errors_display_modal"
+                },
+                "yooessentials_form.errors_display_modal_center": {
+                    "type": "checkbox",
+                    "text": "Vertically center the modal",
+                    "show": "yooessentials_form.errors_display_modal"
+                },
+                "yooessentials_form.name": {
+                    "label": "Name Attribute",
+                    "description": "Optional Name attribute for the form node."
+                },
+                "yooessentials_form.id": {
+                    "label": "Form ID",
+                    "description": "Define a unique identifier for the form element."
+                },
+                "yooessentials_form.class": {
+                    "label": "Form Classes",
+                    "description": "Define one or more class names for the form element. Separate multiple classes with spaces."
+                },
+                "yooessentials_form.attributes": {
+                    "label": "Attributes",
+                    "description": "Define one or more attributes for the form. Separate attribute name and value by <code>=</code> character. One attribute per line.",
+                    "type": "editor",
+                    "editor": "code",
+                    "attrs": {
+                        "debounce": 500
+                    }
+                },
+                "yooessentials_form.override_action_url": {
+                    "text": "Override Submission Action",
+                    "type": "checkbox",
+                    "description": "Submit the form to a custom URL and method, useful for 3rd party form integrations.",
+                    "default": false
+                },
+                "yooessentials_form.action_url": {
+                    "label": "Action URL"
+                },
+                "yooessentials_form.action_method": {
+                    "label": "Action Method",
+                    "type": "select",
+                    "options": {
+                        "GET": "GET",
+                        "POST": "POST"
+                    },
+                    "default": "POST"
+                },
+                "yooessentials_form.scripts_onsubmit": {
+                    "label": "Before Submission",
+                    "description": "Executes before the submission is sent. Available <code>event</code>, <code>data</code>, and <code>form</code> variables. Return <code>false</code> to prevent submission.",
+                    "type": "editor",
+                    "editor": "code",
+                    "mode": "javascript"
+                },
+                "yooessentials_form.scripts_onsubmitted": {
+                    "label": "After Submission",
+                    "description": "Executes after the submission is sent successfully. Available <code>event</code>, <code>form</code>, <code>data</code>, and <code>response</code> variables.",
+                    "type": "editor",
+                    "editor": "code",
+                    "mode": "javascript"
+                },
+                "yooessentials_form.scripts_onvalidationerror": {
+                    "label": "On Validation Error",
+                    "description": "Executes when the validation errors. Available <code>event</code>, <code>form</code>, and <code>data</code> variables.",
+                    "type": "editor",
+                    "editor": "code",
+                    "mode": "javascript"
+                },
+                "yooessentials_form.scripts_onsubmissionerror": {
+                    "label": "On Submission Error",
+                    "description": "Executes when the submission errors. Available <code>event</code>, <code>form</code>, <code>data</code>, <code>errors</code>, and <code>validation</code> variables.",
+                    "type": "editor",
+                    "editor": "code",
+                    "mode": "javascript"
+                },
+                "yooessentials_form.scripts_onfieldchange": {
+                    "label": "On Field Change",
+                    "description": "Executes when any field value has changed. Available <code>event</code>, <code>form</code>, <code>data</code>, and <code>field</code> variables.",
+                    "type": "editor",
+                    "editor": "code",
+                    "mode": "javascript"
+                }
+            },
+            "fieldset": {
+                "default": {
+                    "type": "tabs",
+                    "fields": [
+                        {
+                            "title": "Actions",
+                            "fields": ["yooessentials_form.after_submit_actions"]
+                        },
+                        {
+                            "title": "Hooks",
+                            "fields": [
+                                {
+                                    "name": "info",
+                                    "type": "yooessentials-info",
+                                    "content": "Execute custom JavaScript on specific form events. The <code>&lt;script&gt;</code> tag is not needed."
+                                },
+                                "yooessentials_form.scripts_onsubmit",
+                                "yooessentials_form.scripts_onsubmitted",
+                                "yooessentials_form.scripts_onfieldchange",
+                                "yooessentials_form.scripts_onvalidationerror",
+                                "yooessentials_form.scripts_onsubmissionerror"
+                            ]
+                        },
+                        {
+                            "title": "Settings",
+                            "fields": [
+                                "yooessentials_form.html5validation",
+                                "yooessentials_form.reset_after_submit",
+                                "yooessentials_form.override_action_url",
+                                {
+                                    "name": "_action_override",
+                                    "type": "grid",
+                                    "width": "1-2",
+                                    "show": "yooessentials_form.override_action_url",
+                                    "fields": ["yooessentials_form.action_url", "yooessentials_form.action_method"]
+                                },
+                                "yooessentials_form.errors_display_modal",
+                                "yooessentials_form.errors_display_modal_content",
+                                "yooessentials_form.errors_display_modal_center",
+
+                                "yooessentials_form.name",
+                                "yooessentials_form.id",
+                                "yooessentials_form.class",
+                                "yooessentials_form.attributes"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

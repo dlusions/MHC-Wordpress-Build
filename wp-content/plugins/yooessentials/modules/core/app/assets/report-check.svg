@@ -1,0 +1,10 @@
+<svg viewBox="0 0 16 21" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd"
+    clip-rule="evenodd">
+    <path d="M3.5 2.5v16h12v-16" fill="none" stroke="#444" stroke-width="1.03"
+        transform="matrix(1 0 0 .93688 -1.502 1.217)" />
+    <path fill="#444" d="M11.933 2.559h2.566v1h-2.566zM1.501 2.559h2.435v1H1.5z" />
+    <path d="M4.436 3.059v-1.5h7v1.5M4.436 3.059v1.5h7v-1.5" fill="none" stroke="#444" />
+    <g>
+        <path d="m10.638 9.393-3.303 5.121-1.977-1.997" fill="none" stroke="#444" stroke-width=".9846536000000001" />
+    </g>
+</svg>

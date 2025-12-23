@@ -1,0 +1,21 @@
+{
+    "name": "airtable-access-token",
+    "title": "Airtable Access Token",
+    "description": "Airtable Personal Access Token",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Airtable/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/airtable/presave"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this token."
+        },
+        "accessToken": {
+            "label": "Token",
+            "type": "yooessentials-secret",
+            "description": "An Airtable Access Token created within the <a href=\"https://airtable.com/create/tokens\" target=\"_blank\">Airtable Dashboard</a>.",
+            "encrypt": true
+        }
+    }
+}

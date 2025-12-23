@@ -1,0 +1,43 @@
+{
+    "name": "cloudflare-stream",
+    "title": "Cloudflare Stream",
+    "description": "Source based on Media from Cloudflare Stream",
+    "group": "misc",
+    "icon": "${url:~yooessentials_url/modules/source-providers/CloudflareStream/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/cloudflare/stream/presave-source"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "token": {
+            "label": "Token",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "cloudflare-api-token": [
+                    "de21485a24744b76a004aa153898f7fe",
+                    "714f9c13a5684c2885a793f5edb36f59",
+                    "c1fde68c7bcc44588cbb6ddbc16d6480"
+                ]
+            },
+            "description": "The Cloudflare API Token which to authenticate with."
+        },
+        "account": {
+            "label": "Account",
+            "description": "The Cloudflare account from which to create the source.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/cloudflare/accounts",
+            "watch": "token"
+        },
+        "signing_key": {
+            "label": "Signing Key",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "cloudflare-stream-key": []
+            },
+            "description": "A key for signing Stream private videos URLs, if your streams are public it is not necessary to provide one."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default}"
+    }
+}

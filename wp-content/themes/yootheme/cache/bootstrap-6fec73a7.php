@@ -1,0 +1,13 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/icon-collections/bootstrap/bootstrap.json
+
+return [
+  'name' => 'bootstrap', 
+  'title' => 'Bootstrap', 
+  'description' => 'Official Bootstrap SVG icon library with over 2.000 icons.', 
+  'groups' => ['filled'], 
+  'version' => '1.11.3', 
+  'release' => 'January, 2024', 
+  'license' => 'MIT', 
+  'url' => 'https://icons.getbootstrap.com', 
+  'icons' => 2051
+];

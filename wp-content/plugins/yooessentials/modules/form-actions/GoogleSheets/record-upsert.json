@@ -1,0 +1,92 @@
+{
+    "name": "google-sheets-record-upsert",
+    "title": "Upsert Record",
+    "description": "Create or update a Google Sheets spreadsheet record",
+    "group": "data",
+    "collection": "Google Sheets",
+    "collectionDescription": "Manipulate Google Sheets spreadsheet records",
+    "icon": "${url:~yooessentials_url/modules/form-actions/GoogleSheets/icon.svg}",
+    "fields": {
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": [
+                    "https://www.googleapis.com/auth/drive.readonly",
+                    "https://www.googleapis.com/auth/spreadsheets"
+                ]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "sheet_id": {
+            "label": "Spreadsheet",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The spreadsheet which to connect to.",
+            "endpoint": "yooessentials/forms/action/google-sheets/spreadsheets",
+            "watch": "account"
+        },
+        "sheet_name": {
+            "label": "Sheet",
+            "description": "The spreadsheet sheet which to append the data to.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/forms/action/google-sheets/sheets",
+            "watch": "sheet_id",
+            "placeholder": "Default"
+        },
+        "content": {
+            "label": "Content",
+            "type": "yooessentials-dataset-mapping",
+            "description": "The content for each column of the new entry.",
+            "endpoint": "yooessentials/forms/action/google-sheets/columns",
+            "watch": "sheet_id,sheet_name",
+            "panel": {
+                "title": "Content",
+                "fields": {
+                    "value": {
+                        "label": "Value",
+                        "source": true,
+                        "description": "The value for this data entry."
+                    }
+                }
+            }
+        },
+        "value_input": {
+            "label": "Value Input Option",
+            "type": "select",
+            "options": {
+                "Raw": "INPUT_TYPE_RAW",
+                "User Entered": "INPUT_TYPE_USER_ENTERED"
+            },
+            "default": "INPUT_TYPE_RAW",
+            "description": "Determines how input data should be interpreted. <b>Raw</b>, the values will be stored as-is. <b>User Entered</b>, the values will be parsed as if were typed into the UI."
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "account",
+                        "sheet_id",
+                        "sheet_name",
+                        "value_input",
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

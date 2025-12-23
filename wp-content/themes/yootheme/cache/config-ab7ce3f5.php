@@ -1,0 +1,26 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/core-condition-rules/Url/config.json
+
+return [
+  'name' => 'yooessentials_access_url', 
+  'title' => 'URL', 
+  'group' => 'site', 
+  'description' => 'Validates against the site URL.', 
+  'icon' => $filter->apply('url', '~yooessentials_url/modules/core-condition-rules/Url/icon.svg', $file), 
+  'fields' => [
+    'urls' => [
+      'label' => 'Patterns', 
+      'type' => 'textarea', 
+      'source' => true, 
+      'description' => 'A list of part URLs to match the current request url. Separate the entries with a comma and/or new line. Optionally use <a href="https://regex101.com" target="_blank">Regular Expressions</a> for advanced patterns, e.g. <code>/$</code> would match the site home.', 
+      'attrs' => [
+        'rows' => 4, 
+        'placeholder' => 'localhost
+my/site/section'
+      ]
+    ], 
+    'regex' => [
+      'text' => 'Use Regular Expressions', 
+      'type' => 'checkbox'
+    ]
+  ]
+];

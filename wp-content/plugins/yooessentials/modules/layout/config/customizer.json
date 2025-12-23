@@ -1,0 +1,47 @@
+{
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "_addons": {
+                    "fields": {
+                        "layout.state": {
+                            "enable": true
+                        }
+                    }
+                }
+            }
+        },
+        "yooessentials-layout-libraries": {
+            "title": "Layout Libraries",
+            "width": 350
+        },
+        "yooessentials-layout-library": {
+            "title": "Layout Library",
+            "description": "Add a custom Layout Library from a local or shared source.",
+            "endpoints": {
+                "presave": "yooessentials/layout/presave"
+            },
+            "fields": {
+                "name": {
+                    "label": "Name",
+                    "description": "A name to identify this library.",
+                    "attrs": {
+                        "autofocus": true
+                    }
+                },
+                "storage": {
+                    "label": "Storage",
+                    "type": "yooessentials-connected-storage",
+                    "description": "The storage that this library will use to manage the layouts."
+                }
+            }
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-layout-libraries": "Layout Libraries"
+            }
+        }
+    }
+}

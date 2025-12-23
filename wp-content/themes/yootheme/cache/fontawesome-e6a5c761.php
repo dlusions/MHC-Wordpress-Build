@@ -1,0 +1,13 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/icon-collections/fontawesome/fontawesome.json
+
+return [
+  'name' => 'fontawesome', 
+  'title' => 'Font Awesome 5', 
+  'description' => 'Icons and social logos by Font Awesome, the web\'s most popular icon set.', 
+  'groups' => ['regular', 'solid', 'brands'], 
+  'version' => '5.15.4', 
+  'release' => 'August 8, 2021', 
+  'license' => 'CC BY 4.0', 
+  'url' => 'https://fontawesome.com', 
+  'icons' => 1611
+];

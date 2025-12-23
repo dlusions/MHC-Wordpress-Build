@@ -1,0 +1,20 @@
+{
+    "type": "auth",
+    "name": "database",
+    "title": "Database",
+    "description": "Database connection details.",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Database/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/auth/database"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this database."
+        },
+        "db_host": "${yooessentials.core.fields.db.host}",
+        "db_port": "${yooessentials.core.fields.db.port}",
+        "db_user": "${yooessentials.core.fields.db.user}",
+        "db_password": "${yooessentials.core.fields.db.password}"
+    }
+}

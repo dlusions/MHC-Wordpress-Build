@@ -1,0 +1,32 @@
+{
+    "name": "youtube-channel",
+    "title": "YouTube My Channel",
+    "description": "All videos (Private & Unlisted) from your YouTube channel",
+    "group": "Social Media",
+    "collection": "YouTube",
+    "icon": "${url:~yooessentials_url/modules/source-providers/YouTube/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/youtube"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": ["https://www.googleapis.com/auth/youtube.readonly"]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "channel_id": {
+            "label": "Channel",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The YouTube Channel from which to create the source.",
+            "endpoint": "yooessentials/source/youtube/channels",
+            "watch": "account"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

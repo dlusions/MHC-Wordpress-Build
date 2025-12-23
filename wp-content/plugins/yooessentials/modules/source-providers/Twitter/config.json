@@ -1,0 +1,24 @@
+{
+    "name": "twitter",
+    "title": "Twitter",
+    "description": "Source based on Twitter content",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Twitter/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/twitter"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "twitter": ["users.read", "tweet.read", "offline.access"]
+            },
+            "description": "The Twitter account from which to create the source."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

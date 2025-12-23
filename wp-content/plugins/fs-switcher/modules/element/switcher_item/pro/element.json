@@ -1,0 +1,2048 @@
+{
+  "@import": "./element.php",
+  "name": "fs_switcher_item",
+  "title": "Item",
+  "width": 500,
+  "fragment": true,
+  "placeholder": {
+    "props": {
+      "title": "Title",
+      "meta": "",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "image": "",
+      "label": "",
+      "thumbnail": ""
+    }
+  },
+  "templates": {
+    "render": "./templates/template.php",
+    "content": "./templates/content.php"
+  },
+  "fields": {
+    "sublayout": {
+      "label": "Sublayouts",
+      "type": "content-items",
+      "divider": true,
+      "item": "fragment",
+      "title": "name",
+      "show": "this.builder.parent(this.node)['props']['show_sublayout']"
+    },
+    "title": {
+      "label": "Title",
+      "source": true
+    },
+    "meta": {
+      "label": "Meta",
+      "source": true,
+      "show": "this.builder.parent(this.node)['props']['show_meta']"
+    },
+    "content": {
+      "label": "Content",
+      "type": "editor",
+      "source": true,
+      "show": "this.builder.parent(this.node)['props']['show_content']"
+    },
+    "image": "${builder.image}",
+    "_fs_switcher_pro_item_image": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_image_settings",
+      "text": "Advanced",
+      "enable": "image"
+    },
+    "link": {
+      "label": "Link",
+      "type": "link",
+      "attrs": {
+        "placeholder": "https://"
+      },
+      "source": true,
+      "enable": "!link_toggle || (!link_toggle_modal_integration || (link_toggle_modal_integration && (this.builder.parent(this.node)['props']['sublayout_mode'] != 'modal' || this.builder.parent(this.node)['props']['sublayout_modal_group'] != 'all'))) || !this.builder.parent(this.node)['props']['show_sublayout']"
+    },
+    "_fs_switcher_pro_item_link": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_link_settings",
+      "text": "Advanced",
+      "enable": "link"
+    },
+    "link_target": {
+      "type": "checkbox",
+      "text": "Open the link in a new window",
+      "enable": "link && !link_toggle"
+    },
+    "link_download": {
+      "type": "checkbox",
+      "text": "Force file download",
+      "enable": "!link_toggle"
+    },
+    "link_rel_nofollow": {
+      "type": "checkbox",
+      "text": "Nofollow",
+      "enable": "!link_toggle"
+    },
+    "link_rel_noreferrer": {
+      "type": "checkbox",
+      "text": "Noreferrer",
+      "enable": "!link_toggle"
+    },
+    "link_rel_noopener": {
+      "type": "checkbox",
+      "text": "Noopener",
+      "enable": "!link_toggle"
+    },
+    "link_rel_prefetch": {
+      "type": "checkbox",
+      "text": "Prefetch",
+      "enable": "!link_toggle"
+    },
+    "link_toggle": {
+      "type": "checkbox",
+      "text": "Interactive toggle (also used for sublayouts modal connect)"
+    },
+    "link_toggle_modal_integration": {
+      "type": "checkbox",
+      "text": "Connect the modal automatically",
+      "show": "link_toggle && this.builder.parent(this.node)['props']['show_sublayout'] && this.builder.parent(this.node)['props']['sublayout_mode'] == 'modal' && this.builder.parent(this.node)['props']['sublayout_modal_group'] == 'all'"
+    },
+    "link_modal_id": {
+      "label": "Modal ID",
+      "description": "Map the <code>Article ID</code> when using dynamic content. Then enable checkbox below to reveal modal links for the current item.",
+      "source": true,
+      "attrs": {
+        "placeholder": "modal-18"
+      },
+      "show": "((this.builder.parent(this.node)['props']['show_sublayout'] && link_toggle) || (this.builder.parent(this.node)['props']['show_fieldsets'] && (link_1_toggle || link_2_toggle || link_3_toggle || link_4_toggle || link_5_toggle || link_6_toggle || link_7_toggle || link_8_toggle || link_9_toggle || link_10_toggle || link_11_toggle || link_12_toggle || link_13_toggle || link_14_toggle || link_15_toggle || link_16_toggle || link_17_toggle || link_18_toggle || link_19_toggle || link_20_toggle))) && ((this.builder.parent(this.node)['props']['sublayout_mode'] == 'modal' && ((this.builder.parent(this.node)['props']['sublayout_modal_group'] == 'all' && !link_toggle_modal_integration) || this.builder.parent(this.node)['props']['sublayout_modal_group'] != 'all')) || this.builder.parent(this.node)['props']['sublayout_mode'] == 'mixed')"
+    },
+    "link_modal_id_helper": {
+      "type": "checkbox",
+      "text": "Reveal modal IDs list for current item",
+      "show": "((this.builder.parent(this.node)['props']['show_sublayout'] && link_toggle) || (this.builder.parent(this.node)['props']['show_fieldsets'] && (link_1_toggle || link_2_toggle || link_3_toggle || link_4_toggle || link_5_toggle || link_6_toggle || link_7_toggle || link_8_toggle || link_9_toggle || link_10_toggle || link_11_toggle || link_12_toggle || link_13_toggle || link_14_toggle || link_15_toggle || link_16_toggle || link_17_toggle || link_18_toggle || link_19_toggle || link_20_toggle))) && ((this.builder.parent(this.node)['props']['sublayout_mode'] == 'modal' && ((this.builder.parent(this.node)['props']['sublayout_modal_group'] == 'all' && !link_toggle_modal_integration) || this.builder.parent(this.node)['props']['sublayout_modal_group'] != 'all')) || this.builder.parent(this.node)['props']['sublayout_mode'] == 'mixed')"
+    },
+    "link_modal_header_text": {
+      "label": "Modal Header Text",
+      "description": "Enter the desired text to display in the modal header.",
+      "source": true,
+      "attrs": {
+        "placeholder": "Modal Header Text"
+      },
+      "show": "((this.builder.parent(this.node)['props']['show_sublayout'] && link_toggle) || (this.builder.parent(this.node)['props']['show_fieldsets'] && (link_1_toggle || link_2_toggle || link_3_toggle || link_4_toggle || link_5_toggle || link_6_toggle || link_7_toggle || link_8_toggle || link_9_toggle || link_10_toggle || link_11_toggle || link_12_toggle || link_13_toggle || link_14_toggle || link_15_toggle || link_16_toggle || link_17_toggle || link_18_toggle || link_19_toggle || link_20_toggle))) && (this.builder.parent(this.node)['props']['sublayout_mode'] == 'modal' && this.builder.parent(this.node)['props']['sublayout_modal_group'] == 'all' && this.builder.parent(this.node)['props']['sublayout_modal_header'])"
+    },
+    "label": {
+      "label": "Navigation Label",
+      "description": "Title or label field is required.",
+      "source": true,
+      "show": "this.builder.parent(this.node)['props']['show_label']"
+    },
+    "tab_link": {
+      "label": "Navigation Link",
+      "description": "Custom navigation link.",
+      "source": true
+    },
+    "thumbnail": {
+      "label": "Navigation Thumbnail",
+      "description": "This is only used, if the thumbnail navigation is set.",
+      "type": "image",
+      "source": true,
+      "enable": "!thumbnail_icon"
+    },
+    "thumbnail_hover": {
+      "label": "Navigation Thumbnail Hover",
+      "description": "This is only used, if the thumbnail navigation is set.",
+      "type": "image",
+      "source": true,
+      "enable": "!thumbnail_icon"
+    },
+    "thumbnail_icon": {
+      "label": "Navigation Icon",
+      "description": "Instead of using a navigation thumbnail image, you can click on the pencil to pick an icon from the icon library.",
+      "type": "icon",
+      "source": true,
+      "enable": "!thumbnail"
+    },
+    "_fs_switcher_pro_item_fieldset_1": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_1_settings",
+      "text": "Edit Fieldset 1",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_1'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 1"
+    },
+    "_fs_switcher_pro_item_fieldset_2": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_2_settings",
+      "text": "Edit Fieldset 2",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_2'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 2"
+    },
+    "_fs_switcher_pro_item_fieldset_3": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_3_settings",
+      "text": "Edit Fieldset 3",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_3'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 3"
+    },
+    "_fs_switcher_pro_item_fieldset_4": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_4_settings",
+      "text": "Edit Fieldset 4",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_4'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 4"
+    },
+    "_fs_switcher_pro_item_fieldset_5": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_5_settings",
+      "text": "Edit Fieldset 5",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_5'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 5"
+    },
+    "_fs_switcher_pro_item_fieldset_6": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_6_settings",
+      "text": "Edit Fieldset 6",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_6'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 6"
+    },
+    "_fs_switcher_pro_item_fieldset_7": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_7_settings",
+      "text": "Edit Fieldset 7",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_7'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 7"
+    },
+    "_fs_switcher_pro_item_fieldset_8": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_8_settings",
+      "text": "Edit Fieldset 8",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_8'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 8"
+    },
+    "_fs_switcher_pro_item_fieldset_9": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_9_settings",
+      "text": "Edit Fieldset 9",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_9'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 9"
+    },
+    "_fs_switcher_pro_item_fieldset_10": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_10_settings",
+      "text": "Edit Fieldset 10",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_10'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 10"
+    },
+    "_fs_switcher_pro_item_fieldset_11": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_11_settings",
+      "text": "Edit Fieldset 11",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_11'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 11"
+    },
+    "_fs_switcher_pro_item_fieldset_12": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_12_settings",
+      "text": "Edit Fieldset 12",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_12'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 12"
+    },
+    "_fs_switcher_pro_item_fieldset_13": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_13_settings",
+      "text": "Edit Fieldset 13",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_13'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 13"
+    },
+    "_fs_switcher_pro_item_fieldset_14": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_14_settings",
+      "text": "Edit Fieldset 14",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_14'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 14"
+    },
+    "_fs_switcher_pro_item_fieldset_15": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_15_settings",
+      "text": "Edit Fieldset 15",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_15'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 15"
+    },
+    "_fs_switcher_pro_item_fieldset_16": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_16_settings",
+      "text": "Edit Fieldset 16",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_16'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 16"
+    },
+    "_fs_switcher_pro_item_fieldset_17": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_17_settings",
+      "text": "Edit Fieldset 17",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_17'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 17"
+    },
+    "_fs_switcher_pro_item_fieldset_18": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_18_settings",
+      "text": "Edit Fieldset 18",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_18'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 18"
+    },
+    "_fs_switcher_pro_item_fieldset_19": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_19_settings",
+      "text": "Edit Fieldset 19",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_19'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 19"
+    },
+    "_fs_switcher_pro_item_fieldset_20": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_fieldset_20_settings",
+      "text": "Edit Fieldset 20",
+      "show": "this.builder.parent(this.node)['props']['show_fieldset_20'] && this.builder.parent(this.node)['props']['_fieldsets_count'] >= 20"
+    },
+    "item_element": "${builder.html_element_item}",
+    "switcher_thumbnail_focal_point": "${fs_switcher.focal_point}",
+    "switcher_thumbnail_text_color": "${fs_switcher.text_color}",
+    "lightbox_image_focal_point": "${fs_switcher.focal_point}",
+    "lightbox_text_color": "${fs_switcher.text_color}",
+    "image_focal_point": "${fs_switcher.focal_point}",
+    "image_text_color": "${fs_switcher.text_color}",
+    "_fs_switcher_pro_item_grid_1": {
+      "label": "Grids",
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_1_settings",
+      "text": "Grid 1 Settings"
+    },
+    "_fs_switcher_pro_item_grid_2": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_2_settings",
+      "text": "Grid 2 Settings",
+      "show": "this.builder.parent(this.node)['props']['show_grid_2'] && this.builder.parent(this.node)['props']['show_multiple_grids'] && this.builder.parent(this.node)['props']['_grids_count'] >= 2"
+    },
+    "_fs_switcher_pro_item_grid_3": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_3_settings",
+      "text": "Grid 3 Settings",
+      "show": "this.builder.parent(this.node)['props']['show_grid_3'] && this.builder.parent(this.node)['props']['show_multiple_grids'] && this.builder.parent(this.node)['props']['_grids_count'] >= 3"
+    },
+    "_fs_switcher_pro_item_grid_4": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_4_settings",
+      "text": "Grid 4 Settings",
+      "show": "this.builder.parent(this.node)['props']['show_grid_4'] && this.builder.parent(this.node)['props']['show_multiple_grids'] && this.builder.parent(this.node)['props']['_grids_count'] >= 4"
+    },
+    "_fs_switcher_pro_item_grid_5": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_5_settings",
+      "text": "Grid 5 Settings",
+      "show": "this.builder.parent(this.node)['props']['show_grid_5'] && this.builder.parent(this.node)['props']['show_multiple_grids'] && this.builder.parent(this.node)['props']['_grids_count'] >= 5"
+    },
+    "_fs_switcher_pro_item_grid_6": {
+      "type": "button-panel",
+      "panel": "_fs_switcher_pro_item_grid_6_settings",
+      "text": "Grid 6 Settings",
+      "show": "this.builder.parent(this.node)['props']['show_grid_6'] && this.builder.parent(this.node)['props']['show_multiple_grids'] && this.builder.parent(this.node)['props']['_grids_count'] >= 6"
+    },
+    "name": "${builder.name}",
+    "status": "${builder.statusItem}",
+    "source": "${builder.source}",
+    "id": "${builder.id}",
+    "class": "${builder.cls}",
+    "attributes": "${builder.attrs}"
+  },
+  "fieldset": {
+    "default": {
+      "type": "tabs",
+      "fields": [
+        {
+          "title": "Content",
+          "fields": [
+            {
+              "name": "_switcher_pro_content",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "title",
+                "meta",
+                "content"
+              ]
+            },
+            "sublayout",
+            {
+              "name": "_switcher_pro_fieldsets",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                {
+                  "label": "Fieldsets",
+                  "type": "group"
+                },
+                "_fs_switcher_pro_item_fieldset_1",
+                "_fs_switcher_pro_item_fieldset_2",
+                "_fs_switcher_pro_item_fieldset_3",
+                "_fs_switcher_pro_item_fieldset_4",
+                "_fs_switcher_pro_item_fieldset_5",
+                "_fs_switcher_pro_item_fieldset_6",
+                "_fs_switcher_pro_item_fieldset_7",
+                "_fs_switcher_pro_item_fieldset_8",
+                "_fs_switcher_pro_item_fieldset_9",
+                "_fs_switcher_pro_item_fieldset_10",
+                "_fs_switcher_pro_item_fieldset_11",
+                "_fs_switcher_pro_item_fieldset_12",
+                "_fs_switcher_pro_item_fieldset_13",
+                "_fs_switcher_pro_item_fieldset_14",
+                "_fs_switcher_pro_item_fieldset_15",
+                "_fs_switcher_pro_item_fieldset_16",
+                "_fs_switcher_pro_item_fieldset_17",
+                "_fs_switcher_pro_item_fieldset_18",
+                "_fs_switcher_pro_item_fieldset_19",
+                "_fs_switcher_pro_item_fieldset_20"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_fieldsets']"
+            },
+            {
+              "name": "_switcher_pro_image",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "image",
+                "_fs_switcher_pro_item_image"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_image']"
+            },
+            {
+              "name": "_switcher_pro_link",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "link",
+                "_fs_switcher_pro_item_link",
+                "link_target",
+                "link_download",
+                "link_rel_nofollow",
+                "link_rel_noreferrer",
+                "link_rel_noopener",
+                "link_rel_prefetch",
+                "link_toggle",
+                "link_toggle_modal_integration",
+                "link_modal_id",
+                "link_modal_id_helper",
+                "link_modal_header_text"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_link']"
+            },
+            "label",
+            "tab_link",
+            {
+              "name": "_switcher_pro_thumbnail",
+              "type": "fields",
+              "fields": [
+                "thumbnail",
+                "thumbnail_hover",
+                "thumbnail_icon"
+              ],
+              "show": "this.builder.parent(this.node)['props']['switcher_style'] == 'thumbnav' || (this.builder.parent(this.node)['props']['switcher_style'] == 'accordion' && this.builder.parent(this.node)['props']['switcher_accordion_thumbnail'])"
+            }
+          ]
+        },
+        {
+          "title": "Settings",
+          "fields": [
+            {
+              "name": "_switcher_pro_settings_element",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "item_element"
+              ]
+            },
+            {
+              "label": "Thumbnail",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "switcher_thumbnail_focal_point",
+                "switcher_thumbnail_text_color"
+              ],
+              "show": "this.builder.parent(this.node)['props']['switcher_style'] == 'thumbnav' || (this.builder.parent(this.node)['props']['switcher_style'] == 'accordion' && this.builder.parent(this.node)['props']['switcher_accordion_thumbnail'])"
+            },
+            {
+              "label": "Lightbox",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "lightbox_image_focal_point",
+                "lightbox_text_color"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_image'] && this.builder.parent(this.node)['props']['lightbox']"
+            },
+            {
+              "label": "Image",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "image_focal_point",
+                "image_text_color"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_image']"
+            },
+            {
+              "name": "_switcher_pro_settings_grids",
+              "type": "fields",
+              "fields": [
+                "_fs_switcher_pro_item_grid_1",
+                "_fs_switcher_pro_item_grid_2",
+                "_fs_switcher_pro_item_grid_3",
+                "_fs_switcher_pro_item_grid_4",
+                "_fs_switcher_pro_item_grid_5",
+                "_fs_switcher_pro_item_grid_6"
+              ],
+              "show": "this.builder.parent(this.node)['props']['show_fieldsets']"
+            }
+          ]
+        },
+        {
+          "title": "Advanced",
+          "fields": [
+            "name",
+            "status",
+            "source",
+            "id",
+            "class",
+            "attributes"
+          ]
+        }
+      ]
+    }
+  },
+  "panels": {
+    "_fs_switcher_pro_item_image_settings": {
+      "title": "Image",
+      "width": 500,
+      "fields": {
+        "image_alt": {
+          "label": "Alt",
+          "description": "Provides a text alternative for search engines and accessibility tools.",
+          "attrs": {
+            "placeholder": "Describe the image content"
+          },
+          "source": true
+        },
+        "image_title": {
+          "label": "Title",
+          "description": "The title attribute provides additional information about the image.",
+          "attrs": {
+            "placeholder": "Enter an image title"
+          },
+          "source": true
+        },
+        "image_attributes": {
+          "label": "Attributes",
+          "type": "editor",
+          "description": "Use <code>=</code> to separate name and value, one per line.<br>Examples: <code>itemprop=image</code>, <code>decoding=async</code>, <code>loading=lazy</code>.",
+          "editor": "code",
+          "source": true
+        }
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            "image_alt",
+            "image_title",
+            "image_attributes"
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_link_settings": {
+      "title": "Link",
+      "width": 500,
+      "fields": {
+        "link_text": {
+          "label": "Text",
+          "description": "Sets a custom link text for this item.",
+          "attrs": {
+            "placeholder": "Read more"
+          },
+          "source": true
+        },
+        "link_aria_label": {
+          "label": "ARIA Label",
+          "description": "Sets a custom aria-label for this item to improve accessibility.",
+          "attrs": {
+            "placeholder": "Descriptive label for the link"
+          },
+          "source": true
+        },
+        "link_title": {
+          "label": "Title",
+          "description": "Sets a custom link title attribute for tooltip or accessibility support.",
+          "attrs": {
+            "placeholder": "Additional link information"
+          },
+          "source": true
+        },
+        "link_class": {
+          "label": "Class",
+          "description": "Adds custom CSS classes to the link element.",
+          "attrs": {
+            "placeholder": "uk-button uk-button-primary"
+          },
+          "source": true
+        },
+        "link_attributes": {
+          "label": "Attributes",
+          "type": "editor",
+          "editor": "code",
+          "description": "Use <code>=</code> to separate name and value, one per line.<br>Examples: <code>data-type=iframe</code>, <code>onclick=window.print();</code>.",
+          "source": true
+        }
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            "link_text",
+            "link_aria_label",
+            "link_title",
+            "link_class",
+            "link_attributes"
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_1_settings": {
+      "title": "Fieldset 1",
+      "width": 500,
+      "fields": {
+        "text_1": "${fs_switcher.text}",
+        "meta_1": "${fs_switcher.meta}",
+        "image_1": "${fs_switcher.image}",
+        "image_1_alt": "${fs_switcher.image_alt}",
+        "image_1_icon": "${fs_switcher.icon}",
+        "link_1": "${fs_switcher.link}",
+        "link_1_target": "${fs_switcher.link_target}",
+        "link_1_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_1_target": "${fs_switcher.target_grid}",
+        "fieldset_1_visibility": "${fs_switcher.visibility}",
+        "fieldset_1_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_1_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_1_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_1_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_1_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_1",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_1",
+                "meta_1",
+                "image_1",
+                "image_1_alt",
+                "image_1_icon",
+                "link_1",
+                "link_1_target",
+                "link_1_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_1_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_1_target",
+                "fieldset_1_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_1_mixed_width_default",
+                "fieldset_1_mixed_width_small",
+                "fieldset_1_mixed_width_medium",
+                "fieldset_1_mixed_width_large",
+                "fieldset_1_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_2_settings": {
+      "title": "Fieldset 2",
+      "width": 500,
+      "fields": {
+        "text_2": "${fs_switcher.text}",
+        "meta_2": "${fs_switcher.meta}",
+        "image_2": "${fs_switcher.image}",
+        "image_2_alt": "${fs_switcher.image_alt}",
+        "image_2_icon": "${fs_switcher.icon}",
+        "link_2": "${fs_switcher.link}",
+        "link_2_target": "${fs_switcher.link_target}",
+        "link_2_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_2_target": "${fs_switcher.target_grid}",
+        "fieldset_2_visibility": "${fs_switcher.visibility}",
+        "fieldset_2_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_2_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_2_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_2_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_2_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_2",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_2",
+                "meta_2",
+                "image_2",
+                "image_2_alt",
+                "image_2_icon",
+                "link_2",
+                "link_2_target",
+                "link_2_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_2_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_2_target",
+                "fieldset_2_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_2_mixed_width_default",
+                "fieldset_2_mixed_width_small",
+                "fieldset_2_mixed_width_medium",
+                "fieldset_2_mixed_width_large",
+                "fieldset_2_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_3_settings": {
+      "title": "Fieldset 3",
+      "width": 500,
+      "fields": {
+        "text_3": "${fs_switcher.text}",
+        "meta_3": "${fs_switcher.meta}",
+        "image_3": "${fs_switcher.image}",
+        "image_3_alt": "${fs_switcher.image_alt}",
+        "image_3_icon": "${fs_switcher.icon}",
+        "link_3": "${fs_switcher.link}",
+        "link_3_target": "${fs_switcher.link_target}",
+        "link_3_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_3_target": "${fs_switcher.target_grid}",
+        "fieldset_3_visibility": "${fs_switcher.visibility}",
+        "fieldset_3_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_3_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_3_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_3_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_3_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_3",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_3",
+                "meta_3",
+                "image_3",
+                "image_3_alt",
+                "image_3_icon",
+                "link_3",
+                "link_3_target",
+                "link_3_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_3_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_3_target",
+                "fieldset_3_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_3_mixed_width_default",
+                "fieldset_3_mixed_width_small",
+                "fieldset_3_mixed_width_medium",
+                "fieldset_3_mixed_width_large",
+                "fieldset_3_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_4_settings": {
+      "title": "Fieldset 4",
+      "width": 500,
+      "fields": {
+        "text_4": "${fs_switcher.text}",
+        "meta_4": "${fs_switcher.meta}",
+        "image_4": "${fs_switcher.image}",
+        "image_4_alt": "${fs_switcher.image_alt}",
+        "image_4_icon": "${fs_switcher.icon}",
+        "link_4": "${fs_switcher.link}",
+        "link_4_target": "${fs_switcher.link_target}",
+        "link_4_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_4_target": "${fs_switcher.target_grid}",
+        "fieldset_4_visibility": "${fs_switcher.visibility}",
+        "fieldset_4_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_4_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_4_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_4_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_4_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_4",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_4",
+                "meta_4",
+                "image_4",
+                "image_4_alt",
+                "image_4_icon",
+                "link_4",
+                "link_4_target",
+                "link_4_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_4_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_4_target",
+                "fieldset_4_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_4_mixed_width_default",
+                "fieldset_4_mixed_width_small",
+                "fieldset_4_mixed_width_medium",
+                "fieldset_4_mixed_width_large",
+                "fieldset_4_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_5_settings": {
+      "title": "Fieldset 5",
+      "width": 500,
+      "fields": {
+        "text_5": "${fs_switcher.text}",
+        "meta_5": "${fs_switcher.meta}",
+        "image_5": "${fs_switcher.image}",
+        "image_5_alt": "${fs_switcher.image_alt}",
+        "image_5_icon": "${fs_switcher.icon}",
+        "link_5": "${fs_switcher.link}",
+        "link_5_target": "${fs_switcher.link_target}",
+        "link_5_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_5_target": "${fs_switcher.target_grid}",
+        "fieldset_5_visibility": "${fs_switcher.visibility}",
+        "fieldset_5_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_5_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_5_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_5_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_5_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_5",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_5",
+                "meta_5",
+                "image_5",
+                "image_5_alt",
+                "image_5_icon",
+                "link_5",
+                "link_5_target",
+                "link_5_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_5_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_5_target",
+                "fieldset_5_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_5_mixed_width_default",
+                "fieldset_5_mixed_width_small",
+                "fieldset_5_mixed_width_medium",
+                "fieldset_5_mixed_width_large",
+                "fieldset_5_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_6_settings": {
+      "title": "Fieldset 6",
+      "width": 500,
+      "fields": {
+        "text_6": "${fs_switcher.text}",
+        "meta_6": "${fs_switcher.meta}",
+        "image_6": "${fs_switcher.image}",
+        "image_6_alt": "${fs_switcher.image_alt}",
+        "image_6_icon": "${fs_switcher.icon}",
+        "link_6": "${fs_switcher.link}",
+        "link_6_target": "${fs_switcher.link_target}",
+        "link_6_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_6_target": "${fs_switcher.target_grid}",
+        "fieldset_6_visibility": "${fs_switcher.visibility}",
+        "fieldset_6_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_6_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_6_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_6_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_6_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_6",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_6",
+                "meta_6",
+                "image_6",
+                "image_6_alt",
+                "image_6_icon",
+                "link_6",
+                "link_6_target",
+                "link_6_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_6_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_6_target",
+                "fieldset_6_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_6_mixed_width_default",
+                "fieldset_6_mixed_width_small",
+                "fieldset_6_mixed_width_medium",
+                "fieldset_6_mixed_width_large",
+                "fieldset_6_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_7_settings": {
+      "title": "Fieldset 7",
+      "width": 500,
+      "fields": {
+        "text_7": "${fs_switcher.text}",
+        "meta_7": "${fs_switcher.meta}",
+        "image_7": "${fs_switcher.image}",
+        "image_7_alt": "${fs_switcher.image_alt}",
+        "image_7_icon": "${fs_switcher.icon}",
+        "link_7": "${fs_switcher.link}",
+        "link_7_target": "${fs_switcher.link_target}",
+        "link_7_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_7_target": "${fs_switcher.target_grid}",
+        "fieldset_7_visibility": "${fs_switcher.visibility}",
+        "fieldset_7_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_7_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_7_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_7_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_7_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_7",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_7",
+                "meta_7",
+                "image_7",
+                "image_7_alt",
+                "image_7_icon",
+                "link_7",
+                "link_7_target",
+                "link_7_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_7_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_7_target",
+                "fieldset_7_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_7_mixed_width_default",
+                "fieldset_7_mixed_width_small",
+                "fieldset_7_mixed_width_medium",
+                "fieldset_7_mixed_width_large",
+                "fieldset_7_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_8_settings": {
+      "title": "Fieldset 8",
+      "width": 500,
+      "fields": {
+        "text_8": "${fs_switcher.text}",
+        "meta_8": "${fs_switcher.meta}",
+        "image_8": "${fs_switcher.image}",
+        "image_8_alt": "${fs_switcher.image_alt}",
+        "image_8_icon": "${fs_switcher.icon}",
+        "link_8": "${fs_switcher.link}",
+        "link_8_target": "${fs_switcher.link_target}",
+        "link_8_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_8_target": "${fs_switcher.target_grid}",
+        "fieldset_8_visibility": "${fs_switcher.visibility}",
+        "fieldset_8_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_8_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_8_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_8_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_8_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_8",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_8",
+                "meta_8",
+                "image_8",
+                "image_8_alt",
+                "image_8_icon",
+                "link_8",
+                "link_8_target",
+                "link_8_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_8_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_8_target",
+                "fieldset_8_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_8_mixed_width_default",
+                "fieldset_8_mixed_width_small",
+                "fieldset_8_mixed_width_medium",
+                "fieldset_8_mixed_width_large",
+                "fieldset_8_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_9_settings": {
+      "title": "Fieldset 9",
+      "width": 500,
+      "fields": {
+        "text_9": "${fs_switcher.text}",
+        "meta_9": "${fs_switcher.meta}",
+        "image_9": "${fs_switcher.image}",
+        "image_9_alt": "${fs_switcher.image_alt}",
+        "image_9_icon": "${fs_switcher.icon}",
+        "link_9": "${fs_switcher.link}",
+        "link_9_target": "${fs_switcher.link_target}",
+        "link_9_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_9_target": "${fs_switcher.target_grid}",
+        "fieldset_9_visibility": "${fs_switcher.visibility}",
+        "fieldset_9_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_9_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_9_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_9_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_9_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_9",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_9",
+                "meta_9",
+                "image_9",
+                "image_9_alt",
+                "image_9_icon",
+                "link_9",
+                "link_9_target",
+                "link_9_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_9_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_9_target",
+                "fieldset_9_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_9_mixed_width_default",
+                "fieldset_9_mixed_width_small",
+                "fieldset_9_mixed_width_medium",
+                "fieldset_9_mixed_width_large",
+                "fieldset_9_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_10_settings": {
+      "title": "Fieldset 10",
+      "width": 500,
+      "fields": {
+        "text_10": "${fs_switcher.text}",
+        "meta_10": "${fs_switcher.meta}",
+        "image_10": "${fs_switcher.image}",
+        "image_10_alt": "${fs_switcher.image_alt}",
+        "image_10_icon": "${fs_switcher.icon}",
+        "link_10": "${fs_switcher.link}",
+        "link_10_target": "${fs_switcher.link_target}",
+        "link_10_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_10_target": "${fs_switcher.target_grid}",
+        "fieldset_10_visibility": "${fs_switcher.visibility}",
+        "fieldset_10_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_10_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_10_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_10_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_10_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_10",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_10",
+                "meta_10",
+                "image_10",
+                "image_10_alt",
+                "image_10_icon",
+                "link_10",
+                "link_10_target",
+                "link_10_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_10_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_10_target",
+                "fieldset_10_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_10_mixed_width_default",
+                "fieldset_10_mixed_width_small",
+                "fieldset_10_mixed_width_medium",
+                "fieldset_10_mixed_width_large",
+                "fieldset_10_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_11_settings": {
+      "title": "Fieldset 11",
+      "width": 500,
+      "fields": {
+        "text_11": "${fs_switcher.text}",
+        "meta_11": "${fs_switcher.meta}",
+        "image_11": "${fs_switcher.image}",
+        "image_11_alt": "${fs_switcher.image_alt}",
+        "image_11_icon": "${fs_switcher.icon}",
+        "link_11": "${fs_switcher.link}",
+        "link_11_target": "${fs_switcher.link_target}",
+        "link_11_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_11_target": "${fs_switcher.target_grid}",
+        "fieldset_11_visibility": "${fs_switcher.visibility}",
+        "fieldset_11_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_11_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_11_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_11_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_11_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_11",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_11",
+                "meta_11",
+                "image_11",
+                "image_11_alt",
+                "image_11_icon",
+                "link_11",
+                "link_11_target",
+                "link_11_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_11_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_11_target",
+                "fieldset_11_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_11_mixed_width_default",
+                "fieldset_11_mixed_width_small",
+                "fieldset_11_mixed_width_medium",
+                "fieldset_11_mixed_width_large",
+                "fieldset_11_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_12_settings": {
+      "title": "Fieldset 12",
+      "width": 500,
+      "fields": {
+        "text_12": "${fs_switcher.text}",
+        "meta_12": "${fs_switcher.meta}",
+        "image_12": "${fs_switcher.image}",
+        "image_12_alt": "${fs_switcher.image_alt}",
+        "image_12_icon": "${fs_switcher.icon}",
+        "link_12": "${fs_switcher.link}",
+        "link_12_target": "${fs_switcher.link_target}",
+        "link_12_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_12_target": "${fs_switcher.target_grid}",
+        "fieldset_12_visibility": "${fs_switcher.visibility}",
+        "fieldset_12_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_12_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_12_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_12_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_12_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_12",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_12",
+                "meta_12",
+                "image_12",
+                "image_12_alt",
+                "image_12_icon",
+                "link_12",
+                "link_12_target",
+                "link_12_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_12_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_12_target",
+                "fieldset_12_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_12_mixed_width_default",
+                "fieldset_12_mixed_width_small",
+                "fieldset_12_mixed_width_medium",
+                "fieldset_12_mixed_width_large",
+                "fieldset_12_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_13_settings": {
+      "title": "Fieldset 13",
+      "width": 500,
+      "fields": {
+        "text_13": "${fs_switcher.text}",
+        "meta_13": "${fs_switcher.meta}",
+        "image_13": "${fs_switcher.image}",
+        "image_13_alt": "${fs_switcher.image_alt}",
+        "image_13_icon": "${fs_switcher.icon}",
+        "link_13": "${fs_switcher.link}",
+        "link_13_target": "${fs_switcher.link_target}",
+        "link_13_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_13_target": "${fs_switcher.target_grid}",
+        "fieldset_13_visibility": "${fs_switcher.visibility}",
+        "fieldset_13_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_13_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_13_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_13_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_13_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_13",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_13",
+                "meta_13",
+                "image_13",
+                "image_13_alt",
+                "image_13_icon",
+                "link_13",
+                "link_13_target",
+                "link_13_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_13_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_13_target",
+                "fieldset_13_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_13_mixed_width_default",
+                "fieldset_13_mixed_width_small",
+                "fieldset_13_mixed_width_medium",
+                "fieldset_13_mixed_width_large",
+                "fieldset_13_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_14_settings": {
+      "title": "Fieldset 14",
+      "width": 500,
+      "fields": {
+        "text_14": "${fs_switcher.text}",
+        "meta_14": "${fs_switcher.meta}",
+        "image_14": "${fs_switcher.image}",
+        "image_14_alt": "${fs_switcher.image_alt}",
+        "image_14_icon": "${fs_switcher.icon}",
+        "link_14": "${fs_switcher.link}",
+        "link_14_target": "${fs_switcher.link_target}",
+        "link_14_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_14_target": "${fs_switcher.target_grid}",
+        "fieldset_14_visibility": "${fs_switcher.visibility}",
+        "fieldset_14_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_14_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_14_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_14_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_14_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_14",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_14",
+                "meta_14",
+                "image_14",
+                "image_14_alt",
+                "image_14_icon",
+                "link_14",
+                "link_14_target",
+                "link_14_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_14_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_14_target",
+                "fieldset_14_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_14_mixed_width_default",
+                "fieldset_14_mixed_width_small",
+                "fieldset_14_mixed_width_medium",
+                "fieldset_14_mixed_width_large",
+                "fieldset_14_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_15_settings": {
+      "title": "Fieldset 15",
+      "width": 500,
+      "fields": {
+        "text_15": "${fs_switcher.text}",
+        "meta_15": "${fs_switcher.meta}",
+        "image_15": "${fs_switcher.image}",
+        "image_15_alt": "${fs_switcher.image_alt}",
+        "image_15_icon": "${fs_switcher.icon}",
+        "link_15": "${fs_switcher.link}",
+        "link_15_target": "${fs_switcher.link_target}",
+        "link_15_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_15_target": "${fs_switcher.target_grid}",
+        "fieldset_15_visibility": "${fs_switcher.visibility}",
+        "fieldset_15_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_15_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_15_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_15_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_15_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_15",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_15",
+                "meta_15",
+                "image_15",
+                "image_15_alt",
+                "image_15_icon",
+                "link_15",
+                "link_15_target",
+                "link_15_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_15_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_15_target",
+                "fieldset_15_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_15_mixed_width_default",
+                "fieldset_15_mixed_width_small",
+                "fieldset_15_mixed_width_medium",
+                "fieldset_15_mixed_width_large",
+                "fieldset_15_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_16_settings": {
+      "title": "Fieldset 16",
+      "width": 500,
+      "fields": {
+        "text_16": "${fs_switcher.text}",
+        "meta_16": "${fs_switcher.meta}",
+        "image_16": "${fs_switcher.image}",
+        "image_16_alt": "${fs_switcher.image_alt}",
+        "image_16_icon": "${fs_switcher.icon}",
+        "link_16": "${fs_switcher.link}",
+        "link_16_target": "${fs_switcher.link_target}",
+        "link_16_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_16_target": "${fs_switcher.target_grid}",
+        "fieldset_16_visibility": "${fs_switcher.visibility}",
+        "fieldset_16_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_16_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_16_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_16_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_16_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_16",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_16",
+                "meta_16",
+                "image_16",
+                "image_16_alt",
+                "image_16_icon",
+                "link_16",
+                "link_16_target",
+                "link_16_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_16_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_16_target",
+                "fieldset_16_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_16_mixed_width_default",
+                "fieldset_16_mixed_width_small",
+                "fieldset_16_mixed_width_medium",
+                "fieldset_16_mixed_width_large",
+                "fieldset_16_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_17_settings": {
+      "title": "Fieldset 17",
+      "width": 500,
+      "fields": {
+        "text_17": "${fs_switcher.text}",
+        "meta_17": "${fs_switcher.meta}",
+        "image_17": "${fs_switcher.image}",
+        "image_17_alt": "${fs_switcher.image_alt}",
+        "image_17_icon": "${fs_switcher.icon}",
+        "link_17": "${fs_switcher.link}",
+        "link_17_target": "${fs_switcher.link_target}",
+        "link_17_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_17_target": "${fs_switcher.target_grid}",
+        "fieldset_17_visibility": "${fs_switcher.visibility}",
+        "fieldset_17_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_17_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_17_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_17_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_17_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_17",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_17",
+                "meta_17",
+                "image_17",
+                "image_17_alt",
+                "image_17_icon",
+                "link_17",
+                "link_17_target",
+                "link_17_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_17_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_17_target",
+                "fieldset_17_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_17_mixed_width_default",
+                "fieldset_17_mixed_width_small",
+                "fieldset_17_mixed_width_medium",
+                "fieldset_17_mixed_width_large",
+                "fieldset_17_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_18_settings": {
+      "title": "Fieldset 18",
+      "width": 500,
+      "fields": {
+        "text_18": "${fs_switcher.text}",
+        "meta_18": "${fs_switcher.meta}",
+        "image_18": "${fs_switcher.image}",
+        "image_18_alt": "${fs_switcher.image_alt}",
+        "image_18_icon": "${fs_switcher.icon}",
+        "link_18": "${fs_switcher.link}",
+        "link_18_target": "${fs_switcher.link_target}",
+        "link_18_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_18_target": "${fs_switcher.target_grid}",
+        "fieldset_18_visibility": "${fs_switcher.visibility}",
+        "fieldset_18_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_18_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_18_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_18_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_18_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_18",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_18",
+                "meta_18",
+                "image_18",
+                "image_18_alt",
+                "image_18_icon",
+                "link_18",
+                "link_18_target",
+                "link_18_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_18_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_18_target",
+                "fieldset_18_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_18_mixed_width_default",
+                "fieldset_18_mixed_width_small",
+                "fieldset_18_mixed_width_medium",
+                "fieldset_18_mixed_width_large",
+                "fieldset_18_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_19_settings": {
+      "title": "Fieldset 19",
+      "width": 500,
+      "fields": {
+        "text_19": "${fs_switcher.text}",
+        "meta_19": "${fs_switcher.meta}",
+        "image_19": "${fs_switcher.image}",
+        "image_19_alt": "${fs_switcher.image_alt}",
+        "image_19_icon": "${fs_switcher.icon}",
+        "link_19": "${fs_switcher.link}",
+        "link_19_target": "${fs_switcher.link_target}",
+        "link_19_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_19_target": "${fs_switcher.target_grid}",
+        "fieldset_19_visibility": "${fs_switcher.visibility}",
+        "fieldset_19_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_19_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_19_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_19_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_19_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_19",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_19",
+                "meta_19",
+                "image_19",
+                "image_19_alt",
+                "image_19_icon",
+                "link_19",
+                "link_19_target",
+                "link_19_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_19_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_19_target",
+                "fieldset_19_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_19_mixed_width_default",
+                "fieldset_19_mixed_width_small",
+                "fieldset_19_mixed_width_medium",
+                "fieldset_19_mixed_width_large",
+                "fieldset_19_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_fieldset_20_settings": {
+      "title": "Fieldset 20",
+      "width": 500,
+      "fields": {
+        "text_20": "${fs_switcher.text}",
+        "meta_20": "${fs_switcher.meta}",
+        "image_20": "${fs_switcher.image}",
+        "image_20_alt": "${fs_switcher.image_alt}",
+        "image_20_icon": "${fs_switcher.icon}",
+        "link_20": "${fs_switcher.link}",
+        "link_20_target": "${fs_switcher.link_target}",
+        "link_20_toggle": "${fs_switcher.link_toggle}",
+        "fieldset_20_target": "${fs_switcher.target_grid}",
+        "fieldset_20_visibility": "${fs_switcher.visibility}",
+        "fieldset_20_mixed_width_default": "${fs_switcher.grid_columns}",
+        "fieldset_20_mixed_width_small": "${fs_switcher.grid_columns}",
+        "fieldset_20_mixed_width_medium": "${fs_switcher.grid_columns}",
+        "fieldset_20_mixed_width_large": "${fs_switcher.grid_columns}",
+        "fieldset_20_mixed_width_xlarge": "${fs_switcher.grid_columns}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_fieldset_20",
+              "type": "fields",
+              "divider": true,
+              "fields": [
+                "text_20",
+                "meta_20",
+                "image_20",
+                "image_20_alt",
+                "image_20_icon",
+                "link_20",
+                "link_20_target",
+                "link_20_toggle"
+              ]
+            },
+            {
+              "name": "_fs_switcher_pro_item_fieldset_20_overrides",
+              "description": "Override the default grid assignment and visibility for this fieldset.",
+              "type": "grid",
+              "width": "1-2",
+              "divider": true,
+              "fields": [
+                "fieldset_20_target",
+                "fieldset_20_visibility"
+              ]
+            },
+            {
+              "label": "Mixed Width",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "fieldset_20_mixed_width_default",
+                "fieldset_20_mixed_width_small",
+                "fieldset_20_mixed_width_medium",
+                "fieldset_20_mixed_width_large",
+                "fieldset_20_mixed_width_xlarge"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_1_settings": {
+      "title": "Grid 1",
+      "width": 500,
+      "fields": {
+        "grid_1_position": "${fs_switcher.grid_position}",
+        "grid_1_panel_style": "${fs_switcher.panel_style}",
+        "grid_1_visibility": "${fs_switcher.visibility}",
+        "hide_grid_1": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_1",
+              "type": "fields",
+              "fields": [
+                "grid_1_position",
+                "grid_1_panel_style",
+                "grid_1_visibility",
+                "hide_grid_1"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_2_settings": {
+      "title": "Grid 2",
+      "width": 500,
+      "fields": {
+        "grid_2_position": "${fs_switcher.grid_position}",
+        "grid_2_panel_style": "${fs_switcher.panel_style}",
+        "grid_2_visibility": "${fs_switcher.visibility}",
+        "hide_grid_2": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_2",
+              "type": "fields",
+              "fields": [
+                "grid_2_position",
+                "grid_2_panel_style",
+                "grid_2_visibility",
+                "hide_grid_2"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_3_settings": {
+      "title": "Grid 3",
+      "width": 500,
+      "fields": {
+        "grid_3_position": "${fs_switcher.grid_position}",
+        "grid_3_panel_style": "${fs_switcher.panel_style}",
+        "grid_3_visibility": "${fs_switcher.visibility}",
+        "hide_grid_3": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_3",
+              "type": "fields",
+              "fields": [
+                "grid_3_position",
+                "grid_3_panel_style",
+                "grid_3_visibility",
+                "hide_grid_3"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_4_settings": {
+      "title": "Grid 4",
+      "width": 500,
+      "fields": {
+        "grid_4_position": "${fs_switcher.grid_position}",
+        "grid_4_panel_style": "${fs_switcher.panel_style}",
+        "grid_4_visibility": "${fs_switcher.visibility}",
+        "hide_grid_4": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_4",
+              "type": "fields",
+              "fields": [
+                "grid_4_position",
+                "grid_4_panel_style",
+                "grid_4_visibility",
+                "hide_grid_4"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_5_settings": {
+      "title": "Grid 5",
+      "width": 500,
+      "fields": {
+        "grid_5_position": "${fs_switcher.grid_position}",
+        "grid_5_panel_style": "${fs_switcher.panel_style}",
+        "grid_5_visibility": "${fs_switcher.visibility}",
+        "hide_grid_5": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_5",
+              "type": "fields",
+              "fields": [
+                "grid_5_position",
+                "grid_5_panel_style",
+                "grid_5_visibility",
+                "hide_grid_5"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_fs_switcher_pro_item_grid_6_settings": {
+      "title": "Grid 6",
+      "width": 500,
+      "fields": {
+        "grid_6_position": "${fs_switcher.grid_position}",
+        "grid_6_panel_style": "${fs_switcher.panel_style}",
+        "grid_6_visibility": "${fs_switcher.visibility}",
+        "hide_grid_6": "${fs_switcher.hide_grid}"
+      },
+      "fieldset": {
+        "default": {
+          "fields": [
+            {
+              "name": "_fs_switcher_pro_item_grid_6",
+              "type": "fields",
+              "fields": [
+                "grid_6_position",
+                "grid_6_panel_style",
+                "grid_6_panel_style",
+                "hide_grid_6"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

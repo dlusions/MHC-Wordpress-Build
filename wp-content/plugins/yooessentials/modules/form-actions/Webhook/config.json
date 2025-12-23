@@ -1,0 +1,99 @@
+{
+    "name": "webhook",
+    "title": "Webhook",
+    "description": "Trigger an HTTP request to a third-party service.",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Webhook/icon.svg}",
+    "fields": {
+        "url": {
+            "label": "URL",
+            "description": "The URL to send the request to.",
+            "source": true
+        },
+        "method": {
+            "label": "Method",
+            "type": "select",
+            "description": "The HTTP method to send the request with.",
+            "source": true,
+            "default": "post",
+            "options": {
+                "GET": "get",
+                "POST": "post",
+                "PUT": "put",
+                "PATCH": "patch",
+                "DELETE": "delete"
+            }
+        },
+        "format": {
+            "label": "Format",
+            "type": "select",
+            "description": "The format of the data that will be sent in the request.",
+            "default": "json",
+            "show": "method !== 'get'",
+            "options": {
+                "JSON": "json",
+                "XML": "xml",
+                "RAW": "raw",
+                "Form-Data": "form-data"
+            }
+        },
+        "body": {
+            "label": "Body",
+            "type": "editor",
+            "editor": "code",
+            "description": "The body content that will be sent in the request.",
+            "source": true,
+            "show": "$match(format, '(json|xml|raw)') && method !== 'get'"
+        },
+        "data": {
+            "label": "Data",
+            "type": "yooessentials-dataset",
+            "description": "The data that will be sent in the request.",
+            "txtEmpty": "No Data yet.",
+            "titleMap": "key",
+            "show": "method === 'get' || format === 'form-data'",
+            "panel": {
+                "title": "Data",
+                "fields": {
+                    "key": {
+                        "label": "Key",
+                        "description": "The data key."
+                    },
+                    "value": {
+                        "label": "Value",
+                        "source": true,
+                        "formPlaceholder": true,
+                        "description": "The data value."
+                    }
+                }
+            }
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "url",
+                        "method",
+                        "format",
+                        "body",
+                        "data"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

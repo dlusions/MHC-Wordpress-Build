@@ -1,0 +1,66 @@
+{
+    "type": "oauth",
+    "name": "vimeo",
+    "title": "Vimeo",
+    "description": "Vimeo OAuth authentication",
+    "documentation": "https://developer.vimeo.com/api/authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Vimeo/icon.svg}",
+    "services": [
+        "Personal Account"
+    ],
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/vimeo",
+        "presave": "yooessentials/auth/vimeo/presave"
+    },
+    "scopes": {
+        "public": "Access public member data",
+        "private": "Access private member data",
+        "create": "Create new videos",
+        "edit": "Edit existing videos",
+        "delete": "Delete existing videos",
+        "interact": "Interact with videos",
+        "upload": "Upload videos",
+        "stats": "Access video stats",
+        "video_files": "Access members video files"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "_oauth_title": {
+            "label": "Authentication",
+            "type": "yooessentials-info"
+        },
+        "_oauth": {
+            "type": "yooessentials-oauth-grant",
+            "description": "Connect to a Vimeo Account and grant the required scope access to our Auth App, you can revoke those anytime.",
+            "show": "!override"
+        },
+        "custom": {
+            "text": "Use Custom App",
+            "type": "checkbox"
+        },
+        "custom_info": {
+            "type": "yooessentials-info",
+            "description": "Use a Custom App to make the authentication with.",
+            "show": "custom"
+        },
+        "_custom": {
+            "type": "fields",
+            "show": "custom",
+            "fields": {
+                "accessToken": {
+                    "label": "Access Token",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

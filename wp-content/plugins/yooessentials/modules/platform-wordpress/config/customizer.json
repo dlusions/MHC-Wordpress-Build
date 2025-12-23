@@ -1,0 +1,12 @@
+{
+    "@extend": ["../../core/config/customizer.json"],
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "core.geoipdb": {
+                    "description": "A path to the <a href=\"https://www.maxmind.com/en/geoip2-services-and-databases\" target=\"_blank\">MaxMind GeoIp Database</a> used for IP Geolocation. Set the path to a City or Country DB manually or install <a href=\"https://wordpress.org/plugins/geoip-detect\" target=\"_blank\">Geolocation IP Detection</a> plugin, the path will be auto populated."
+                }
+            }
+        }
+    }
+}

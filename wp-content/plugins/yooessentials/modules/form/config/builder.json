@@ -1,0 +1,302 @@
+{
+    "form_area": [
+        {
+            "label": "Form",
+            "type": "checkbox",
+            "name": "yooessentials_form.state",
+            "text": "Deprecated",
+            "enable": "yooessentials_form.state",
+            "show": "this.node.type !== 'fragment'",
+            "description": "Setting a Form Area in a Section or Column is deprecated, use a Sublayout instead."
+        },
+        {
+            "name": "_yooessentials_form",
+            "text": "Configuration",
+            "type": "button-panel",
+            "panel": "yooessentials-form-settings",
+            "show": "yooessentials_form.state",
+            "enable": "!yooessentials.helpers.Form.closestForm(this.node) && !yooessentials.helpers.Form.hasFormAreas(this.node)"
+        },
+        {
+            "type": "button",
+            "name": "_yooessentials_form_transform",
+            "text": "Transform Form Area as Sublayout",
+            "show": "this.node.type !== 'fragment' && yooessentials_form.state && !yooessentials.helpers.Form.closestForm(this.node) && !yooessentials.helpers.Form.hasFormAreas(this.node)",
+            "event": "transformFormAreaToSublayout"
+        }
+    ],
+    "sublayout_form_area": [
+        {
+            "label": "Form",
+            "type": "checkbox",
+            "name": "yooessentials_form.state",
+            "text": "Enable as Form Area",
+            "description": "Designate this sublayout as an <a href=\"https://docs.zoolanders.com/essentials-for-yootheme-pro/addons/forms\" target=\"_blank\">Essentials Form Area</a>."
+        },
+        {
+            "name": "_yooessentials_form",
+            "text": "Configuration",
+            "type": "button-panel",
+            "panel": "yooessentials-form-settings",
+            "show": "yooessentials_form.state",
+            "enable": "!yooessentials.helpers.Form.closestForm(this.node) && !yooessentials.helpers.Form.hasFormAreas(this.node)"
+        },
+        {
+            "name": "_yooessentials_form_error",
+            "type": "yooessentials-info",
+            "show": "yooessentials_form.state && (yooessentials.helpers.Form.closestForm(this.node) || yooessentials.helpers.Form.hasFormAreas(this.node))",
+            "content": "<span class=\"uk-text-danger\">A Form Area is already defined in the parent or child nodes of this element.</span>"
+        }
+    ],
+    "control_name": {
+        "label": "Control",
+        "description": "A required control name that identifies this field and its data. Must be unique for the current Form Area.",
+        "type": "yooessentials-form-control",
+        "source": true
+    },
+    "control_id": {
+        "label": "ID Attribute",
+        "description": "An unique identifier for the field. Ignored when sync option enabled.",
+        "source": true
+    },
+    "control_id_inherit": {
+        "type": "checkbox",
+        "text": "Sync with control name"
+    },
+    "control_label": {
+        "label": "Label",
+        "description": "An optional label for the field.",
+        "source": true
+    },
+    "control_value": {
+        "label": "Value",
+        "description": "An optional predefined value.",
+        "source": true
+    },
+    "control_readonly": {
+        "label": "Readonly",
+        "text": "Set as read only field",
+        "type": "checkbox"
+    },
+    "control_autofocus": {
+        "label": "Autofocus",
+        "text": "Autofocus on page load",
+        "type": "checkbox",
+        "enable": "!control_readonly"
+    },
+    "control_placeholder": {
+        "label": "Placeholder",
+        "description": "An optional text to be shown when the field has no value set.",
+        "source": true
+    },
+    "control_size": {
+        "label": "Size",
+        "description": "The field size.",
+        "type": "select",
+        "options": {
+            "Default": "",
+            "Large": "large",
+            "Small": "small"
+        }
+    },
+    "control_width": {
+        "label": "Width",
+        "description": "The field width size.",
+        "type": "select",
+        "options": {
+            "Default": "",
+            "Large": "large",
+            "Medium": "medium",
+            "Small": "small",
+            "XSmall": "xsmall"
+        }
+    },
+    "control_attrs": {
+        "label": "Attributes",
+        "description": "Define one or more attributes for the field. Separate attribute name and value by <code>=</code> character. One attribute per line.",
+        "type": "editor",
+        "editor": "code",
+        "source": true,
+        "attrs": {
+            "debounce": 500
+        }
+    },
+    "control_options": {
+        "label": "Options",
+        "type": "content-items",
+        "title": "text",
+        "button": "Add option",
+        "item": "yooessentials_form_option"
+    },
+    "control_icon": {
+        "label": "Icon",
+        "description": "The field icon.",
+        "type": "icon"
+    },
+    "control_icon_align": {
+        "label": "Icon Alignment",
+        "description": "The field icon alignment.",
+        "type": "select",
+        "options": {
+            "Left": "left",
+            "Right": "right"
+        }
+    },
+    "control_required": {
+        "label": "Required",
+        "text": "Set this field as mandatory.",
+        "type": "checkbox",
+        "source": true
+    },
+    "control_min": {
+        "label": "Min",
+        "description": "Inputted value must be greater than or equal to minimum.",
+        "source": true,
+        "attrs": {
+            "type": "number"
+        }
+    },
+    "control_max": {
+        "label": "Max",
+        "description": "Inputted value must be lower than or equal to maximum.",
+        "source": true,
+        "attrs": {
+            "type": "number"
+        }
+    },
+    "control_mincount": {
+        "label": "Min Count",
+        "description": "Inputted value count must be greater than or equal to minimum.",
+        "source": true,
+        "attrs": {
+            "min": 2,
+            "max": 99,
+            "type": "number"
+        }
+    },
+    "control_maxcount": {
+        "label": "Max Count",
+        "description": "Inputted value count must be lower than or equal to maximum.",
+        "source": true,
+        "attrs": {
+            "min": 2,
+            "max": 99,
+            "type": "number"
+        }
+    },
+    "control_minlength": {
+        "label": "Min Length",
+        "description": "Inputted value length must be greater than or equal to minimum.",
+        "type": "number",
+        "source": true,
+        "attrs": {
+            "min": 0
+        }
+    },
+    "control_maxlength": {
+        "label": "Max Length",
+        "description": "Inputted value length must be lower than or equal to maximum.",
+        "type": "number",
+        "source": true,
+        "attrs": {
+            "min": 1
+        }
+    },
+    "control_mindate": {
+        "label": "Min",
+        "description": "Inputted date must be greater than or equal to minimum.",
+        "source": true,
+        "attrs": {
+            "type": "date"
+        }
+    },
+    "control_maxdate": {
+        "label": "Max",
+        "description": "Inputted date must be lower than or equal to maximum.",
+        "source": true,
+        "attrs": {
+            "type": "date"
+        }
+    },
+    "control_mintime": {
+        "label": "Min",
+        "description": "Inputted time must be greater than or equal to minimum.",
+        "attrs": {
+            "type": "time"
+        }
+    },
+    "control_maxtime": {
+        "label": "Max",
+        "description": "Inputted time must be lower than or equal to maximum.",
+        "attrs": {
+            "type": "time"
+        }
+    },
+    "control_minmonth": {
+        "label": "Min",
+        "description": "Inputted month must be greater than or equal to minimum.",
+        "source": true,
+        "attrs": {
+            "type": "month"
+        }
+    },
+    "control_maxmonth": {
+        "label": "Max",
+        "description": "Inputted month must be lower than or equal to maximum.",
+        "source": true,
+        "attrs": {
+            "type": "month"
+        }
+    },
+    "control_minweek": {
+        "label": "Min",
+        "description": "Inputted week must be greater than or equal to minimum.",
+        "attrs": {
+            "type": "week"
+        }
+    },
+    "control_maxweek": {
+        "label": "Max",
+        "description": "Inputted week must be lower than or equal to maximum.",
+        "attrs": {
+            "type": "week"
+        }
+    },
+    "control_step": {
+        "label": "Step",
+        "description": "Value will be multiple of step.",
+        "type": "number",
+        "source": true
+    },
+    "control_pattern": {
+        "label": "Pattern",
+        "description": "Inputted value must match the regular expression pattern.",
+        "source": true
+    },
+    "control_error_message": {
+        "label": "Error Message",
+        "description": "Override the server validation error message. Use <code>{fieldlabel}</code> as placeholder for the field label. Notice that HTML5 validation will ignore it and still use the browser default messages.",
+        "source": true
+    },
+    "action_name": {
+        "label": "Name",
+        "description": "A name to identify this action."
+    },
+    "action_status": {
+        "type": "checkbox",
+        "label": "Status",
+        "text": "Disable action",
+        "description": "Disable the action and publish it later.",
+        "attrs": {
+            "true-value": "disabled",
+            "false-value": ""
+        }
+    },
+    "action_conditions": {
+        "label": "Execution Condition",
+        "text": "Rules",
+        "type": "yooessentials-condition-button",
+        "panel": "yooessentials-condition",
+        "description": "Compose a condition under which this action should be executed."
+    }
+}

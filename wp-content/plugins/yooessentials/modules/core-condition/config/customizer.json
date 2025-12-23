@@ -1,0 +1,33 @@
+{
+    "panels": {
+        "yooessentials-condition": {
+            "title": "Condition",
+            "fields": {
+                "yooessentials_access_conditions": {
+                    "label": "Rules",
+                    "type": "yooessentials-condition-rules",
+                    "description": "Create rules to define your condition.",
+                    "adjacent": true
+                },
+                "yooessentials_access_mode": {
+                    "label": "Evaluation Mode",
+                    "type": "select",
+                    "description": "When multiple rules applied choose <code>AND</code> if all rules should pass, <code>OR</code> for at least one rule to pass, or <code>Custom</code> to write your own query.",
+                    "enable": "yooessentials_access_conditions.length > 1",
+                    "default": "AND",
+                    "options": {
+                        "AND": "AND",
+                        "OR": "OR",
+                        "Custom": "custom"
+                    }
+                },
+                "yooessentials_access_mode_query": {
+                    "type": "yooessentials-simple-query",
+                    "connection": "yooessentials_access_conditions",
+                    "description": "To define custom evaluation logic, create a query. Reference each rule within the query using its number enclosed in curly brackets (e.g. <code>{1}</code>). Combine rules using <code>AND</code> and <code>OR</code> operators, and use parentheses to control the order of evaluation (e.g. <code>{1} AND {2}</code>, <code>{1} OR {2}</code>, <code>({1} AND {2}) OR {3}</code>).",
+                    "show": "yooessentials_access_mode === 'custom'"
+                }
+            }
+        }
+    }
+}

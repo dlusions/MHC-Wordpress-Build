@@ -1,0 +1,923 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_chart",
+    "title": "Chart",
+    "group": "Essentials",
+    "icon": "${url:~yooessentials_url/modules/element/elements/chart/assets/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/element/elements/chart/assets/icon.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {
+        "chart_type": "line",
+        "chart_indexAxis": "x",
+        "chart_deferred": true,
+        "chart_maintainAspectRatio": false,
+        "chart_width": "100%",
+        "chart_height": "400px",
+        "title_display": true,
+        "title_position": "top",
+        "title_font_size": 12,
+        "title_font_family": "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        "subtitle_display": true,
+        "subtitle_position": "top",
+        "subtitle_font_size": 12,
+        "subtitle_font_family": "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        "legend_display": true,
+        "legend_position": "top",
+        "legend_align": "center",
+        "tooltip_enabled": true,
+        "tooltip_displayColors": true,
+        "tooltip_borderWidth": 0,
+        "tooltip_padding": 6,
+        "chart_animation_enabled": true,
+        "chart_animation_duration": 1000,
+        "chart_animation_easing": "easeOutQuart",
+        "scale_y_display": true,
+        "scale_x_display": true,
+        "scale_y_beginAtZero": true,
+        "scale_x_beginAtZero": true,
+        "scale_y_position": "left",
+        "scale_x_position": "bottom",
+        "scale_y_grid_display": true,
+        "scale_x_grid_display": true,
+        "scale_y_grid_lineWidth": 1,
+        "scale_x_grid_lineWidth": 1,
+        "scale_y_title_display": true,
+        "scale_x_title_display": true,
+        "scale_y_title_font_size": 12,
+        "scale_x_title_font_size": 12,
+        "scale_y_title_font_family": "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        "scale_x_title_font_family": "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        "scale_y_ticks_display": true,
+        "scale_x_ticks_display": true,
+        "scale_y_ticks_font_size": 12,
+        "scale_y_ticks_font_family": "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+    },
+    "placeholder": {
+        "children": [
+            {
+                "type": "yooessentials_chart_dataset",
+                "props": {
+                    "dataset_label": "Dataset"
+                }
+            }
+        ]
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "data": {
+            "label": "Datasets",
+            "type": "content-items",
+            "title": "dataset_label",
+            "button": "Add Dataset",
+            "item": "yooessentials_chart_dataset"
+        },
+        "chart_type": {
+            "label": "Type",
+            "type": "select",
+            "description": "Main chart type, can be overriden on each dataset.",
+            "options": {
+                "Line": "line",
+                "Bar": "bar",
+                "Radar": "radar",
+                "Pie": "pie",
+                "Doughnut": "doughnut",
+                "Polar Area": "polarArea"
+            }
+        },
+        "chart_indexAxis": {
+            "label": "Index Axis",
+            "type": "select",
+            "description": "The axis which to index by.",
+            "options": {
+                "Y Axis": "y",
+                "X Axis": "x"
+            }
+        },
+        "chart_width": {
+            "label": "Width"
+        },
+        "chart_height": {
+            "label": "Height"
+        },
+        "chart_deferred": {
+            "label": "Deferred",
+            "type": "checkbox",
+            "text": "Defer loading until in Viewport"
+        },
+        "chart_maintainAspectRatio": {
+            "label": "Ratio",
+            "type": "checkbox",
+            "text": "Mantain Aspect Ratio"
+        },
+        "layout_padding": {
+            "label": "Padding",
+            "description": "Valid formats are <code>x y</code> or <code>left right bottom left</code>."
+        },
+        "title_display": {
+            "type": "checkbox",
+            "text": "Display Title"
+        },
+        "subtitle_display": {
+            "type": "checkbox",
+            "text": "Display Subtitle"
+        },
+        "legend_display": {
+            "type": "checkbox",
+            "text": "Display Legend"
+        },
+        "scale_y_display": {
+            "type": "checkbox",
+            "text": "Display Y Axis"
+        },
+        "scale_x_display": {
+            "type": "checkbox",
+            "text": "Display X Axis"
+        },
+        "scale_y_title_display": {
+            "type": "checkbox",
+            "text": "Display Y Axis Title",
+            "enable": "scale_y_display"
+        },
+        "scale_y_ticks_display": {
+            "text": "Display Y Axis Ticks",
+            "type": "checkbox",
+            "enable": "scale_y_display"
+        },
+        "scale_x_title_display": {
+            "type": "checkbox",
+            "text": "Display X Axis Title",
+            "enable": "scale_x_display"
+        },
+        "scale_x_ticks_display": {
+            "text": "Display X Axis Ticks",
+            "type": "checkbox",
+            "enable": "scale_x_display"
+        },
+        "tooltip_enabled": {
+            "type": "checkbox",
+            "text": "Display Tooltip"
+        },
+        "chart_animation_enabled": {
+            "type": "checkbox",
+            "label": "Animation",
+            "text": "Enable animation"
+        },
+        "title_text": {
+            "label": "Title",
+            "description": "The chart main title, customize it appearance in the settings.",
+            "source": true
+        },
+        "title_font_family": {
+            "type": "font",
+            "label": "Font Family",
+            "enable": "title_display"
+        },
+        "title_font_size": {
+            "label": "Font Size",
+            "type": "range",
+            "enable": "title_display",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            }
+        },
+        "title_color": {
+            "type": "color",
+            "label": "Color",
+            "enable": "title_display"
+        },
+        "title_position": {
+            "label": "Position",
+            "type": "select",
+            "enable": "title_display",
+            "options": {
+                "Top": "top",
+                "Bottom": "bottom",
+                "Left": "left",
+                "Right": "right"
+            }
+        },
+        "subtitle_text": {
+            "label": "Subtitle",
+            "description": "The chart subtitle, customize it appearance in the settings.",
+            "source": true
+        },
+        "subtitle_font_family": {
+            "type": "font",
+            "label": "Font Family",
+            "enable": "subtitle_display"
+        },
+        "subtitle_font_size": {
+            "label": "Font Size",
+            "type": "range",
+            "enable": "subtitle_display",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            }
+        },
+        "subtitle_color": {
+            "type": "color",
+            "label": "Color",
+            "enable": "subtitle_display"
+        },
+        "subtitle_position": {
+            "label": "Position",
+            "type": "select",
+            "enable": "subtitle_display",
+            "options": {
+                "Top": "top",
+                "Bottom": "bottom",
+                "Left": "left",
+                "Right": "right"
+            }
+        },
+        "legend_reverse": {
+            "label": "Reverse",
+            "text": "Reverse datasets order",
+            "type": "checkbox",
+            "enable": "legend_display"
+        },
+        "legend_position": {
+            "label": "Position",
+            "type": "select",
+            "enable": "legend_display",
+            "options": {
+                "Top": "top",
+                "Bottom": "bottom",
+                "Left": "left",
+                "Right": "right"
+            }
+        },
+        "legend_align": {
+            "label": "Alignment",
+            "type": "select",
+            "enable": "legend_display",
+            "options": {
+                "Start": "start",
+                "Center": "center",
+                "End": "end"
+            }
+        },
+        "scale_y_type": {
+            "label": "Type",
+            "type": "select",
+            "enable": "scale_y_display",
+            "options": {
+                "Default": "",
+                "Logarithmic": "logarithmic"
+            }
+        },
+        "scale_y_position": {
+            "label": "Position",
+            "type": "select",
+            "enable": "scale_y_display",
+            "options": {
+                "Left": "left",
+                "Center": "center",
+                "Right": "right"
+            }
+        },
+        "scale_y_min": {
+            "label": "Min",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_y_max": {
+            "label": "Max",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_y_suggestedMin": {
+            "label": "Suggested Min",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_y_suggestedMax": {
+            "label": "Suggested Max",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_y_beginAtZero": {
+            "label": "Begin at Zero",
+            "type": "checkbox",
+            "description": "Start value scale at 0 instead of the min value of the dataset.",
+            "text": "Start value scale at 0"
+        },
+        "scale_x_beginAtZero": {
+            "label": "Begin at Zero",
+            "type": "checkbox",
+            "description": "Start value scale at 0 instead of the min value of the dataset.",
+            "text": "Start value scale at 0"
+        },
+        "scale_y_stacked": {
+            "label": "Stacked",
+            "type": "checkbox",
+            "text": "Stack bars"
+        },
+        "scale_x_stacked": {
+            "label": "Stacked",
+            "type": "checkbox",
+            "text": "Stack bars"
+        },
+        "scale_y_reverse": {
+            "label": "Reverse",
+            "type": "checkbox",
+            "text": "Reverse scale"
+        },
+        "scale_x_reverse": {
+            "label": "Reverse",
+            "type": "checkbox",
+            "text": "Reverse scale"
+        },
+        "scale_x_type": {
+            "label": "Type",
+            "type": "select",
+            "enable": "scale_x_display",
+            "options": {
+                "Default": "",
+                "Logarithmic": "logarithmic"
+            }
+        },
+        "scale_x_position": {
+            "label": "Position",
+            "type": "select",
+            "enable": "scale_x_display",
+            "options": {
+                "Top": "top",
+                "Center": "center",
+                "Bottom": "bottom"
+            }
+        },
+        "scale_x_min": {
+            "label": "Min",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_x_max": {
+            "label": "Max",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_x_suggestedMin": {
+            "label": "Suggested Min",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_x_suggestedMax": {
+            "label": "Suggested Max",
+            "type": "number",
+            "attrs": {
+                "step": 1
+            }
+        },
+        "scale_y_grid_display": {
+            "text": "Display Y Axis Grid",
+            "type": "checkbox",
+            "enable": "scale_y_display"
+        },
+        "scale_x_grid_display": {
+            "text": "Display X Axis Grid",
+            "type": "checkbox",
+            "enable": "scale_x_display"
+        },
+        "scale_y_grid_lineWidth": {
+            "label": "Grid Line Width",
+            "type": "number",
+            "attrs": {
+                "min": 1,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_y_display && scale_y_grid_display"
+        },
+        "scale_y_ticks_color": {
+            "label": "Ticks Color",
+            "type": "color",
+            "enable": "scale_y_display && scale_y_ticks_display"
+        },
+        "scale_y_ticks_font_family": {
+            "type": "font",
+            "label": "Ticks Font Family",
+            "enable": "scale_y_display && scale_y_ticks_display"
+        },
+        "scale_y_ticks_font_size": {
+            "label": "Ticks Font Size",
+            "type": "range",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_y_display && scale_y_ticks_display"
+        },
+        "scale_y_ticks_callback": {
+            "label": "Ticks Format",
+            "enable": "scale_y_display && scale_y_ticks_display"
+        },
+        "scale_x_ticks_color": {
+            "label": "Ticks Color",
+            "type": "color",
+            "enable": "scale_x_display && scale_x_ticks_display"
+        },
+        "scale_x_ticks_font_family": {
+            "type": "font",
+            "label": "Ticks Font Family",
+            "enable": "scale_x_display && scale_x_ticks_display"
+        },
+        "scale_x_ticks_font_size": {
+            "label": "Ticks Font Size",
+            "type": "range",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_x_display && scale_x_ticks_display"
+        },
+        "scale_x_ticks_callback": {
+            "label": "Ticks Format",
+            "enable": "scale_x_display && scale_x_ticks_display"
+        },
+        "scale_x_grid_lineWidth": {
+            "label": "Grid Line Width",
+            "type": "number",
+            "attrs": {
+                "min": 1,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_x_display && scale_x_grid_display"
+        },
+        "scale_y_grid_color": {
+            "label": "Grid Color",
+            "type": "color",
+            "enable": "scale_y_display && scale_y_grid_display"
+        },
+        "scale_x_grid_color": {
+            "label": "Grid Color",
+            "type": "color",
+            "enable": "scale_x_display && scale_x_grid_display"
+        },
+        "scale_y_title_text": {
+            "label": "Axis Y Title",
+            "description": "The title for the chart Y axis, customize it appearance in the settings.",
+            "source": true
+        },
+        "scale_x_title_text": {
+            "label": "Axis X Title",
+            "description": "The title for the chart X axis, customize it appearance in the settings.",
+            "source": true
+        },
+        "scale_y_title_font_family": {
+            "type": "font",
+            "label": "Title Font Family",
+            "enable": "scale_y_display && scale_y_title_display"
+        },
+        "scale_x_title_font_family": {
+            "type": "font",
+            "label": "Title Font Family",
+            "enable": "scale_x_display && scale_x_title_display"
+        },
+        "scale_y_title_font_size": {
+            "label": "Title Font Size",
+            "type": "range",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_y_display && scale_y_title_display"
+        },
+        "scale_x_title_font_size": {
+            "label": "Title Font Size",
+            "type": "range",
+            "attrs": {
+                "min": 6,
+                "max": 100,
+                "step": 1
+            },
+            "enable": "scale_x_display && scale_x_title_display"
+        },
+        "scale_y_title_color": {
+            "type": "color",
+            "label": "Title Color",
+            "enable": "scale_y_display && scale_y_title_display"
+        },
+        "scale_x_title_color": {
+            "type": "color",
+            "label": "Title Color",
+            "enable": "scale_x_display && scale_x_title_display"
+        },
+        "tooltip_displayColors": {
+            "label": "Show Colors",
+            "type": "checkbox",
+            "text": "Show color boxes",
+            "enable": "tooltip_enabled"
+        },
+        "tooltip_backgroundColor": {
+            "label": "Background Color",
+            "type": "color",
+            "enable": "tooltip_enabled"
+        },
+        "tooltip_borderWidth": {
+            "label": "Border Width",
+            "enable": "tooltip_enabled",
+            "type": "number",
+            "attrs": {
+                "min": 0,
+                "max": 100,
+                "step": 1
+            }
+        },
+        "tooltip_padding": {
+            "label": "Padding",
+            "enable": "tooltip_enabled",
+            "type": "number",
+            "attrs": {
+                "min": 0,
+                "max": 100,
+                "step": 1
+            }
+        },
+        "tooltip_borderColor": {
+            "label": "Border Color",
+            "type": "color",
+            "enable": "tooltip_enabled"
+        },
+        "tooltip_callbacks_title": {
+            "label": "Title Format",
+            "enable": "tooltip_enabled"
+        },
+        "tooltip_callbacks_label": {
+            "label": "Label Format",
+            "enable": "tooltip_enabled"
+        },
+        "tooltip_callbacks_footer": {
+            "label": "Footer Format",
+            "enable": "tooltip_enabled"
+        },
+        "chart_animation_duration": {
+            "label": "Duration",
+            "type": "number",
+            "enable": "chart_animation_enabled",
+            "attrs": {
+                "min": 0,
+                "max": 10000,
+                "step": 100
+            }
+        },
+        "chart_animation_delay": {
+            "label": "Delay",
+            "type": "number",
+            "enable": "chart_animation_enabled",
+            "attrs": {
+                "min": 0,
+                "max": 10000,
+                "step": 100
+            }
+        },
+        "chart_animation_loop": {
+            "label": "Loop",
+            "text": "Loop endlessly",
+            "type": "checkbox",
+            "enable": "chart_animation_enabled"
+        },
+        "chart_animation_easing": {
+            "label": "Easing",
+            "type": "select",
+            "enable": "chart_animation_enabled",
+            "options": {
+                "linear": "linear",
+                "easeInQuad": "easeInQuad",
+                "easeOutQuad": "easeOutQuad",
+                "easeInOutQuad": "easeInOutQuad",
+                "easeInCubic": "easeInCubic",
+                "easeOutCubic": "easeOutCubic",
+                "easeInOutCubic": "easeInOutCubic",
+                "easeInQuart": "easeInQuart",
+                "easeOutQuart": "easeOutQuart",
+                "easeInOutQuart": "easeInOutQuart",
+                "easeInQuint": "easeInQuint",
+                "easeOutQuint": "easeOutQuint",
+                "easeInOutQuint": "easeInOutQuint",
+                "easeInSine": "easeInSine",
+                "easeOutSine": "easeOutSine",
+                "easeInOutSine": "easeInOutSine",
+                "easeInExpo": "easeInExpo",
+                "easeOutExpo": "easeOutExpo",
+                "easeInOutExpo": "easeInOutExpo",
+                "easeInCirc": "easeInCirc",
+                "easeOutCirc": "easeOutCirc",
+                "easeInOutCirc": "easeInOutCirc",
+                "easeInElastic": "easeInElastic",
+                "easeOutElastic": "easeOutElastic",
+                "easeInOutElastic": "easeInOutElastic",
+                "easeInBack": "easeInBack",
+                "easeOutBack": "easeOutBack",
+                "easeInOutBack": "easeInOutBack",
+                "easeInBounce": "easeInBounce",
+                "easeOutBounce": "easeOutBounce",
+                "easeInOutBounce": "easeInOutBounce"
+            }
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "source": "${builder.source}",
+        "transform": "${builder.transform}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-item</code>, <code>.el-title</code>, <code>.el-meta</code>, <code>.el-content</code>, <code>.el-image</code>, <code>.el-link</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "data",
+                        "chart_type",
+                        "legend_display",
+                        "tooltip_enabled",
+                        "title_text",
+                        "title_display",
+                        "subtitle_text",
+                        "subtitle_display",
+                        "scale_y_title_text",
+                        "scale_y_display",
+                        "scale_y_title_display",
+                        "scale_y_ticks_display",
+                        "scale_y_grid_display",
+                        "scale_x_title_text",
+                        "scale_x_display",
+                        "scale_x_title_display",
+                        "scale_x_ticks_display",
+                        "scale_x_grid_display"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Chart",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "chart_width",
+                                "chart_height",
+                                "chart_indexAxis",
+                                "layout_padding",
+                                "chart_deferred",
+                                "chart_maintainAspectRatio"
+                            ]
+                        },
+                        {
+                            "label": "Title",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "title_position",
+                                "title_color",
+                                "title_font_family",
+                                "title_font_size"
+                            ]
+                        },
+                        {
+                            "label": "Subtitle",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "subtitle_position",
+                                "subtitle_color",
+                                "subtitle_font_family",
+                                "subtitle_font_size"
+                            ]
+                        },
+                        {
+                            "label": "Legend",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "legend_position",
+                                "legend_align",
+                                "legend_reverse"
+                            ]
+                        },
+                        {
+                            "label": "Tooltip",
+                            "type": "group",
+                            "fields": [
+                                "tooltip_displayColors",
+                                "tooltip_padding",
+                                "tooltip_borderWidth",
+                                "tooltip_borderColor",
+                                "tooltip_backgroundColor"
+                            ]
+                        },
+                        {
+                            "label": "Tooltip Content",
+                            "description": "Set JavaScript expressions to compose the Tooltip content. Use <code>item</code> and <code>items</code> as context, e.g. <code>item.raw + 'suffix'</code>, <code>item.dataset.label + 'suffix'</code> or <code>item.metadata</code>. To completely disable this callback rendering set an explicit empty string <code>''</code>. Consult the <a href=\"https://www.chartjs.org/docs/latest/configuration/tooltip.html#tooltip-callbacks\" target=\"_blank\">Chart.js guide</a> for further reference.",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "tooltip_callbacks_title",
+                                "tooltip_callbacks_label",
+                                "tooltip_callbacks_footer"
+                            ]
+                        },
+                        {
+                            "label": "Animation",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "chart_animation_enabled",
+                                "chart_animation_easing",
+                                "chart_animation_duration",
+                                "chart_animation_delay",
+                                "chart_animation_loop"
+                            ]
+                        },
+                        {
+                            "label": "Axis Y",
+                            "type": "group",
+                            "fields": [
+                                "scale_y_stacked",
+                                "scale_y_reverse",
+                                "scale_y_beginAtZero",
+                                "scale_y_type",
+                                "scale_y_position"
+                            ]
+                        },
+                        {
+                            "label": " ",
+                            "type": "group",
+                            "fields": [
+                                "scale_y_min",
+                                "scale_y_max",
+                                "scale_y_suggestedMin",
+                                "scale_y_suggestedMax"
+                            ]
+                        },
+                        {
+                            "label": "Axis Y Title",
+                            "type": "group",
+                            "fields": [
+                                "scale_y_title_color",
+                                "scale_y_title_font_family",
+                                "scale_y_title_font_size"
+                            ]
+                        },
+                        {
+                            "label": "Axis Y Grid",
+                            "type": "group",
+                            "fields": [
+                                "scale_y_grid_lineWidth",
+                                "scale_y_grid_color"
+                            ]
+                        },
+                        {
+                            "label": "Axis Y Ticks",
+                            "type": "group",
+                            "divider": true,
+                            "description": "Set JavaScript expressions to compose the ticks content. Use the <code>label</code>, <code>value</code>, <code>index</code> and <code>ticks</code> as context, e.g. <code>label + 'suffix'</code>. Consult the <a href=\"https://www.chartjs.org/docs/latest/axes/labelling.html#creating-custom-tick-formats\" target=\"_blank\">Chart.js guide</a> for further reference.",
+                            "fields": [
+                                "scale_y_ticks_color",
+                                "scale_y_ticks_font_family",
+                                "scale_y_ticks_font_size",
+                                "scale_y_ticks_callback"
+                            ]
+                        },
+                        {
+                            "label": "Axis X",
+                            "type": "group",
+                            "fields": [
+                                "scale_x_stacked",
+                                "scale_x_reverse",
+                                "scale_x_beginAtZero",
+                                "scale_x_type",
+                                "scale_x_position"
+                            ]
+                        },
+                        {
+                            "label": " ",
+                            "type": "group",
+                            "fields": [
+                                "scale_x_min",
+                                "scale_x_max",
+                                "scale_x_suggestedMin",
+                                "scale_x_suggestedMax"
+                            ]
+                        },
+                        {
+                            "label": "Axis X Title",
+                            "type": "group",
+                            "fields": [
+                                "scale_x_title_color",
+                                "scale_x_title_font_family",
+                                "scale_x_title_font_size"
+                            ]
+                        },
+                        {
+                            "label": "Axis X Grid",
+                            "type": "group",
+                            "fields": [
+                                "scale_x_grid_lineWidth",
+                                "scale_x_grid_color"
+                            ]
+                        },
+                        {
+                            "label": "Axis X Ticks",
+                            "type": "group",
+                            "divider": true,
+                            "description": "Set JavaScript expressions to compose the ticks content. Use the <code>label</code>, <code>value</code>, <code>index</code> and <code>ticks</code> as context, e.g. <code>label + 'suffix'</code>. Consult the <a href=\"https://www.chartjs.org/docs/latest/axes/labelling.html#creating-custom-tick-formats\" target=\"_blank\">Chart.js guide</a> for further reference",
+                            "fields": [
+                                "scale_x_ticks_color",
+                                "scale_x_ticks_font_family",
+                                "scale_x_ticks_font_size",
+                                "scale_x_ticks_callback"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

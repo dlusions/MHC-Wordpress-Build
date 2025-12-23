@@ -1,0 +1,46 @@
+{
+    "type": "oauth",
+    "name": "twitter",
+    "title": "Twitter",
+    "description": "Twitter OAuth 2.0 authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Twitter/icon.svg}",
+    "services": [
+        "Twitter"
+    ],
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/twitter",
+        "poll": "https://oauth.zoolanders.com/twitter/poll",
+        "presave": "yooessentials/auth/presave"
+    },
+    "scopes": {
+        "users.read": "Public Profile",
+        "tweet.read": "Read Tweets",
+        "offline.access": "Continuous Access"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "_custom": {
+            "type": "fields",
+            "fields": {
+                "clientId": {
+                    "label": "Client ID",
+                    "description": "The client identifier issued during the Application registration process."
+                },
+                "refreshToken": {
+                    "label": "Refresh Token",
+                    "description": "The token used to obtain and refresh the Access Token automatically.",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

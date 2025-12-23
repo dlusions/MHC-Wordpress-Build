@@ -1,0 +1,22 @@
+{
+    "name": "yooessentials_access_time",
+    "title": "Time",
+    "group": "datetime",
+    "collection": "Date & Time",
+    "description": "Validates against the current time.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules/Datetime/assets/time.svg}",
+    "fields": {
+        "publish_up": {
+            "label": "From",
+            "type": "yooessentials-time",
+            "description": "The start time in <code>H:i</code> format.",
+            "source": true
+        },
+        "publish_down": {
+            "label": "Until",
+            "type": "yooessentials-time",
+            "description": "The end time in <code>H:i</code> format.",
+            "source": true
+        }
+    }
+}

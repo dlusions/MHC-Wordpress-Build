@@ -1,0 +1,125 @@
+{
+    "name": "email",
+    "title": "Send Email",
+    "description": "Send multi purpose emails",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Email/icon.svg}",
+    "fields": {
+        "subject": {
+            "label": "Subject",
+            "description": "The email subject.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "body": {
+            "label": "Body",
+            "description": "The email content body.",
+            "type": "editor",
+            "mode": "text/html",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "html": {
+            "text": "Send content as HTML",
+            "type": "checkbox",
+            "default": true
+        },
+        "recipients": {
+            "label": "Recipients",
+            "description": "The list of addresses to which the email will be sent to, separated by comma.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "ccs": {
+            "label": "CCs",
+            "description": "The list of addresses to which the email will be sent as a Carbon Copy, separated by comma.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "bccs": {
+            "label": "BCCs",
+            "description": "The list of addresses to which the email will be sent as a Blind Carbon Copy, separated by comma.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "reply_tos": {
+            "label": "Reply To",
+            "description": "The list of addresses to which the recipient will be replying to, separated by comma.",
+            "source": true,
+            "formPlaceholder": true
+        },
+        "from_name": {
+            "label": "From Name",
+            "source": true,
+            "formPlaceholder": true,
+            "description": "The name of the email sender, defaults to the site one."
+
+        },
+        "from": {
+            "label": "From Email",
+            "source": true,
+            "formPlaceholder": true,
+            "description": "The email address of the email sender, defaults to the site one."
+        },
+        "from_warning": {
+            "type": "yooessentials-info",
+            "show": "from_name || from",
+            "content": "<span class=\"uk-text-warning\">Notice that altering the From Name and From Email settings might negatively affect the email delivery due to email provider's policies. If in doubt or experiecing issues, leave those empty.</span>"
+        },
+        "attachments_info": {
+            "type": "yooessentials-info"
+        },
+        "attachments": {
+            "label": "Static Attachments",
+            "description": "Files to send as email attachments.",
+            "type": "yooessentials-repeatable",
+            "repeat": "yooessentials-file",
+            "button": "Add File"
+        },
+        "submitted_attachments": {
+            "label": "Dynamic Attachments",
+            "description": "Form upload fields which submitted files to send as email attachments.",
+            "type": "yooessentials-repeatable",
+            "repeat": "yooessentials-form-control-select"
+        },
+        "_test_email": {
+            "label": "Email Test",
+            "description": "Make sure the email is being delivered by doing a simple test with the current configuration.",
+            "type": "yooessentials-form-test-email"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "subject",
+                        "recipients",
+                        "body",
+                        "html",
+                        "reply_tos",
+                        "attachments",
+                        "submitted_attachments",
+                        "ccs",
+                        "bccs",
+                        "from_name",
+                        "from",
+                        "from_warning"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    }
+}

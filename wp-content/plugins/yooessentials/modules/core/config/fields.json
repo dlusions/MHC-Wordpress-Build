@@ -1,0 +1,37 @@
+{
+    "db": {
+        "name": {
+            "label": "Database",
+            "description": "The name of the database to connect to.",
+            "attrs": {
+                "placeholder": "${yooessentials.db.database}"
+            }
+        },
+        "host": {
+            "label": "Host",
+            "attrs": {
+                "placeholder": "${yooessentials.db.host}"
+            }
+        },
+        "port": {
+            "label": "Port",
+            "attrs": {
+                "placeholder": "${yooessentials.db.port}"
+            }
+        },
+        "user": {
+            "label": "Username",
+            "attrs": {
+                "placeholder": "username"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "type": "yooessentials-secret",
+            "encrypt": true,
+            "attrs": {
+                "placeholder": "******"
+            }
+        }
+    }
+}

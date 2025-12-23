@@ -1,0 +1,19 @@
+<!--
+  @package     [FS] Switcher Pro for YOOtheme Pro
+  @subpackage  fs-switcher
+
+  @author      Flart Studio https://flart.studio
+  @copyright   Copyright (C) 2026 Flart Studio. All rights reserved.
+  @license     Flart Studio Proprietary License — see https://flart.studio/license
+  @link        https://flart.studio/yootheme-pro/switcher
+  @build       (FLART_BUILD_NUMBER)
+
+  Use of this file is subject to license terms. Redistribution is strictly prohibited.
+-->
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <polygon fill="none" stroke="#444" points="9.5,4.5 8.5,2.5 1.5,2.5 1.5,17.5 18.5,17.5 18.5,4.5 "/>
+    <rect x="11" y="2" fill="#444" width="4" height="1"/>
+    <rect x="4" y="9" fill="#444" width="6" height="1"/>
+    <rect x="4" y="12" fill="#444" width="8" height="1"/>
+    <rect x="16" y="2" fill="#444" width="3" height="1"/>
+</svg>

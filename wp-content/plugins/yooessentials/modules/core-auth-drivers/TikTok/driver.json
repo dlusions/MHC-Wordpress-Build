@@ -1,0 +1,75 @@
+{
+    "type": "oauth",
+    "name": "tiktok",
+    "title": "TikTok",
+    "description": "TikTok OAuth 2.0 authentication",
+    "documentation": "https://developers.tiktok.com/doc/login-kit-manage-user-access-tokens",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/TikTok/icon.svg}",
+    "accessTokenThreshold": "12 hours",
+    "services": [
+        "Personal Account"
+    ],
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/tiktok",
+        "presave": "yooessentials/auth/presave"
+    },
+    "scopes": {
+        "user.info.basic": "Read-only access to your basic profile information",
+        "user.info.profile": "Read-only access to your profile additional information",
+        "user.info.stats": "Read-only access to your profile engagement statistics",
+        "video.list": "Read-only access to your public TikTok videos",
+        "video.publish": "Publish videos to your TikTok account",
+        "video.upload": "Upload videos to your TikTok account"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "_oauth_title": {
+            "label": "Authentication",
+            "type": "yooessentials-info"
+        },
+        "_oauth": {
+            "type": "yooessentials-oauth-grant",
+            "description": "Connect to a TikTok Account and grant the required scope access to our Auth App, you can revoke those anytime.",
+            "show": "!override"
+        },
+        "custom": {
+            "text": "Use Custom App",
+            "type": "checkbox"
+        },
+        "custom_info": {
+            "type": "yooessentials-info",
+            "description": "Use a Custom App to make the authentication with.",
+            "show": "custom"
+        },
+        "_custom": {
+            "type": "fields",
+            "show": "custom",
+            "fields": {
+                "clientId": {
+                    "label": "Client ID",
+                    "description": "The client identifier issued during the Application registration process."
+                },
+                "clientSecret": {
+                    "label": "Client secret",
+                    "description": "The client secret issued during the Application registration process.",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                },
+                "refreshToken": {
+                    "label": "Refresh Token",
+                    "description": "The token used to obtain and refresh the Access Token automatically.",
+                    "type": "yooessentials-secret",
+                    "encrypt": true
+                }
+            }
+        }
+    }
+}

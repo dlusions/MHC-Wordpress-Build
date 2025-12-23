@@ -1,0 +1,38 @@
+{
+    "name": "google-business-profile",
+    "title": "Google Business Profile",
+    "description": "Source based on Google Business Profile",
+    "group": "misc",
+    "icon": "${url:~yooessentials_url/modules/source-providers/GoogleBusinessProfile/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/google-business-profile"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": ["https://www.googleapis.com/auth/business.manage"]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "businessAccount": {
+            "label": "Profile",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The Google Business Profile from wich to retrieve the locations.",
+            "endpoint": "yooessentials/source/google-business-profile/accounts",
+            "watch": "account"
+        },
+        "location": {
+            "label": "Location",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The profile location from which to create the source.",
+            "endpoint": "yooessentials/source/google-business-profile/locations",
+            "watch": "businessAccount"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

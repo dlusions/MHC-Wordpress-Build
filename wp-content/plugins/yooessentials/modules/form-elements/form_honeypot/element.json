@@ -1,0 +1,27 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form_honeypot",
+    "title": "Honeypot Anti-Spam",
+    "group": "Form Essentials",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form_honeypot/images/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form_honeypot/images/iconSmall.svg}",
+    "width": 500,
+    "element": true,
+    "submittable": true,
+    "defaults": {
+        "control_min_seconds": 5
+    },
+    "placeholder": {},
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "control_name": "${yooessentials.form.fields.control_name}",
+        "control_min_seconds": {
+            "type": "number",
+            "label": "Min seconds",
+            "description": "A submission done in less than the specified seconds will be considered invalid."
+        },
+        "control_error_message": "${yooessentials.form.fields.control_error_message}"
+    }
+}

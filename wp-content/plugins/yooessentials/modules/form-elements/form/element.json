@@ -1,0 +1,13 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form",
+    "title": "Form",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form/images/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form/images/iconSmall.svg}",
+    "container": true,
+    "width": 500,
+    "defaults": {},
+    "templates": {
+        "render": "./templates/template.php"
+    }
+}

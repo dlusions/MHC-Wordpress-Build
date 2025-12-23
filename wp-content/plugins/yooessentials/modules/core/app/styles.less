@@ -1,0 +1,230 @@
+@global-muted-color: #a0a0a0;
+@global-emphasis-color: #444;
+@global-danger-background: #e44e56;
+@global-muted-background: #e5e5e5;
+
+@import '../../dynamic/app/styles.less';
+
+// YO core
+// ========================================================================
+
+.ye-cursor-default {
+    cursor: default;
+}
+
+.uk-input.uk-focus {
+    outline: none;
+    background-color: #fff;
+    color: #777;
+    border-color: #3696F3;
+}
+
+.yo-sidebar-fields .uk-button.uk-button-link {
+    line-height: 1.3; // Fix for the button height to don't alter the layout when hidden
+}
+
+
+// YE Dropdown
+// ========================================================================
+
+.yo-dropdown .ye-dropdown .uk-dropdown-nav > li.uk-parent.uk-open > a {
+    background: @global-muted-background;
+}
+
+.yo-dropdown .ye-dropdown .uk-dropdown-nav .uk-nav-sub {
+    padding: 0;
+}
+
+.yo-dropdown .ye-dropdown .yo-dropdown-header {
+    height: 40px;
+}
+
+.yo-dropdown .ye-dropdown .yo-dropdown-footer {
+    padding: 2px 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.ye-dropdown .uk-button-small {
+    padding: 0 8px;
+    line-height: 20px;
+    font-size: 10px;
+}
+
+.ye-dropdown .uk-input.uk-form-danger {
+    border: 1px solid @global-danger-background;
+}
+
+
+// .yo-dropdown .ye-dropdown .uk-search-default .uk-search-input {
+//     height: 36px;
+// }
+
+.yo-dropdown .ye-dropdown .uk-dropdown-nav .uk-nav-sub > li > a {
+    color: #777;
+    padding: 6px 15px 6px 30px;
+    transition: .2s ease-out;
+    transition-property: color, background-color;
+}
+
+.yo-dropdown .ye-dropdown .uk-dropdown-nav .uk-nav-sub > li.uk-active > a,
+.yo-dropdown .ye-dropdown .uk-dropdown-nav .uk-nav-sub > li > a:hover {
+    color: @global-emphasis-color;
+    background: @global-muted-background;
+}
+
+.yo-dropdown .yo-nav-subheader {
+    padding: 10px 15px 0;
+}
+
+// YE Button Panel
+// ========================================================================
+
+.uk-input.ye-open-panel,
+.uk-select.ye-open-panel {
+    cursor: pointer;
+    background-color: #e5e5e5;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAzNSAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwb2x5bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiNhMGEwYTAiIHN0cm9rZS13aWR0aD0iMiIgcG9pbnRzPSIxNSAxLjUgMjAuNSA3IDE1IDEyLjUiIC8+Cjwvc3ZnPg==");
+}
+
+.uk-input.ye-open-panel-margin,
+.uk-select.ye-open-panel-margin {
+    background-position: 92% 50%;
+}
+
+// YE Hint Modal
+// ========================================================================
+
+.ye-hint-modal {
+    z-index: 99999999 !important;
+}
+
+.ye-hint-modal .uk-modal-dialog {
+    width: 300px;
+    transition: .3s linear;
+    transform: translateY(100px);
+}
+
+.ye-hint-modal .uk-modal-body {
+    padding: 40px 40px;
+}
+
+// animate rocket to push from bottom
+.ye-hint-modal.uk-open > .uk-modal-dialog {
+    transform: translateY(0);
+}
+
+// animate rocket to keep pushing from bottom until it reaches the top
+.ye-hint-modal.ye-hint-modal-shown:not(.uk-open) > .uk-modal-dialog {
+    transform: translateY(-100px);
+}
+
+// Icons
+// ========================================================================
+
+[class*=ye-builder-icon] {
+    display: block;
+    width: 20px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+span[class*=ye-builder-icon] {
+    cursor: default;
+}
+
+.ye-builder-icon-add { .svg-fill('img/icon-add.svg', '#444', @global-muted-color); }
+.ye-builder-icon-add:hover { .svg-fill('img/icon-add.svg', '#444', @global-emphasis-color); }
+.ye-builder-icon-eye { .svg-fill('img/icon-eye.svg', '#444', @global-muted-color); }
+.ye-builder-icon-eye:hover { .svg-fill('img/icon-eye.svg', '#444', @global-emphasis-color); }
+
+.ye-builder-icon-label { .svg-fill('img/icon-label.svg', '#444', @global-muted-color); }
+.ye-builder-icon-label:hover { .svg-fill('img/icon-label.svg', '#444', @global-emphasis-color); }
+
+// Status Icons
+// ========================================================================
+
+.ye-builder-icon-error,
+.ye-builder-icon-access,
+.ye-builder-icon-form,
+.ye-builder-icon-form-error {
+    width: 18px;
+    height: 20px;
+}
+
+span[class*=ye-builder-icon-access] {
+    height: 19px;
+}
+
+.ye-builder-icon-error { .svg-fill('img/icon-error.svg', '#444', @global-danger-background); }
+.ye-builder-icon-access { .svg-fill('img/icon-access.svg', '#444', @global-muted-color); }
+.ye-builder-icon-access-denied { .svg-fill('img/icon-access.svg', '#444', @global-danger-background); }
+.ye-builder-icon-form { .svg-fill('img/icon-form.svg', '#444', @global-muted-color); }
+.ye-builder-icon-form-error { .svg-fill('img/icon-form.svg', '#444', @global-danger-background); }
+
+// Fields
+// ========================================================================
+
+.ye-button-plus {
+    .svg-fill('img/button-plus.svg', '#444', @global-muted-color) !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid @global-muted-background !important;
+}
+
+.ye-button-plus:hover {
+    .svg-fill('img/button-plus.svg', '#444', @global-emphasis-color) !important;
+}
+
+.yo-input-iconnav-right { padding-right: 95px !important; }
+
+.yo-sidebar-fields>:not(:first-child) .ye-repeatable-compact .yo-sidebar-fields {
+    margin: 0 !important;
+}
+
+.ye-repeatable-compact-add {
+    position: absolute;
+    right: -5px;
+    bottom: -9px;
+    width: 18px!important;
+    height: 15px!important;
+    transform: translate(100%);
+}
+
+.ye-repeatable-compact-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 6px;
+    transform: translateX(100%);
+}
+
+// UIkit extension
+// ========================================================================
+
+.ye-description-list-small>dt:nth-child(n+2) {
+    margin-top: 8px!important;
+}
+
+// ye-resource-item
+// ========================================================================
+
+.uk-nav-default > li.ye-resource-item:focus > a.uk-disabled,
+.uk-nav-default > li.ye-resource-item:hover > a.uk-disabled {
+    background: inherit !important;
+}
+
+// Mixins
+// ========================================================================
+
+.svg-fill(@src, @color-default, @color-new, @property: background-image) {
+
+    @escape-color-default: escape(@color-default);
+    @escape-color-new: escape("@{color-new}");
+
+    @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-src: replace("@{data-uri}", "@{escape-color-default}", "@{escape-color-new}", "g");
+
+    @{property}: e(@replace-src);
+}

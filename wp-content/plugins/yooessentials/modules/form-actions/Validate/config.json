@@ -1,0 +1,60 @@
+{
+    "name": "validate",
+    "title": "Validate",
+    "description": "Validate with advanced conditions",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Validate/icon.svg}",
+    "group": "data",
+    "fields": {
+        "message": {
+            "label": "Message",
+            "description": "The custom message that will be displayed if the validation fails.",
+            "attrs": {
+                "placeholder": "Validation Error"
+            }
+        },
+        "validation_conditions": {
+            "label": "Conditions",
+            "type": "yooessentials-condition-rules",
+            "options": "${yooessentials.customizer.access_rules}",
+            "txtEmpty": "Add Condition",
+            "description": "Set conditions that will evaluate the submission. If invalid, the submission will fail with a message and no further actions down the chain will be executed.",
+            "adjacent": true
+        },
+        "validation_mode": {
+            "label": "Evaluation Mode",
+            "type": "select",
+            "description": "Set as <code>AND</code> to require all conditions to pass, <code>OR</code> for at least one condition, or write a custom evaluation logic.",
+            "show": "validation_conditions.length > 1",
+            "default": "AND",
+            "options": {
+                "AND": "AND",
+                "OR": "OR",
+                "Custom": "custom"
+            }
+        },
+        "validation_mode_query": {
+            "type": "yooessentials-simple-query",
+            "connection": "validation_conditions",
+            "description": "Set a custom evaluation query referencing each condition with brackets and it order number, e.g. <code>{1}</code>. Use <code>AND|OR</code> operators to form the evalution logic, e.g. <code>{1} AND {2}</code>. Add parenthesis <code>()</code> for altering the execution order, e.g. <code>({1} AND {2}) OR {3}</code>.",
+            "show": "validation_conditions.length > 1 && validation_mode === 'custom'"
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": ["validation_conditions", "validation_mode", "validation_mode_query", "message"]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": ["name", "status", "conditions"]
+                }
+            ]
+        }
+    }
+}

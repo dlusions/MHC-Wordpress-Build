@@ -1,0 +1,27 @@
+{
+    "name": "tiktok",
+    "title": "TikTok",
+    "description": "Source based on Media from TikTok",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/TikTok/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/tiktok"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "tiktok": [
+                    "user.info.basic",
+                    "video.list"
+                ]
+            },
+            "description": "The TikTok account from which to create the source."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

@@ -1,0 +1,96 @@
+{
+    "name": "acymailing-subscribe",
+    "title": "Subscribe",
+    "description": "Create or update an AcyMailing list subscriber",
+    "icon": "${url:~yooessentials_url/modules/form-actions/AcyMailing/icon.svg}",
+    "group": "Misc",
+    "collection": "AcyMailing",
+    "fields": {
+        "subscriber_email": {
+            "label": "Email",
+            "description": "Subscriber's email address.",
+            "source": true
+        },
+        "subscriber_name": {
+            "label": "Name",
+            "description": "Subscriber's name, it will be autocreated from the email if omited.",
+            "source": true
+        },
+        "subscriber_confirmed": {
+            "label": "Status",
+            "type": "select",
+            "description": "Subscriber's confirmation status.",
+            "source": true,
+            "default": 0,
+            "options": {
+                "Unconfirmed": 0,
+                "Confirmed": 1
+            }
+        },
+        "subscriber_language": {
+            "label": "Language",
+            "description": "Subscriber's preferred language in ISO 639-1 format with country code, e.g. <code>en-GB</code>.",
+            "source": true
+        },
+        "_async_fields": {
+            "type": "yooessentials-async-fields",
+            "endpoint": "yooessentials/form/action/acymailing/lists"
+        },
+        "custom_fields": {
+            "label": "Custom Fields",
+            "type": "yooessentials-dataset-mapping",
+            "endpoint": "yooessentials/form/action/acymailing/custom-fields",
+            "panel": "acymailing-field-{type}",
+            "panelFallback": "acymailing-field",
+            "description": "Set subscriber's custom fields data. Create and manage custom fields within AcyMailing to gather more information about the subscriber."
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "subscriber_email",
+                        "subscriber_name",
+                        "subscriber_confirmed",
+                        "subscriber_language",
+                        "_async_fields",
+                        "custom_fields"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    },
+    "panels": {
+        "acymailing-field": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true
+                }
+            }
+        },
+        "acymailing-field-date": {
+            "fields": {
+                "value": {
+                    "label": "Value",
+                    "source": true,
+                    "description": "Date formated as <code>Y-m-d</code>."
+                }
+            }
+        }
+    }
+}

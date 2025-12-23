@@ -1,0 +1,42 @@
+<?php // $file = /nas/content/live/mhc2025dev/wp-content/plugins/yooessentials/modules/core-condition-rules/Dynamic/config.json
+
+return [
+  'name' => 'yooessentials_access_dynamic', 
+  'title' => 'Dynamic', 
+  'group' => '', 
+  'description' => 'Validates against dynamic content.', 
+  'icon' => $filter->apply('url', '~yooessentials_url/modules/core-condition-rules/Dynamic/icon.svg', $file), 
+  'fields' => [
+    'value' => [
+      'label' => 'Value', 
+      'source' => true, 
+      'description' => 'The value which to evaluate.'
+    ], 
+    'condition' => [
+      'label' => 'Evaluation', 
+      'type' => 'select', 
+      'default' => '!', 
+      'description' => 'The logic to evaluate the value with.', 
+      'options' => [
+        'Is empty' => '!', 
+        'Includes' => '~=', 
+        'Equals to' => '=', 
+        'Greater than' => '>', 
+        'Less than' => '<', 
+        'Starts with' => '^=', 
+        'Ends with' => '$='
+      ]
+    ], 
+    'case_insensitive' => [
+      'text' => 'Case Insensitive', 
+      'type' => 'checkbox', 
+      'show' => '$match(condition, "~=|=|^=|$=")'
+    ], 
+    'condition_value' => [
+      'source' => true, 
+      'label' => 'Evaluation Value', 
+      'show' => '$match(condition, "=|>|<")', 
+      'description' => 'The value which to evaluate with.'
+    ]
+  ]
+];

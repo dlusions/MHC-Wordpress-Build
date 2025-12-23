@@ -1,0 +1,155 @@
+{
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-global-queries": "Global Queries"
+            }
+        }
+    },
+    "panels": {
+        "yooessentials-advanced": {
+            "fields": {
+                "_addons": {
+                    "fields": {
+                        "dynamic.state": {
+                            "enable": true
+                        }
+                    }
+                }
+            }
+        },
+        "yooessentials-source": {
+            "title": "Source",
+            "fieldset": {
+                "default": {
+                    "type": "tabs",
+                    "fields": [
+                        {
+                            "title": "Content",
+                            "fields": {
+                                "name": {
+                                    "label": "Field",
+                                    "type": "yooessentials-source-field",
+                                    "_enable": "yooessentials.helpers.Source.make(this.values, this.node).query",
+                                    "description": "The source content field."
+                                },
+                                "_filters": {
+                                    "type": "yooessentials-source-field-filters"
+                                }
+                            }
+                        },
+                        {
+                            "title": "Query",
+                            "fields": {
+                                "_sourceQuery": {
+                                    "label": "Source",
+                                    "type": "yooessentials-source-query",
+                                    "description": "The source from which to make the query."
+                                },
+                                "_sourceQueryArgs": {
+                                    "type": "yooessentials-source-query-args"
+                                },
+                                "_sourceQueryArgsSeparator": {
+                                    "type": "yooessentials-separator",
+                                    "show": "this.values.query.arguments"
+                                },
+                                "_sourceQueryField": {
+                                    "label": "Related Multi-Item Source",
+                                    "type": "yooessentials-source-query-field",
+                                    "description": "Optionally select a related multi-item source which fields to map instead.",
+                                    "show": "yooessentials.helpers.Source.showMultipleSelectField(yooessentials.helpers.makeSource(this.values, this.node))"
+                                },
+                                "_sourceQueryFieldArgs": {
+                                    "type": "yooessentials-source-query-field-args",
+                                    "show": "this.values.query.field"
+                                },
+                                "_sourceQueryFieldDirectives": {
+                                    "type": "yooessentials-source-query-field-directives",
+                                    "show": "this.values.query.field"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "yooessentials-source-query": {
+            "title": "Source Query",
+            "fields": {
+                "_source": {
+                    "label": "Source",
+                    "type": "yooessentials-source-query",
+                    "description": "The source from which to make the query.",
+                    "omittedOptions": [
+                        "node",
+                        "parent",
+                        "composed",
+                        "global-query"
+                    ],
+                    "nullable": false
+                },
+                "_sourceArgs": {
+                    "show": "this.values.query.name",
+                    "type": "source-query-args"
+                },
+                "_sourceArgsSeparator": {
+                    "type": "yooessentials-separator",
+                    "show": "this.values.query.arguments"
+                },
+                "_sourceField": {
+                    "label": "Related Multi-Item Source",
+                    "type": "yooessentials-source-query-field",
+                    "description": "Optionally select a related multi-item source which fields to map instead.",
+                    "show": "yooessentials.helpers.Source.showMultipleSelectField(yooessentials.helpers.makeSource(this.values, this.node))"
+                },
+                "_sourceFieldArgs": {
+                    "type": "source-field-args",
+                    "show": "this.values.query.field"
+                }
+            }
+        },
+        "yooessentials-composed": {
+            "title": "Composed",
+            "fields": {
+                "value": {
+                    "type": "yooessentials-composed",
+                    "description": "Compose content combining static text with dynamic sources and conditions."
+                }
+            }
+        },
+        "yooessentials-composed-condition": {
+            "title": "Condition",
+            "fields": {
+                "rules": {
+                    "label": "Rules",
+                    "type": "yooessentials-composed-condition",
+                    "description": "Define the rules that determine this condition.",
+                    "adjacent": true
+                },
+                "rules_eval": {
+                    "label": "Evaluation Mode",
+                    "type": "select",
+                    "description": "Select <code>AND</code> to require all rules to pass, <code>OR</code> to require at least one rule to pass, or <code>Custom</code> to define a custom evaluation query.",
+                    "enable": "rules.length > 1",
+                    "default": "AND",
+                    "options": {
+                        "AND": "AND",
+                        "OR": "OR",
+                        "Custom": "custom"
+                    }
+                },
+                "rules_eval_custom": {
+                    "type": "yooessentials-simple-query",
+                    "connection": "rules",
+                    "description": "Set a custom evaluation logic using rule indices enclosed in curly braces (e.g., <code>{1}</code>) to reference rules. Combine rules with logical operators like <code>AND</code>, <code>OR</code>, and parentheses to control evaluation precedence (e.g., <code>{1} AND {2}</code>, <code>{1} OR {2}</code>, <code>({1} AND {2}) OR {3}</code>).",
+                    "show": "rules_eval === 'custom'"
+                }
+            }
+        },
+        "yooessentials-global-queries": {
+            "priority": -5,
+            "title": "Global Queries",
+            "width": 350
+        }
+    }
+}

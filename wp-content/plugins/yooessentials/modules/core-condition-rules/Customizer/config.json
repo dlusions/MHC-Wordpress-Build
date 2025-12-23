@@ -1,0 +1,7 @@
+{
+    "name": "yooessentials_access_customizer",
+    "title": "Customizer",
+    "group": "site",
+    "description": "Validates if the YOOtheme Pro Customizer session is active.",
+    "icon": "${url:~yooessentials_url/modules/core-condition-rules/Customizer/icon.svg}"
+}

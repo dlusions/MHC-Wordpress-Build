@@ -1,0 +1,44 @@
+{
+    "type": "oauth",
+    "name": "linkedin",
+    "title": "LinkedIn",
+    "description": "LinkedIn OAuth 2.0 authentication",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/LinkedIn/icon.svg}",
+    "documentation": "https://developer.linkedin.com/api/authentication",
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/linkedin",
+        "presave": "yooessentials/auth/presave"
+    },
+    "scopes": {
+        "r_basicprofile": "Read Basic Profile",
+        "r_organization_social": "Read Organization Social",
+        "r_organization_admin": "Read Organization Pages"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this auth."
+        },
+        "_scopes": {
+            "label": "Scopes",
+            "type": "yooessentials-oauth-scopes",
+            "description": "The scopes this auth has access to."
+        },
+        "clientId": {
+            "label": "Client ID",
+            "description": "The client identifier issued during the Application registration process."
+        },
+        "clientSecret": {
+            "label": "Client secret",
+            "description": "The client secret issued during the Application registration process.",
+            "type": "yooessentials-secret",
+            "encrypt": true
+        },
+        "refreshToken": {
+            "label": "Refresh Token",
+            "type": "yooessentials-secret",
+            "description": "The token used to obtain and refresh the Access Token automatically.",
+            "encrypt": true
+        }
+    }
+}

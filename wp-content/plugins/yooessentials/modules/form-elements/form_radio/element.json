@@ -1,0 +1,158 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form_radio",
+    "title": "Radio",
+    "group": "Form Essentials",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form_radio/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form_radio/icon.svg}",
+    "element": true,
+    "submittable": true,
+    "width": 500,
+    "defaults": {
+        "margin": "default",
+        "control_layout": "vertical",
+        "control_id_inherit": true
+    },
+    "placeholder": {
+        "children": [
+            {
+                "type": "yooessentials_form_option",
+                "props": {
+                    "text": "Option 1",
+                    "value": "option-1"
+                }
+            },
+            {
+                "type": "yooessentials_form_option",
+                "props": {
+                    "text": "Option 2",
+                    "value": "option-2"
+                }
+            },
+            {
+                "type": "yooessentials_form_option",
+                "props": {
+                    "text": "Option 3",
+                    "value": "option-3"
+                }
+            }
+        ]
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "control_layout": {
+            "label": "Layout",
+            "description": "The output layout.",
+            "type": "select",
+            "options": {
+                "Vertical": "vertical",
+                "Horizontal": "horizontal"
+            }
+        },
+        "control_label": "${yooessentials.form.fields.control_label}",
+        "control_name": "${yooessentials.form.fields.control_name}",
+        "control_id": "${yooessentials.form.fields.control_id}",
+        "control_id_inherit": "${yooessentials.form.fields.control_id_inherit}",
+        "control_value": "${yooessentials.form.fields.control_value}",
+        "control_options": "${yooessentials.form.fields.control_options}",
+        "control_required": "${yooessentials.form.fields.control_required}",
+        "control_error_message": "${yooessentials.form.fields.control_error_message}",
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "source": "${builder.source}",
+        "transform": "${builder.transform}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-link</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "control_name",
+                        "control_value",
+                        "control_required",
+                        "control_error_message",
+                        "control_options"
+                    ]
+                },
+                {
+                    "title": "Field",
+                    "fields": [
+                        "control_label",
+                        "control_layout",
+                        "control_id",
+                        "control_id_inherit"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

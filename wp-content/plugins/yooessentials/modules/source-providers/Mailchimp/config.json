@@ -1,0 +1,34 @@
+{
+    "name": "mailchimp-audience",
+    "title": "Mailchimp",
+    "description": "Source based on a Mailchimp audience",
+    "group": "misc",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Mailchimp/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/mailchimp"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "auth": {
+            "label": "Authentication",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "mailchimp": [],
+                "mailchimp-apikey": []
+            },
+            "description": "Connect to your Mailchimp Account or set an API Key for authentication."
+        },
+        "list": {
+            "label": "Audience",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The audience from which to create the source.",
+            "endpoint": "yooessentials/source/mailchimp/lists",
+            "placeholder": "Select a list",
+            "autoSelect": true,
+            "enable": "auth"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

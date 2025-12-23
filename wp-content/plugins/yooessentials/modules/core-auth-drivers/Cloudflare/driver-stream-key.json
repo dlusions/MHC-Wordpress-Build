@@ -1,0 +1,35 @@
+{
+    "name": "cloudflare-stream-key",
+    "title": "Cloudflare Stream Key",
+    "description": "Create a Cloudflare Stream Signing Key.",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Cloudflare/icon.svg}",
+    "services": ["Stream"],
+    "endpoints": {
+        "presave": "yooessentials/cloudflare/stream/presave-key",
+        "predelete": "yooessentials/cloudflare/stream/predelete-key"
+    },
+    "fields": {
+        "_info": {
+            "type": "yooessentials-info",
+            "content": "Set a name and save, the key will be auto-generated. Notice that the API Token set in the source configuration must have the necessary permissions to do so."
+        },
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this key.",
+            "attrs": {
+                "autofocus": true
+            }
+        },
+        "id": {
+            "label": "Stream Key ID",
+            "enable": false,
+            "description": "The auto-generated Cloudflare Stream Key ID."
+        },
+        "pem": {
+            "label": "Stream Signing Key",
+            "enable": false,
+            "encrypt": true,
+            "description": "The auto-generated Cloudflare Stream Signing Key in PEM format."
+        }
+    }
+}

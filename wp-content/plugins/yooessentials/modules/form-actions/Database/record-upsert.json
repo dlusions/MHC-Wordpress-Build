@@ -1,0 +1,135 @@
+{
+    "name": "database-record-upsert",
+    "title": "Upsert Record",
+    "description": "Create or update a database table record",
+    "group": "data",
+    "collection": "Database",
+    "collectionDescription": "Manipulate database table records",
+    "icon": "${url:~yooessentials_url/modules/form-actions/Database/icon.svg}",
+    "fields": {
+        "db_name": "${yooessentials.core.fields.db.name}",
+        "external": {
+            "text": "With Custom Connection",
+            "type": "checkbox",
+            "default": false
+        },
+        "db_connection": {
+            "label": "Connection",
+            "show": "external",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "database": []
+            },
+            "description": "Select or configure the database connection to use for this operation. Ensure the connection has appropriate permissions for inserting and updating records."
+        },
+        "table": {
+            "label": "Table",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/form/action/savedb/tables",
+            "description": "Select the table where to insert or update a record."
+        },
+        "update_if_exists": {
+            "label": "Record",
+            "text": "Update if record exists",
+            "type": "checkbox"
+        },
+        "match_multiple": {
+            "text": "Match multiple records",
+            "type": "checkbox",
+            "show": "update_if_exists"
+        },
+        "table_record": {
+            "label": "Record Association",
+            "type": "yooessentials-dataset",
+            "txtEmpty": "Add association",
+            "titleMap": "table_key",
+            "titleFallback": "Association",
+            "description": "Define the key-value pairs to determine which existing records will be matched and updated.",
+            "show": "update_if_exists",
+            "enable": "table",
+            "panel": "record-association"
+        },
+        "content": {
+            "label": "Record Content",
+            "type": "yooessentials-dataset-mapping",
+            "description": "Specify the data to insert or update in the selected table. Columns that are not enabled will be excluded from the operation.",
+            "endpoint": "yooessentials/form/action/savedb/columns",
+            "watch": "table",
+            "enable": "table",
+            "panel": {
+                "title": "Content",
+                "fields": {
+                    "value": {
+                        "label": "Value",
+                        "source": true,
+                        "enable": "!set_null"
+                    },
+                    "set_null": {
+                        "text": "Set as Null",
+                        "type": "checkbox",
+                        "default": false
+                    },
+                    "skip_if_empty": {
+                        "text": "Skip if value is empty",
+                        "type": "checkbox",
+                        "default": false
+                    }
+                }
+            }
+        },
+        "name": "${yooessentials.form.fields.action_name}",
+        "status": "${yooessentials.form.fields.action_status}",
+        "conditions": "${yooessentials.form.fields.action_conditions}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Action",
+                    "fields": [
+                        "db_name",
+                        "external",
+                        "db_connection",
+                        "table",
+                        "update_if_exists",
+                        "table_record",
+                        "match_multiple",
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "conditions"
+                    ]
+                }
+            ]
+        }
+    },
+    "panels": {
+        "record-association": {
+            "title": "Record Association",
+            "fields": [
+                {
+                    "name": "_update",
+                    "type": "grid",
+                    "width": "1-2",
+                    "fields": {
+                        "table_key": {
+                            "label": "Key",
+                            "type": "yooessentials-select-dropdown-async",
+                            "endpoint": "yooessentials/form/action/savedb/fields"
+                        },
+                        "table_key_value": {
+                            "label": "Value",
+                            "source": true
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

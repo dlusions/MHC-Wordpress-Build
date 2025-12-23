@@ -1,0 +1,56 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_chart_data",
+    "title": "Data",
+    "width": 500,
+    "fields": {
+        "label": {
+            "label": "Label",
+            "source": true,
+            "description": "The label for this entry."
+        },
+        "data": {
+            "label": "Data",
+            "description": "The data for this entry.",
+            "attrs": {
+                "type": "number"
+            },
+            "source": true
+        },
+        "metadata": {
+            "label": "Metadata",
+            "description": "Additional data that could be displayed in a tooltip or others.",
+            "source": true
+        },
+        "backgroundColor": {
+            "label": "Background Color",
+            "type": "color",
+            "source": true
+        },
+        "borderColor": {
+            "label": "Border Color",
+            "type": "color",
+            "source": true,
+            "description": "If style is omited will be inherited from the Dataset settings. If looking for some nice colors try this green <code>#4BC0C0</code>, this red <code>#FF6384</code>, this blue <code>#36A2EB</code> or this yellow <code>#FFCD56</code>.<p>Take in consideration that Line Chart doesn't support data styling.</p>"
+        },
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "label",
+                        "data",
+                        "metadata",
+                        "backgroundColor",
+                        "borderColor"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

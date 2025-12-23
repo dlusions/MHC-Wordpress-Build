@@ -1,0 +1,24 @@
+{
+    "name": "vimeo",
+    "title": "Vimeo",
+    "description": "Source based on Media from Vimeo",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Vimeo/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/vimeo"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "vimeo": ["video_files"]
+            },
+            "description": "The Vimeo account from which to create the source."
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

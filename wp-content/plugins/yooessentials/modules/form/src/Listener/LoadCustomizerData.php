@@ -1,0 +1,36 @@
+<?php
+/**
+ * @package   Essentials YOOtheme Pro 2.4.12 build 1202.1125
+ * @author    ZOOlanders https://www.zoolanders.com
+ * @copyright Copyright (C) Joolanders, SL
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
+
+namespace ZOOlanders\YOOessentials\Form\Listener;
+
+use YOOtheme\Path;
+use YOOtheme\Config;
+use YOOtheme\Metadata;
+
+class LoadCustomizerData
+{
+    public Config $config;
+    public Metadata $metadata;
+
+    public function __construct(Config $config, Metadata $metadata)
+    {
+        $this->config = $config;
+        $this->metadata = $metadata;
+    }
+
+    public function handle(): void
+    {
+        $this->config->addFile('customizer', Path::get('../../config/customizer.json'));
+        $this->config->addFile('yooessentials.form.fields', Path::get('../../config/builder.json'));
+
+        $this->metadata->set('script:yooessentials-form', [
+            'src' => '~yooessentials_url/modules/form/yooessentials-form.min.js',
+            'defer' => true,
+        ]);
+    }
+}

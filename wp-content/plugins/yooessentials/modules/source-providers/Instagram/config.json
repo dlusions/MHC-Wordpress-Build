@@ -1,0 +1,40 @@
+{
+    "name": "instagram",
+    "title": "Instagram",
+    "description": "Source based on Instagram Business or Creator account",
+    "group": "Social Media",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Instagram/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/instagram"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "instagram": [
+                    "instagram_business_basic"
+                ],
+                "facebook": [
+                    "instagram_basic",
+                    "pages_show_list",
+                    "pages_read_engagement",
+                    "business_management"
+                ]
+            },
+            "description": "The Instagram Business or Creator account from which to create the source."
+        },
+        "page_id": {
+            "label": "Page",
+            "description": "The Facebook Page from which to create the source.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/instagram/pages",
+            "show": "yooessentials.helpers.Auth.find(values.account).driver === 'facebook'",
+            "watch": "account"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "panels": {
+        "yooessentials-advanced": {
+            "panels": {
+                "yooessentials-debug-panel": {
+                    "title": "Debug",
+                    "fields": {
+                        "debug.layout": {
+                            "type": "checkbox",
+                            "text": "Enable Layout Debug",
+                            "default": false,
+                            "description": "Enables a Layout Source button in the Builder Section that allows to see the layout source code."
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

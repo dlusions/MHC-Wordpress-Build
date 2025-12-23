@@ -1,0 +1,43 @@
+{
+    "name": {
+        "label": "Name",
+        "description": "A name to identify this source.",
+        "attrs": {
+            "autofocus": true
+        }
+    },
+    "description": {
+        "label": "Description",
+        "description": "A short description of this source."
+    },
+    "status": {
+        "label": "Status",
+        "description": "Disable the source and publish it later.",
+        "type": "checkbox",
+        "text": "Disable source",
+        "attrs": {
+            "true-value": "disabled",
+            "false-value": ""
+        }
+    },
+    "cache_default": {
+        "label": "Default Cache Time",
+        "description": "The default duration in seconds before the cache is renewed, set to <code>0</code> to disable caching.",
+        "type": "yooessentials-number",
+        "attrs": {
+            "min": 0,
+            "max": 2592000,
+            "placeholder": 3600
+        }
+    },
+    "cache_default_limited": {
+        "label": "Default Cache Time",
+        "description": "The default duration in seconds before the cache is renewed. A minimum cache of <code>3600</code> is imposed as per the API restrictions, this might be avoided by using a custom Auth App during the authentication process.",
+        "type": "yooessentials-number",
+        "attrs": {
+            "min": 0,
+            "max": 2592000,
+            "placeholder": 3600
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "name": "google-calendar",
+    "title": "Google Calendar",
+    "description": "Source based on a Google Calendar",
+    "group": "misc",
+    "icon": "${url:~yooessentials_url/modules/source-providers/GoogleCalendar/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/google/calendar"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": [
+                    "https://www.googleapis.com/auth/calendar.readonly",
+                    "https://www.googleapis.com/auth/calendar.events.readonly"
+                ]
+            },
+            "description": "The Google account with which to access the resources."
+        },
+        "calendar": {
+            "label": "Calendar",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The Calendar from which events to feed the source.",
+            "watch": "account",
+            "endpoint": "yooessentials/source/google/calendar/calendars"
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

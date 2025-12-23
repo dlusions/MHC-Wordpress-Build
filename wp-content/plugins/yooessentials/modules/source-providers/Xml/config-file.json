@@ -1,0 +1,74 @@
+{
+    "name": "xml-file",
+    "title": "XML File",
+    "description": "Source based on a XML file",
+    "group": "Structured Data",
+    "collection": "XML",
+    "collectionDescription": "Sources based on XML.",
+    "icon": "${url:~yooessentials_url/modules/source-providers/Xml/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/xml"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "file": {
+            "label": "File",
+            "type": "yooessentials-file",
+            "description": "A path to a local XML file which will be used as source. Must be UTF-8 encoded."
+        },
+        "xpath": {
+            "label": "XPath Filter",
+            "description": "Optional XPath filter to narrow down the XML. For example <code>/channel/item</code>. See <a href='https://en.wikipedia.org/wiki/XPath' target='blank'>Wikipedia</a> for more info."
+        },
+        "data_types": {
+            "label": "Data Types",
+            "type": "yooessentials-repeatable-compact",
+            "show": "file",
+            "description": "Optionally map the XML types to a specific Data Type which will enable specific type rendering options during layout mapping.",
+            "fields": {
+                "_grid": {
+                    "type": "grid",
+                    "width": "1-2",
+                    "fields": {
+                        "sourceType": {
+                            "label": "XML Type",
+                            "type": "yooessentials-select-dropdown-async",
+                            "endpoint": "yooessentials/source/xml/metadata"
+                        },
+                        "destinationType": {
+                            "label": "Data Type",
+                            "type": "select",
+                            "options": {
+                                "String": "String",
+                                "Date": "Date",
+                                "Int": "Int",
+                                "Image": "Image",
+                                "Url": "Url"
+                            }
+                        }
+                    }
+                },
+                "date_format": {
+                    "attrs": {
+                        "placeholder": "Date Format . Example: d/m/Y H:i:s"
+                    },
+                    "type": "data-list",
+                    "divider": true,
+                    "options": {
+                        "Fri, 16 Dec 2022 11:15:31 GMT": "D, d M Y H:i:s e",
+                        "Aug 6, 1999 (M j, Y)": "M j, Y",
+                        "August 06, 1999 (F d, Y)": "F d, Y",
+                        "08/06/1999 (m/d/Y)": "m/d/Y",
+                        "08.06.1999 (m.d.Y)": "m.d.Y",
+                        "6 Aug, 1999 (j M, Y)": "j M, Y",
+                        "Tuesday, Aug 06 (l, M d)": "l, M d"
+                    },
+                    "show": "destinationType == 'Date'"
+                }
+            }
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default}"
+    }
+}

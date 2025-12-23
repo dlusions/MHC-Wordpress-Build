@@ -1,0 +1,72 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form_button_item",
+    "title": "Submit",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form_button/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form_button/icon.svg}",
+    "width": 500,
+    "defaults": {
+        "button_style": "default",
+        "icon_align": "left"
+    },
+    "placeholder": {
+        "props": {
+            "content": "Submit",
+            "icon": ""
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Content",
+            "source": true
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon.",
+            "type": "icon",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Icon Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "icon"
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text",
+                "Link": "",
+                "Link Muted": "link-muted",
+                "Link Text": "link-text"
+            }
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": ["content", "button_style", "icon", "icon_align"]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

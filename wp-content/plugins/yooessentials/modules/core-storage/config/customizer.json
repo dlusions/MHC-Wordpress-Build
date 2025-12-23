@@ -1,0 +1,16 @@
+{
+    "panels": {
+        "yooessentials-storages": {
+            "title": "Storages",
+            "width": 350,
+            "priority": 80
+        }
+    },
+    "sections": {
+        "yooessentials": {
+            "items": {
+                "yooessentials-storages": "Storages"
+            }
+        }
+    }
+}

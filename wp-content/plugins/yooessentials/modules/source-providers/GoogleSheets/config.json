@@ -1,0 +1,63 @@
+{
+    "name": "google-sheets",
+    "title": "Google Sheets",
+    "description": "Source based on Google Sheets",
+    "group": "Structured Data",
+    "icon": "${url:~yooessentials_url/modules/source-providers/GoogleSheets/icon.svg}",
+    "endpoints": {
+        "presave": "yooessentials/source/google-sheets"
+    },
+    "fields": {
+        "name": "${yooessentials.source.fields.name}",
+        "description": "${yooessentials.source.fields.description}",
+        "status": "${yooessentials.source.fields.status}",
+        "account": {
+            "label": "Account",
+            "type": "yooessentials-connected-auth",
+            "connections": {
+                "google": [
+                    "https://www.googleapis.com/auth/drive.readonly",
+                    "https://www.googleapis.com/auth/spreadsheets.readonly"
+                ]
+            },
+            "description": "The Google account which to authenticate with."
+        },
+        "sheet_id": {
+            "label": "Spreadsheet",
+            "type": "yooessentials-select-dropdown-async",
+            "description": "The spreadsheet which to retrieve the data from.",
+            "watch": "account",
+            "endpoint": "yooessentials/source/google-sheets/spreadsheets"
+        },
+        "sheet_name": {
+            "label": "Sheet",
+            "description": "The spreadsheet sheet from which data to create the source.",
+            "type": "yooessentials-select-dropdown-async",
+            "endpoint": "yooessentials/source/google-sheets/sheets",
+            "watch": "sheet_id",
+            "placeholder": "Default"
+        },
+        "_columns": {
+            "description": "The range of columns to restricts the sheet data with.",
+            "type": "grid",
+            "width": "1-2",
+            "fields": {
+                "start_column": {
+                    "label": "Start Column",
+                    "type": "text",
+                    "attrs": {
+                        "placeholder": "A"
+                    }
+                },
+                "end_column": {
+                    "label": "End Column",
+                    "type": "text",
+                    "attrs": {
+                        "placeholder": "Z"
+                    }
+                }
+            }
+        },
+        "cache_default": "${yooessentials.source.fields.cache_default_limited}"
+    }
+}

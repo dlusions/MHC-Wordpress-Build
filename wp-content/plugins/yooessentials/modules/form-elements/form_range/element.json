@@ -1,0 +1,144 @@
+{
+    "@import": "./element.php",
+    "name": "yooessentials_form_range",
+    "title": "Range",
+    "group": "Form Essentials",
+    "icon": "${url:~yooessentials_url/modules/form-elements/form_range/icon.svg}",
+    "iconSmall": "${url:~yooessentials_url/modules/form-elements/form_range/icon.svg}",
+    "width": 500,
+    "element": true,
+    "submittable": true,
+    "defaults": {
+        "margin": "default",
+        "control_min": 0,
+        "control_max": 100,
+        "control_step": 1,
+        "control_id_inherit": true
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "control_attrs": "${yooessentials.form.fields.control_attrs}",
+        "control_name": "${yooessentials.form.fields.control_name}",
+        "control_label": "${yooessentials.form.fields.control_label}",
+        "control_id": "${yooessentials.form.fields.control_id}",
+        "control_id_inherit": "${yooessentials.form.fields.control_id_inherit}",
+        "control_size": "${yooessentials.form.fields.control_size}",
+        "control_width": "${yooessentials.form.fields.control_width}",
+        "control_value": "${yooessentials.form.fields.control_value}",
+        "control_autofocus": "${yooessentials.form.fields.control_autofocus}",
+        "control_min": "${yooessentials.form.fields.control_min}",
+        "control_max": "${yooessentials.form.fields.control_max}",
+        "control_step": "${yooessentials.form.fields.control_step}",
+        "control_error_message": "${yooessentials.form.fields.control_error_message}",
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "source": "${builder.source}",
+        "transform": "${builder.transform}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-link</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "control_name",
+                        "control_value",
+                        "control_min",
+                        "control_max",
+                        "control_step",
+                        "control_error_message"
+
+                    ]
+                },
+                {
+                    "title": "Field",
+                    "fields": [
+                        "control_label",
+                        "control_id",
+                        "control_id_inherit",
+                        "control_attrs"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Field",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "control_autofocus",
+                                "control_size",
+                                "control_width",
+                                "control_rows"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

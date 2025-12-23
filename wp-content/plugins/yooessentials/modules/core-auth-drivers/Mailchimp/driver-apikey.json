@@ -1,0 +1,23 @@
+{
+    "name": "mailchimp-apikey",
+    "title": "Mailchimp API Key",
+    "description": "Key based authentication",
+    "documentation": "https://mailchimp.com/developer/marketing/guides/quick-start/#generate-your-api-key",
+    "icon": "${url:~yooessentials_url/modules/core-auth-drivers/Mailchimp/icon.svg}",
+    "endpoints": {
+        "oauth": "https://oauth.zoolanders.com/mailchimp",
+        "presave": "yooessentials/auth/mailchimp/apikey"
+    },
+    "fields": {
+        "name": {
+            "label": "Name",
+            "description": "Optional name to identify this key."
+        },
+        "key": {
+            "type": "yooessentials-secret",
+            "label": "API Key",
+            "description": "The API Key created within the <a href=\"https://us1.admin.mailchimp.com/account/api\" target=\"_blank\">API Keys section</a> of your Mailchimp account",
+            "encrypt": true
+        }
+    }
+}
